@@ -1,3 +1,8 @@
 title: Renjin documentation
 
+markdown: pandoc
+pandoc:
+    extensions:
+        - smart
+
 exclude: [README.md]

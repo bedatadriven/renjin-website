@@ -3,17 +3,93 @@
     <head>
         <meta charset="utf-8" />
         <title>{{ site.title }} | {{ page.title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-        <style>
-            .container {
-                max-width: 770px;
-                margin: 0 auto;
-            }
-        </style>
         <![endif]-->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <style>
+          .jumbotron {
+            padding: 70px 0 30px 0;
+            color: #ffffff;
+            background-color: #002c8d;
+            border-bottom: solid 4px #f5002e;
+          }
+          h1 {
+            margin: 30px 0 20px 0;
+            color: #002c8d;
+          }
+          h2, h3, h4, h5, h6 {
+            margin: 30px 0 10px 0;
+            font-size: 14px;
+          }
+          h2 {
+            font-size: 1.5em;
+          }
+        </style>
+    <style>
+      table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+        margin: 0; padding: 0; vertical-align: baseline; border: none; }
+        table.sourceCode { width: 100%; }
+      td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+      td.sourceCode { padding-left: 5px; }
+      code > span.kw { color: #007020; font-weight: bold; }
+      code > span.dt { color: #902000; }
+      code > span.dv { color: #40a070; }
+      code > span.bn { color: #40a070; }
+      code > span.fl { color: #40a070; }
+      code > span.ch { color: #4070a0; }
+      code > span.st { color: #4070a0; }
+      code > span.co { color: #60a0b0; font-style: italic; }
+      code > span.ot { color: #007020; }
+      code > span.al { color: #ff0000; font-weight: bold; }
+      code > span.fu { color: #06287e; }
+      code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
     </head>
 <body>
-    {{ content }}
+
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">renjin</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><a href="{{ site.url }}">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <img class="pull-left" src="{{ site.url }}/assets/img/renjin-logo.png" alt="Renjin logo" />
+    <img class="pull-right" src="{{ site.url }}/assets/img/renjin-tagline.png" alt="R for the JVM" />
+  </div> <!-- /container -->
+
+</header>
+
+  <div class="container">
+
+  {{ content }}
+
+  <hr />
+  <footer>
+    <p>&copy; BeDataDriven 2013</p>
+  </footer>
+
+  </div> <!-- /container -->
+
 </body>
 </html>
