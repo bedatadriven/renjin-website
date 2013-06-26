@@ -10,14 +10,31 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <style>
           .jumbotron {
+            position: relative;
             padding: 70px 0 30px 0;
             color: #ffffff;
-            background-color: #002c8d;
             border-bottom: solid 4px #f5002e;
+            /* fallback */
+            background: #002c8d;
+            /* gradient background */
+            background: linear-gradient(to right, rgb(0,35,98), rgb(0,44,141), rgb(0,35,98));
+          }
+          .jumbotron:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url({{ site.url }}/assets/img/renjin-pattern.png) repeat center center;
+            opacity: .7;
           }
           h1 {
             margin: 30px 0 20px 0;
-            color: #002c8d;
+            color: #5e5e5e;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eeeeee;
           }
           h2, h3, h4, h5, h6 {
             margin: 30px 0 10px 0;
@@ -25,6 +42,11 @@
           }
           h2 {
             font-size: 1.5em;
+          }
+          p.tagline {
+            line-height: 110px;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px #005;
           }
         </style>
     <style>
@@ -59,10 +81,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="brand" href="#">renjin</a>
+      <!-- <a class="brand" href="#">renjin</a> -->
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active"><a href="{{ site.url }}">Home</a></li>
+          <li><a href="{{ site.url }}">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/analysts/">for analysts</a></li>
+              <li><a href="/developers/">for developers</a></li>
+              <li><a href="/contributors/">for contributors</a></li>
+            </ul>
+          </li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -75,7 +105,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <img class="pull-left" src="{{ site.url }}/assets/img/renjin-logo.png" alt="Renjin logo" />
-    <img class="pull-right" src="{{ site.url }}/assets/img/renjin-tagline.png" alt="R for the JVM" />
+    <div class="pull-right"><p class="tagline">The R programming language on the JVM</p></div>
   </div> <!-- /container -->
 
 </header>
@@ -90,6 +120,8 @@
   </footer>
 
   </div> <!-- /container -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
