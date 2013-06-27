@@ -30,6 +30,16 @@
             background: url({{ site.url }}/assets/img/renjin-pattern.png) repeat center center;
             opacity: .7;
           }
+          div.contentBody {
+              min-height: 500px;
+          }
+          body > footer {
+              background: url({{ site.url }}/assets/img/classy_fabric.png) repeat;
+              color: #bbb;
+              margin-top: 5em;
+              padding: 2em 0;
+              min-height: 500px;
+          }
           h1 {
             margin: 30px 0 20px 0;
             color: #5e5e5e;
@@ -43,10 +53,27 @@
           h2 {
             font-size: 1.5em;
           }
+          h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, 
+          h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, 
+          h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+            text-decoration: none;
+            color: inherit;
+          }
           p.tagline {
             line-height: 110px;
             font-size: 2em;
             text-shadow: 2px 2px 4px #005;
+          }
+          p.byline {
+            color: #888;
+          }
+          .email {
+              /* simple e-mail obfuscation */
+              direction: rtl; 
+              unicode-bidi: bidi-override;
+          }
+          article img {
+              margin: 2em 0;
           }
         </style>
     <style>
@@ -85,15 +112,22 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li><a href="{{ site.url }}">Home</a></li>
+          <li><a href="{{ site.url }}#about">About</a></li>
+          <li><a href="{{ site.url }}#downloads">Downloads</a></li>
+          <li><a href="{{ site.url }}/blog/">Blog</a></li>
+          <li><a href="http://packages.renjin.org.s3.amazonaws.com/index.html">Package Build Status</a></li>
+          <li><a href="{{ site.url }}/support.html">Support</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Documentation <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="/analysts/">for analysts</a></li>
-              <li><a href="/developers/">for developers</a></li>
-              <li><a href="/contributors/">for contributors</a></li>
+              <li><a href="{{ site.url }}/documentation/">Overview</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">Guides for...</li>
+              <li><a href="{{ site.url }}/documentation/analyst-guide.html">Analysts</a></li>
+              <li><a href="{{ site.url }}/documentation/developer-guide.html">Developers</a></li>
+              <li><a href="{{ site.url }}/documentation/contributor-guide.html">Contributors</a></li>
             </ul>
           </li>
-          <li><a href="about.html">About</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -110,16 +144,42 @@
 
 </header>
 
+<div class="contentBody">
   <div class="container">
 
   {{ content }}
 
-  <hr />
+  </div> <!-- /container -->
+</div>
+
   <footer>
-    <p>&copy; BeDataDriven 2013</p>
+  <div class="container">
+
+    <div class="row">
+      <div class="span6">
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+        <form action="http://renjin.us7.list-manage.com/subscribe/post?u=d15c4a781ddc4b9bdcec62993&amp;id=57c04ae38b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <p><strong>Subscribe to the Renjin mailing list</strong></p>
+        <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address </label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        </div>
+            <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </form>
+        </div>
+
+        <!--End mc_embed_signup-->
+      </div>
+      <div class="span6">
+        <p>&copy; BeDataDriven 2013</p>
+      </div>
+  </div> <!-- /container -->
   </footer>
 
-  </div> <!-- /container -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 

@@ -1,26 +1,32 @@
 ---
 layout: default
-title: Introduction
+title: Home
 ---
+<h1><a name="about">About</a></h1>
 
-<h1>Renjin documentation</h1>
+<p>Renjin is a JVM-based interpreter for the <a
+    href="http://www.r-project.org">R language for statistical computing</a>.
+This project is an initiative of <a
+    href="http://www.bedatadriven.com">BeDataDriven</a>, an analytics company
+based in the Netherlands.</p>
 
-<p>Welcome to the documentation for Renjin, the R interpreter for the Java Virtual Machine. There are three types of guides depending on how you use Renjin:<p>
+<p>MORE PRAISE FOR RENJIN HERE</p>
 
-<div class="row">
-  <div class="span4">
-    <h2>Analysts</h2>
-    <p>Install Renjin locally or in the cloud and use it for high-performance data analysis.
-    <p><a class="btn" href="{{ site.url }}/analysts/">Analyst guide</a></p>
-  </div>
-  <div class="span4">
-    <h2>Developers</h2>
-    <p>Include Renjin in your Java project or call Java classes from Renjin.</p>
-    <p><a class="btn" href="{{ site.url }}/developers/">Developer guide</a></p>
-  </div>
-  <div class="span4">
-    <h2>Contributors</h2>
-    <p>Learn how Renjin works and how to build Renjin and help with its development.</p>
-    <p><a class="btn" href="{{ site.url }}/contributors/">Contributor guide</a></p>
-  </div>
-</div>
+<p>Check out the <a href="support.html">support page</a> if you need (commercial) support for Renjin.</p>
+
+<h1><a name="downloads">Downloads</a></h1>
+
+<p>Please hold while we get these links to you!</p>
+
+<h1>Latest news</h1>
+
+<p>Visit the <a href="blog/">blog page</a> to read all articles or subscribe to the blog's 
+<a href="{{ site.url }}/feed.xml">RSS feed</a> to stay up to
+date with the latest news on Renjin. You can also subscribe to the mailing list below.</p>
+
+{% for post in site.posts limit:3 %}
+<h2>{{ post.title }} ({{ post.date | date: "%Y-%m-%d" }})</h2>
+  {{ post.excerpt }} 
+  <p><a href="{{ post.url }}">Read more...</a></p>
+{% endfor %}
+

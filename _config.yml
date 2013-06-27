@@ -1,4 +1,6 @@
-title: Renjin documentation
+title: Renjin.org
+description: Blog about Renjin, the R programming language on the JVM
+url: http://localhost:4000
 
 markdown: pandoc
 pandoc:
@@ -6,3 +8,5 @@ pandoc:
         - smart
 
 exclude: [README.md]
+
+permalink: /blog/:year-:month-:day-:title.html

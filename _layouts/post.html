@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="name headline">{{ page.title }}</h1>
+    <p class="byline">
+    Published by <a itemprop="author" itemscope itemtype="http://schema.org/Person" href="{{ page.author.url }}?rel=author">{{ page.author.name }}</a> 
+    on <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemProp="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>.
+    </p>
+  </header>
+{{ content }}
+  <hr />
+  <footer>
+    <p>Read more at <a href="{{ site.url }}/blog/">Renjin's blog</a> or subscribe to the blog's <a href="{{ site.url}}/feed.xml">RSS feed</a>.
+  </footer>
+</article>
