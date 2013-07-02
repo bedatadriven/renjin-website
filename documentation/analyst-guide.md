@@ -1,11 +1,8 @@
 ---
 layout: default
-title: Introduction for analysts
+title: Analyst guide
 ---
 
-Documentation for analysts using Renjin
-=======================================
-
-This documentation is for people who wish to use Renjin for data analysis.
-
-
+This guide is not available yet. See the 
+[User guide on the Google Code project page](https://code.google.com/p/renjin/wiki/UserGuide) 
+for a slightly outdated version.
