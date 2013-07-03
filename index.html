@@ -20,9 +20,9 @@ implementation of the R language and environment for the Java Virtual Machine
 (JVM), designed for handling big data sets and seamless integration with other
 enterprise systems such as databases and application servers.</p>
 
-<h2>The 7 advantages of Renjin for businesses</h2>
+<h2>Why Renjin?</h2>
 
-<h3>Advantage 1: Bigger data</h3>
+<h3>Bigger data</h3>
 
 <p>R has been traditionally limited by the need to fit data sets into memory,
 and working with even modest sets of data can quickly exhaust memory due to
@@ -38,22 +38,22 @@ Renjin, in contrast, allows existing R code to run on larger datasets with no
 modification, using R’s familiar and standard data structures and
 algorithms.</p>
 
-<h3>Advantage 2: Better performance</h3>
+<h3>Better performance</h3>
 
 <p>Renjin offers performance improvements in executing R code on several fronts:</p>
 <ul>
-    <li><strong>Vector operations:</strong>  Renjin’s deferred computation
+    <li><strong>Vector operations:</strong> Renjin’s deferred computation
     engine automatically parallelizes and optimizes vector operation to run an
     order of magnitude faster, without the memory demands of computing
     intermediate structures [2012Q4]</li>
-    <li><strong>Matrix operations:</strong>Renjin allows the user to plugin
+    <li><strong>Matrix operations:</strong> Renjin allows the user to plugin
     best-of-class implementations of BLAS, LAPACK, and FFT, for example:
     <ul><li>A platform-independent pure-Java implementation (netlib-java)</li>
         <li>Intel’s Math Kernel Library</li>
         <li>AMD’s Core Math Library</li>
         <li>Nvidia Cuda blas library [2013Q1]</li>
     </ul></li>
-    <li><strong>Scalar operations:</strong>Renjin will compile frequently used
+    <li><strong>Scalar operations:</strong> Renjin will compile frequently used
     portions of R code to JVM byte code on the fly, dramatically increasing
     performance of R’s notorious performance on for loops and other predominantly
     scalar code [2013Q2]</li>
@@ -62,15 +62,18 @@ algorithms.</p>
 <p>These improvements make it possible to perform real-time analyses using
 complex models.</p>
 
-<h3>Advantage 3: Cloud-ready</h3>
+<h3>Cloud-ready</h3>
 
 <p>Renjin enables R developers to deploy their code to Platform-as-a-Service
-providers like Google AppEngine, Amazon Beanstalk or Heroku without worrying
+providers like Google Appengine, Amazon Beanstalk or Heroku without worrying
 about scale or infrastructure. Businesses can therefore benefit from cutting
 edge statistical software without having to buy and maintain expensive
 hardware.</p>
 
-<h3>Advantage 4: Seamless integration with the rest of the enterprise</h3>
+<p>You can <a href="http://renjindemo.appspot.com/">try the live demo</a> of
+the interpreter on Google Appengine to see Renjin in action.</p>
+
+<h3>Seamless integration with the rest of the enterprise</h3>
 
 <p>Built on the JVM, Renjin allows R code to interact directly with JVM
 libraries and data structures, without the need for expensive data transfer or
@@ -87,7 +90,7 @@ pure, functional manner.  Renjin allows developers to choose the right language
 for the different components of an enterprise system, without worrying how
 they’ll interact.</p>
 
-<h3>Advantage 5: More productive development cycle</h3>
+<h3>More productive development cycle</h3>
 
 <p>Many enterprises will prototype analyses and models in R because of it’s
 ease of use, but then port the results to Java/C++ for production use, either
@@ -99,13 +102,13 @@ scripts can be packaged as JARs and called directly from JVM-based environments
 and referenced directly by other JVM languages like Java, Scala, JRuby, or
 Clojure.</p>
 
-<h3>Advantage 6: Open-source and cutting-edge</h3>
+<h3>Open-source and cutting-edge</h3>
 
 <p>Like R itself, the Renjin source code is available under an open-source
 license. That means you get to stand on the shoulders of giants at little or no
 cost.</p>
 
-<h3>Advantage 7: Support</h3>
+<h3>Support</h3>
 
 <p>Check out the <a href="support.html">support page</a> if you need
 (commercial) support for Renjin.</p>

@@ -6,7 +6,15 @@ title: Contributor guide
 Introduction
 ============
 
-This documentation is for people who wish to contribute to the development of Renjin.
+This documentation is for people who wish to contribute to the development of
+Renjin. This requires a good working knowledge of Java and preferably also in
+R. However, Java programming is by far the bulk of Renjin's development.
+
+Renjin's base is meant to be 100% compatible with R base version 2.14.2, but
+not all R primitive functions are implemented at the moment. Also, the original
+goal of Renjin is to provide R's functionality embedded in other systems
+therefore some functionality, like graphics, is not very high on our list of
+priorities.
 
 Filing a bug report
 -------------------
@@ -24,7 +32,17 @@ Groups at <http://groups.google.com/group/renjin-dev>.
 Development environment
 =======================
 
-TODO
+As mentioned in the introduction, you should have a good working knowledge of
+Java and preferably also R to contribute to Renjin's development. As Renjin is
+a Java application, you should install an IDE which supports Java development.
+At [BeDataDriven](http://www.bedatadriven.com) we like 
+[IntelliJ IDEA](http://www.jetbrains.com/idea/), but you can also use
+[Eclipse](http://www.eclipse.org) or any other IDE you like. Also, although you
+may be able to build Renjin in Windows, we have only tested the build process
+on the Linux operating system.
+
+In the following sections we explain where to get the source code and how to
+build Renjin using Maven.
 
 Code repositories
 -----------------
@@ -93,12 +111,13 @@ language without reference (and deference!) to its abrahamic implementation
 would be unlikely to succeed. Renjin's core borrows heavily from the original C
 code, indeed, many portions remain literal translations from C to Java. 
 
-At the same time, Renjin is attempt to modernize the internals of the
+At the same time, Renjin is an attempt to modernize the internals of the
 interpreter and to profit from the strengths of the JVM in areas such as
 garbage collection, unicode handling and I/O. The latent object-oriented
 character of the original SEXP has been expanded to a full-fledged class
-hierarchy, and most primitive functions have been written from scratch based
-documentation and experimentation with the R repl. 
+hierarchy, and most primitive functions have been written from scratch based on
+documentation and on experimentation with the R Read-Evaluate-Print-Loop
+(REPL), that is the R console. 
 
 Front End
 ---------
@@ -107,10 +126,10 @@ The front end of the interpreter/compiler parses R language programs into an
 Abstract Syntax Tree (AST).
 
 Renjin's
-[lexer](http://code.google.com/p/renjin/source/browse/trunk/core/src/main/java/r/parser/RLexer.java) is ported directly from the C.
+[lexer](https://github.com/bedatadriven/renjin/blob/master/core/src/main/java/org/renjin/parser/RLexer.java) is ported directly from the original version written in C.
 
 Renjin's parser is built from the original
-[gram.y](http://www.google.com/codesearch#ph23m5MVwzs/trunk/R-2.10.1-patched/src/main/gram.y&q=package:r4jvm%20file:gram.y&l=1) using the java extension of the [Bison parser
+[gram.y](http://svn.r-project.org/R/tags/R-2-14-2/src/main/gram.y) using the Java extension of the [Bison parser
 generator](http://www.gnu.org/software/bison/).
 
 
@@ -120,19 +139,20 @@ Strings and Character Encodings
 Since Renjin implements R character vectors with Java strings, all character
 vectors are encoded in UTF-8. 
 
-Base Library
+Base package
 ------------
 
 R's 'base' package (as well as other 'recommended' packages) are divided into
-portions written in the R-language and 'primitives' written in C/Fortran.
+portions written in the R language and 'primitives' written in C or Fortran.
 
-Renjin's uses the R Project's R-language base library without modification.
-This help ensures compatibility with the original interpreter and will
-facilitate renjin's evolution alongside the C-based interpreter. 
+Renjin uses the R Project's R-language base package without modification.
+This ensures compatibility with the original interpreter and will
+facilitate Renjin's evolution alongside the C-based interpreter. 
 
-While the native portion of R's base library is huge -- nearly 700 functions
-coded in C -- much of the heavy lifting, from linear algebra to regexs, can be
-delegating to existing [ThirdParty libraries for the JVM]().
+While the native portion of R's base package is huge --nearly 700 functions
+coded in C-- much of the heavy lifting, from linear algebra to regular
+expressions, can be delegating to existing [third-party
+libraries](#third-party-libraries-used-by-renjin) for the JVM.
 
 Interpreter
 -----------
@@ -148,7 +168,7 @@ statements are implemented as functions and use exceptions to handle things
 like break and return. 
 
 The Mark I interpreter is about 10-30% faster than the original R interpreter
-on benchmarks that involve alot of R code. The one big hole is the lack of
+on benchmarks that involve a lot of R code. The one big hole is the lack of
 optimization around copy-on-write semantics: assigning elements of a vector
 sequentially in an array is a bit of performance black hole for the moment. 
 
@@ -218,12 +238,11 @@ you want to use).
 
 ### Object-Oriented
 
-R is a multi-paradigm language. (or less charitably, a mess :=) 
-
-There are at least three different OOP systems at work:
+R is a multi-paradigm language (or less charitably, a mess :=). There are at
+least three different OOP systems at work:
 
   * S3 objects: simple, practical, and widely used. 
-  * S4 objects: more formal, class-based oop system. To paraphrase [Lord Palmerston](http://en.wikipedia.org/wiki/Schleswig-Holstein_Question#Schleswig-Holstein_Question_in_literature): "Only three people have ever really understood S4 objects—the Prince Consort, who is dead—a German professor, who has gone mad—and I, who have forgotten all about it."
+  * S4 objects: more formal, class-based OOP system. To paraphrase [Lord Palmerston](http://en.wikipedia.org/wiki/Schleswig-Holstein_Question#Schleswig-Holstein_Question_in_literature): "Only three people have ever really understood S4 objects—the Prince Consort, who is dead—a German professor, who has gone mad—and I, who have forgotten all about it."
   * [r-proto](http://code.google.com/p/r-proto/): Prototype-based model of object oriented programming for R programmers.
 
 ### Lazy, Impure, Mostly non-strict
@@ -235,8 +254,8 @@ explicitly referenced. This is called laziness. For example:
     > f(0.75, factorial(100))
     0.75
 
-In the above function call, 0.75 > 0.5, so b is never evaluated and our we
-don't bother to evaluate the nasty factorial.
+In the above function call, 0.75 > 0.5, so the argument `b` --the nasty
+factorial-- is never evaluated.
 
 Unlike Haskell or its cousins, which go to great lengths to balance their zany
 laziness with a draconian disdain for side-effects, R has no scruples when it
@@ -254,37 +273,46 @@ state:
 Overview of the type system
 ---------------------------
 
-This section presents an overview of the mapping of R-language types to Java
-objects. Where possible, have tried to keep names consistent with the R
+This section presents an overview of the mapping of R language types to Java
+objects. Where possible, we have tried to keep names consistent with the R
 Language itself, even if that means deviating from type names used in the
 original C code; so we have a ListVector rather than a GenericVector because
 that's what an R user sees.
 
 ### Hierarchy
 
-![Type hierarchy](https://docs.google.com/drawings/pub?id=13oG0xX0hLdIY9iT471u606RqoDYxjeElwXWfiSBlrqg&w=750&ext=.png)
+![Renjin type hierarchy](https://docs.google.com/drawings/d/13oG0xX0hLdIY9iT471u606RqoDYxjeElwXWfiSBlrqg/pub?w=750&amp;ext=.png)
 
 ### Vector Types
 
+------------------------------------------------------------------------------------
 **R type name** **Java Class**      **Java element type** **SEXPTYPE in C Sources** 
 --------------- ------------------- --------------------- ------------------------- 
 list            ListVector          SEXP                  VECSXP                    
+
 expression      ExpressionVector    LangExp               EXPRSXP                   
+
 logical         LogicalVector       int                   LGLSXP                    
+
 integer         IntVector           int                   INTSXP                    
+
 double          DoubleVector        double                REALSXP                   
+
 complex         ComplexVector       [o.a.c.m.c.Complex]   CPLXSXP 
+
 character       StringVector        java.lang.String      STRSXP                    
+
+------------------------------------------------------------------------------------
 
 [o.a.c.m.c.Complex]: http://commons.apache.org/math/api-2.1/index.html?org/apache/commons/math/complex/Complex.html
 
-#### Immutablility
+#### Immutability
 
 From the R programmer's perspective, vectors are immutable; `x[1] <- 4.2`
 actually creates a new object with the first element replaced and assigns this
 new element to the current environment. 
 
-In renjin, this immutability is enforced by the Java classes as well. Each
+In Renjin, this immutability is enforced by the Java classes as well. Each
 Vector type has an associated Builder class that can be used to create new
 instances or copies of existing instances.
 
@@ -296,41 +324,88 @@ value of NA or "Not Available" which indicates that the data point is missing
 
 ### Function Types
 
-**R type name**  **Java Class**    **SEXPTYPE in C Sources**   **Description** 
----------------  ----------------- --------------------------- -----------------------------------------------------------------------------------------------------------
-n/a              Function          FUNSXP ("psuedo-type")      Supertype of all function types 
-closure          Closure           CLOSXP                      A function closure consisting of an enclosing environment, a formal argument list, and a body of statements 
-n/a              PrimitiveFunction n/a                         a function written in Java 
-builtin          BuiltinFunction   BUILTINSXP                  a primitive function to which evaluated arguments are passed. 
-special          SpecialFunction   SPECIALSXP                  a primitive function to which unevaluated arguments are passed. Examples `if`, `for`, `{`, `c`. 
+--------------------------------------------------------------------------------------------------
+R type name         Java Class          SEXPTYPE in C       Description 
+                                        Sources   
+------------------- ------------------- ------------------- --------------------------------------
+n/a                 Function            FUNSXP              Supertype of all function types.
+                                        ("pseudo-type")      
+
+closure             Closure             CLOSXP              A function closure consisting of an 
+                                                            enclosing environment, a formal 
+                                                            argument list, and a body of 
+                                                            statements.
+
+n/a                 PrimitiveFunction   n/a                 A function written in Java.
+
+builtin             BuiltinFunction     BUILTINSXP          A primitive function to which 
+                                                            evaluated arguments are passed. 
+
+special             SpecialFunction     SPECIALSXP          A primitive function to which 
+                                                            unevaluated arguments are passed. 
+                                                            Examples are `if`, `for`, `{`, `c`. 
+
+--------------------------------------------------------------------------------------------------
 
 ### Other Types
 
-**R type name**     **Java Class**      **SEXPTYPE in C Sources**   **Description** 
-------------------- ------------------- --------------------------- ------------------------------------------------------------------------------------------------------
-NULL                Null                NILSXP                      The nullary object. Note that this is a different than a null pointer reference; the NULL object has length (=0) and some other properties.
-symbol              Symbol              SYMSXP                      Symbols 
-environment         Environment         ENVSXP                      A dictionary-like structure that is analogous to a frame into which local variables are bound, but can also be created and used as hashmap by user code 
-pairlist            PairList            LISTSXP                     A Scheme-style linked list, mainly used internally by the interpreter 
-language            FunctionCall        LANGSXP                     A function call. Contains a reference to the Function and an argument list. 
-_not visible_       Promise             PROMSXP                     Holder for lazy-evaluated expressions; analogous to a "thunk" in classical lazy languages like Haskell 
-?                   CHARSXP             CHARSXP                     Wrapper for a single String. This is used internally by the C interpreter, still trying to see whether we need to keep this in the java implementation 
+--------------------------------------------------------------------------------------------------
+R type name         Java Class          SEXPTYPE            Description  
+                                        in C Sources   
+------------------- ------------------- ------------------- --------------------------------------
+NULL                Null                NILSXP              The nullary object. Note that this is 
+                                                            a different than a null pointer 
+                                                            reference; the NULL object has length 
+                                                            (=0) and some other properties.
+
+symbol              Symbol              SYMSXP              Symbols 
+
+environment         Environment         ENVSXP              A dictionary-like structure that is 
+                                                            analogous to a frame into which local 
+                                                            variables are bound, but can also be 
+                                                            created and used as hashmap by user 
+                                                            code. 
+
+pairlist            PairList            LISTSXP             A Scheme-style linked list, mainly 
+                                                            used internally by the interpreter.
+
+language            FunctionCall        LANGSXP             A function call. Contains a reference 
+                                                            to the Function and an argument list. 
+
+_not visible_       Promise             PROMSXP             Holder for lazy-evaluated expressions;
+                                                            analogous to a "thunk" in classical 
+                                                            lazy languages like Haskell.
+
+?                   CHARSXP             CHARSXP             Wrapper for a single String. This is 
+                                                            used internally by the C interpreter, 
+                                                            we are evaluating whether we need to 
+                                                            keep this in the java implementation.
+
+--------------------------------------------------------------------------------------------------
 
 Implementing primitives
 =======================
 
-The bulk of the work involved in building renjin is replacing the "primitive"
-functions that are implemented in C in the original interpreter. 
-
-Implementing these functions is also reasonably straightforward, so it's great
-place to start.
+The bulk of the work involved in building Renjin is replacing the 'primitive'
+functions that are implemented in C in the original interpreter. Implementing
+these functions is also reasonably straightforward, so it's great place to
+start.
 
 Quick start
 -----------
 
+Implementing primitives is a four-step process:
+
+1. write a test case,
+2. implement the function class,
+3. register your class with the BaseFrame,
+4. write more test cases.
+
+These steps are explained in the following sections.
+
 ### Write the test case
 
-*First, write a test case.* Ultimately test cases will be written in R itself,
+Start by writing a test case. Ultimately test cases will be written in R itself,
 but the plumbing is not yet there. So for now, you might write a JUnit test
 that looks like this:
 
@@ -344,14 +419,13 @@ public class SqrtTest extends EvalTestCase {
 }
 ```
 
-The ```EvalTestCase``` provides a simple DSL based on the [Hamcrest Matcher
-library](http://code.google.com/p/hamcrest/) that makes writing tests a bit
-simpler. See
-[TypesTest](http://code.google.com/p/renjin/source/browse/trunk/core/src/test/java/r/base/TypesTest.java) for a good example of how write tests.
+The `EvalTestCase` provides a simple DSL based on the 
+[Hamcrest Matcher library](https://github.com/hamcrest) that makes writing
+tests a bit simpler. See
+[TypesTest](https://github.com/bedatadriven/renjin/blob/master/core/src/test/java/org/renjin/primitives/TypesTest.java) 
+for a good example of how write tests.
 
-Place your test in the `src/test/java` folder.
-
-Compile and make sure your test fails as expected.
+Next, place your test in the `src/test/java` folder. Then compile and make sure your test fails as expected. 
 
 ### Implement the function class
 
@@ -364,90 +438,92 @@ Simply declare your method as a `public static` method in a class in the `r.base
 Here are the implementation of the `is.double` and `match` functions, for example:
 
 ```{.java}
-  @Primitive("is.double")
-  public static boolean isDouble(SEXP exp) {
-    return exp instanceof DoubleExp;
-  }
+@Primitive("is.double")
+public static boolean isDouble(SEXP exp) {
+  return exp instanceof DoubleExp;
+}
 ```
 
 
 ```{.java}
-  @Primitive
-  public static IntVector match(AtomicVector search, AtomicVector table, int noMatch, AtomicVector incomparables) {
-    //For historical reasons, FALSE is equivalent to NULL.
-    if(incomparables.equals( LogicalVector.FALSE ) ) {
-      incomparables = Null.INSTANCE;
-    }
-
-    IntVector.Builder matches = new IntVector.Builder();
-    for(int i=0;i!=search.length();++i) {
-      if( incomparables.contains(search, i)) {
-        matches.set(i, noMatch);
-      } else {
-        int pos = table.indexOf(search, i, 0);
-        matches.set(i, pos >= 0 ? pos+1 : noMatch;
-      }
-    }
-    return matches.build();
+@Primitive
+public static IntVector match(AtomicVector search, AtomicVector table, int noMatch, AtomicVector incomparables) {
+  //For historical reasons, FALSE is equivalent to NULL.
+  if(incomparables.equals( LogicalVector.FALSE ) ) {
+    incomparables = Null.INSTANCE;
   }
+
+  IntVector.Builder matches = new IntVector.Builder();
+  for(int i=0;i!=search.length();++i) {
+    if( incomparables.contains(search, i)) {
+      matches.set(i, noMatch);
+    } else {
+      int pos = table.indexOf(search, i, 0);
+      matches.set(i, pos >= 0 ? pos+1 : noMatch;
+    }
+  }
+  return matches.build();
+}
 ```
 
-When match() is called from R-code, renjin will verify that the correct number
+When `match()` is called from R-code, Renjin will verify that the correct number
 of arguments is present, and of the right type, marshall the call to your
-static method, and then convert your return value, if necessary to an SEXP.
+static method, and then convert your return value, if necessary to a SEXP.
 
-Renjin also handles "recycling", which makes it easier to implement methods
+Renjin also handles 'recycling', which makes it easier to implement methods
 that operate on each element of a vector. For example:
 
 
 ```{.java}
-  @Primitive
-  public static double divide(double x, double y) {
-    return x / y;
-  }
+@Primitive
+public static double divide(double x, double y) {
+  return x / y;
+}
 ```
 
-When called from the R-language, renjin will call your method for each element
+When called from the R-language, Renjin will call your method for each element
 in the vector.
 
 For functions that accept a variable number of arguments (like `c()`), you can
 declare your method accordingly:
 
 ```{.java}
-  @Primitive
-  public static SEXP c(@ArgumentList ListVector arguments,
-                       @NamedFlag("recursive") boolean recursive) {
-     // impl
-  }
+@Primitive
+public static SEXP c(@ArgumentList ListVector arguments,
+                     @NamedFlag("recursive") boolean recursive) {
+   // implementation here
+}
 ```
 
-For a complete description of renjin annotations, see the [JvmiDocumentation](#)
+For a complete description of Renjin annotations, see 
+[Anatomy of a primitive call](#anatomy-of-a-primitive-call) later on in this
+guide.
 
 ### Register your class with the BaseFrame
 
 Next, you need to tell Renjin where to find your new implementation, by specify
 the class in
-[r.base.BaseFrame](http://code.google.com/p/renjin/source/browse/trunk/core/src/main/java/r/base/BaseFrame.java) where you'll find a close facimile of
-[names.c](http://www.google.com/codesearch/p?hl=en#sg_K9PMjgXA/src/main/names.c&q=lang:c%20file:RInternals.h%20package:R&d=2),
-except that in place of a function pointer, we use a Java class
-literal. 
+[org.renjin.base.BaseFrame](https://github.com/bedatadriven/renjin/blob/master/core/src/main/java/org/renjin/base/BaseFrame.java) 
+where you'll find a close facimile of
+[names.c](http://svn.r-project.org/R/tags/R-2-14-2/src/main/names.c),
+except that in place of a function pointer, we use a Java class literal. 
 
 ```{.java}
-  ...
-  f("is.double", Types.class, 0 /*REALSXP*/, 1, 1);
-  ...
+...
+f("is.double", Types.class, 0 /*REALSXP*/, 1, 1);
+...
 ```
 
-Renjin will then look for a method with the same name in Types.class, or if the
+Renjin will then look for a method with the same name in `Types.class`, or if the
 method name is not a valid java identifier, it will look for a method annotated
-with @Primitive("is.double")
+with `@Primitive("is.double")`.
 
 Then code until your test passes!
 
-### Write more test methods
+### Write more test cases
 
 R gives a lot of flexibility, which means there are a lot of edge cases. You
-can look through the C-code implementation, but I've found it easier to
+can look through the C-code implementation, but we have found it easier to
 generate test cases by exploring output from the R Read-Eval-Print-Loop. 
 
 Anatomy of a primitive call
@@ -459,9 +535,8 @@ are called from R-language code.
 A call to a primitive function written in Java begins in one of several ways,
 depending on:
 
-* whether the function is 'internal' or not
+* whether the function is 'internal' or not,
 * whether the function is generic.
-
 
 ### Non-generic, Non-internal primitives
 
@@ -469,9 +544,12 @@ These are the simplest class of primitives and include functions like `c()`,
 `sqrt()`, and `sin()` as well as so-called 'special' functions such as `if`,
 `for`, `(` and `{`.
 
- Note: There is a further distinction in the R-language between 'builtin' and 'special' primitives. This distinction is preserved in renjin but is not so important for implementation so we will gloss over it for the moment.
+Note: there is a further distinction in the R-language between 'builtin' and
+'special' primitives. This distinction is preserved in Renjin but is not so
+important for the implementation so we will gloss over it for the moment.
 
-If you enter `c` into the R repl, you see the following:
+If you enter `c`, `sqrt`, and `sin` (without the brackets) into the R console,
+you see the following:
 
     > c
     function (..., recursive = FALSE)  .Primitive("c")
@@ -500,7 +578,8 @@ This is because the expression `sqrt <- 99` assigns the value 99 to the symbol
 'sqrt' in the global environment, while the primitive function 'sqrt' is bound
 in the base environment. 
 
-You can type `search()` into a REPL to see the heirarchy of enclosing environments:
+You can type `search()` into the console see the heirarchy of enclosing
+environments:
 
     > search()
     [1] ".GlobalEnv"        "package:stats"     "package:graphics" 
@@ -535,10 +614,11 @@ split between an R-language closure located in the base library, and an
 'internal' function written in C -- and now in Java within Renjin. 
 
 The outer R-language function is generally responsible for matching, converting
-and validating arguments (easier to do in the R-language than in C) and
+and validating arguments (which is easier to do in the R-language than in C) and
 providing default values for arguments.
 
-For example, the function `grep` is defined as an R-language closure in the base package:
+For example, the function `grep` is defined as an R-language closure in the
+base package:
 
     > grep
     function (pattern, x, ignore.case = FALSE, perl = FALSE, value = FALSE, 
@@ -551,7 +631,7 @@ For example, the function `grep` is defined as an R-language closure in the base
     }
 
 After performing any necessary convertions, and relying on R for matching
-arguments by name, it calls into the internal primitive grep function, which
+arguments by name, it calls into the internal primitive `grep` function, which
 only matches arguments positionally. 
 
 From a primitive-function implementor's perspective, there is no difference
@@ -570,8 +650,8 @@ the internal function itself.
 
 ### Generic primitives
 
-The R language defines a simple form of object-oriented design called "S3
-generics", which involve choosing a function based on the class attribute of
+The R language defines a simple form of object-oriented design called 'S3
+generics', which involve choosing a function based on the class attribute of
 its arguments.
 
 For example, look at the `mean` function:
@@ -583,7 +663,7 @@ For example, look at the `mean` function:
 
 When you evaluate `mean(x)`, the special `UseMethod()` function will check the
 class of the argument and look, in order of priority, for a function called
-`print.class1`, `print.class2`, ... `print.default`.
+`mean.class1`, `mean.class2`, ... `mean.default`.
 
 For example:
 
@@ -597,7 +677,8 @@ Many of the functions in the base package are generic, and so you will often
 only find the call to the primitive in the `xxx.default` function.
 
 The `mean` primitive, for example, is only called by the `mean.default`
-function after some preprocessing in the R-language closure:
+function after some preprocessing in the R-language closure (see the
+`.Internal(mean(x))` call at the very end of `mean.default()`):
 
     > mean.default
     function (x, trim = 0, na.rm = FALSE, ...) 
@@ -626,7 +707,7 @@ function after some preprocessing in the R-language closure:
     }
     <environment: namespace:base>
 
-This is relevant to renjin contributors because the closure above is
+This is relevant to Renjin contributors because the closure above is
 essentially the specification of the `mean` primitive; the R language
 documentation refers to the outer function.
 
@@ -637,26 +718,35 @@ In Renjin, a primitive function is simply a (JVM) object which implements the
 Function interface. This is how several special functions are implemented in
 Renjin, including the `if` function.
 
-> In the R language, `if` is simply a function that takes up to three arguments: `condition`, `ifTrueExpr`, `ifFalseExpr`. Normally, you would use the special syntax `if(condition) ifTrueExpr else ifFalseExpr` but this is only syntactic sugar; you can also call the function directly using backquotes `` `if`(condition,expr,elseExpr)``. If you're feeling adventurous, you can even redefine it! (try `` `if` <- function(...) 42`` just for fun)
+> In the R language, `if` is simply a function that takes up to three
+arguments: `condition`, `ifTrueExpr`, `ifFalseExpr`. Normally, you would use
+the special syntax `if(condition) ifTrueExpr else ifFalseExpr` but this is only
+syntactic sugar; you can also call the function directly using backquotes ``
+`if`(condition, ifTrueExpr, ifFalseExpr)``. 
 
 Renjin's implementation is found in
-[r.base.special.IfFunction](http://code.google.com/p/renjin/source/browse/trunk/core/src/main/java/r/base/special/IfFunction.java):
+[org.renjin.primitives.special](https://github.com/bedatadriven/renjin/blob/3829886b3d81ea5ebe8dd1b14489698981a79c0a/core/src/main/java/org/renjin/primitives/special/IfFunction.java):
 
 ```{.java}
 public class IfFunction extends SpecialFunction {
 
-  @Override
-  public EvalResult apply(Context context, Environment rho, FunctionCall call, PairList args) {
-    SEXP condition = call.getArguments().getElementAsSEXP(0).evalToExp(context, rho);
+  public IfFunction() {
+    super("if");
+  }
 
-    if (asLogicalNoNA(call, condition)) {
-      return call.getArguments().getElementAsSEXP(1).evaluate(context, rho); /* true value */
+  @Override
+  public SEXP apply(Context context, Environment rho, FunctionCall call, PairList args) {
+    SEXP condition = context.evaluate( call.getArguments().getElementAsSEXP(0), rho);
+
+    if (asLogicalNoNA(context, call, condition)) {
+      return context.evaluate( call.getArguments().getElementAsSEXP(1), rho); /* true value */
 
     } else {
       if (call.getArguments().length() == 3) {
-        return call.getArguments().getElementAsSEXP(2).evaluate(context, rho); /* else value */
+        return context.evaluate( call.getArguments().getElementAsSEXP(2), rho); /* else value */
       } else {
-        return EvalResult.NON_PRINTING_NULL;   /* no else, evaluates to NULL */
+        context.setInvisibleFlag();
+        return Null.INSTANCE;   /* no else, evaluates to NULL */
       }
     }
   }
@@ -675,7 +765,7 @@ This is fine for the `if` function; argument matching is strictly positional
 
 There are, however, nearly 700 primitives to implement, and many of these
 functions have complicated argument matching semantics. If you look at the 
-[C implementation](http://www.google.com/codesearch#ph23m5MVwzs/trunk/R-2.10.1-patched/src/main/grep.c&q=package:r4jvm%20function:do_grep&type=cs&l=611)
+[C implementation](http://svn.r-project.org/R/tags/R-2-14-2/src/main/grep.c)
 of a function like `grep`, there are nearly 40 lines of code dedicated to
 matching and converting arguments. 
 
@@ -686,41 +776,39 @@ Renjin uses a combination of @Annotations and code generation in place of
 hand-written argument-processing code. This is intended to have serveral
 advantages:
 
-* Primitives are faster to write 
-* Resulting code is cleaner, easier to read
-* Less code to maintain
-* Optimizations can be written once into the code-generation layer and applied to all functions
+* Primitives are faster to write;
+* Resulting code is cleaner, easier to read;
+* Less code to maintain;
+* Optimizations can be written once into the code-generation layer and applied to all functions.
 
-In addition to argument processing, there are number of other 'aspects' that
-this code-generation layer handles transversally, including:
+In addition to argument processing, there are a number of other 'aspects' that
+this code-generation layer handles transversely, including:
 
-* Recycling (application of functions to all elements of vectors)
-* Generic and group generic dispatching
-* Others?
+* Recycling (application of functions to all elements of vectors);
+* Generic and group generic dispatching.
 
 When using annotations, you define your implementation as a `public static`
 method:
 
 ```{.java}
- @Primitive
- public static Vector grep(
-      String pattern,
-      StringVector x,
-      boolean ignoreCase,
-      boolean extended,
-      boolean value,
-      boolean perl,
-      boolean fixed,
-      boolean useBytes,
-      boolean invert) {
+@Internal
+public static Vector grep(
+    String pattern,
+    StringVector x,
+    boolean ignoreCase,
+    boolean value,
+    boolean perl,
+    boolean fixed,
+    boolean useBytes,
+    boolean invert) {
     
    /* ... */
  }
 ```
  
-At compile time, renjin will generate a class implementing the Function
-interface based on the signature of your method and any annotations use apply
-to the method or its arguments. The "wrapper class" for the function above
+At compile time, Renjin will generate a class implementing the Function
+interface based on the signature of your method and any annotations that apply
+to the method or its arguments. The 'wrapper class' for the function above
 looks like this:
 
 ```{.java}
@@ -794,60 +882,71 @@ Implementing such functions require attention to several semantic aspects:
   c(1,2)`, the argument `1` should be recycled once so that it is treated like
   `c(1,2,1,2)`, matching the length of the longest argument. `c(1,2,3,4) ==
   c(1,2,3)` is considered an error because the length of the shorter vector is
-  not a multiple of the longer vector. (Though in most non-math functions this is
-  ignored)
+  not a multiple of the longer vector (though in most non-math functions this is
+  ignored).
 
 * **Copying of attributes:** depending on the function, all, some, or no
     attributes are copied from the longest argument to the result.  `names(sqrt(x))
     == names(x)`, for example.
 
-Since these are aspects which apply transverally to a large class of functions,
+Since these are aspects which apply transversely to a large class of functions,
 Renjin attempts to push these concerns down into the code generation layer. 
 
 Given the declaration:
 
 ```{.java}
-  @Primitive("*")
-  @Recycle
-  @PreserveAttributes(PreserveAttributeStyle.ALL)
-  public static double multiply(double x, double y) {
-    return x * y;
-  }
+@Deferrable
+@Builtin("*")
+@DataParallel(PreserveAttributeStyle.ALL)
+public static double multiply(double x, double y) {
+  return x * y;
+}
 ```
 
 Renjin will generate a wrapper that handles all the recycling, attribute
-copying etc. [Output here](https://gist.github.com/1197723)
+copying and so forth. See an example of the output 
+[here](https://gist.github.com/1197723).
 
 To declare your method as recyclable, you must:
 
-* Annotate the method or arguments with `@Recycle`
-* Return a scalar type
+* annotate the method or arguments with `@DataParallel` and
+* return a scalar type.
  
-If you annotate the method with `@Recycle`, all arguments of scalar type will
+If you annotate the method with `@DataParallel`, all arguments of scalar type will
 automatically be considered eligible for recycling. If you annotate individual
 arguments, only those arguments will be recycled.
 
 For example, in the declaration below, the `lowerTail` and `logP` arguments are
-_not_ recycled; only the first element is useid. 
+_not_ recycled; only the first element is used. 
 
 ```{.java}
-  public static double pbeta(@Recycle double q, @Recycle double shape1, @Recycle double shape2, boolean lowerTail, boolean logP) ;
+public static double pbeta(@Recycle double q, @Recycle double shape1, @Recycle double shape2, 
+                           boolean lowerTail, boolean logP) ;
 ```
 
 ### Scalar Types
 
 For the purposes of code generation, scalar types are defined as:
 
+-------------------------------
 Vector Type   Scalar types     
 ------------- -----------------
 LogicalVector boolean, Logical 
+
 RawVector     Raw, byte        
+
 IntVector     int              
+
 DoubleVector  double           
+
 ComplexVector Complex          
+
 StringVector  String           
 
-If recycling is enabled for the method, then renjin will loop over the arguments, applying each of your **text missing!!!**
+-------------------------------
+
+If recycling is enabled for the method, then Renjin will loop over the
+arguments, applying each of your **text missing!!!**
 
 ### NA Handling
 
@@ -855,35 +954,36 @@ By default, if an argument tuple contains an `NA` value, the result of the
 function is considered to be `NA` and your method is not called.
 
 If your method is prepared to explicitly handle `NA` values, you should
-annotate it with `@AllowNA`. For example:
+supply `passNA = true` to `@DataParallel`. For example:
 
 ```{.java}
-  @Primitive("&")
-  @AllowNA
-  public static Logical and(double x, double y) {
-    if(x == 0 || y == 0) {
-      return Logical.FALSE;
-    } else if(DoubleVector.isNA(x) || DoubleVector.isNA(y)) {
-      return Logical.NA;
-    } else {
-      return Logical.TRUE;
-    }
+@Deferrable
+@Builtin("&")
+@DataParallel(passNA = true)
+public static Logical and(double x, double y) {
+  if(x == 0 || y == 0) {
+    return Logical.FALSE;
+  } else if(DoubleVector.isNA(x) || DoubleVector.isNA(y)) {
+    return Logical.NA;
+  } else {
+    return Logical.TRUE;
   }
+}
 ```
 
-TODO: strict vs non-strict recycling
+TODO: strict vs non-strict recycling.
 
 ### Contextual Arguments
 
 Some functions may require access to the current evaluation context and/or
 environment. You can indicate to the code generation layer that these are
-needed by annotating them with `@Current`:
+needed by annotating them with `@Current` as is shown in the next example:
 
 ```{.java}
-  @Primitive("R.home")
-  public static String Rhome(@Current Context context) throws URISyntaxException {
-    return context.getGlobals().homeDirectory;
-  }
+@Internal
+public static String getRHome(@Current Context context) throws URISyntaxException {
+  return context.getSession().getHomeDirectory();
+}
 ```
 
 ### Overrides
@@ -894,21 +994,30 @@ and the generated wrapper will choose the matching method at runtime.
 For example:
 
 ```{.java}
-  public static Environment asEnvironment(Environment arg) {
-    return arg;
-  }
+@Builtin
+public static Environment asEnvironment(Environment arg) {
+  // ...
+}
 
-  @Primitive("as.environment")
-  public static Environment asEnvironment(@Current Context context, double index) {
-    Environment result = context.getGlobalEnvironment();
-    for (int i = 1; i < index; ++i) {
-      if (result == Environment.EMPTY) {
-        throw new EvalException("invalid 'pos' argument");
-      }
-      result = result.getParent();
-    }
-    return result;
-  }
+@Builtin("as.environment")
+public static Environment asEnvironment(@Current Context context, int pos) {
+  // ...
+}
+
+@Builtin("as.environment")
+public static Environment asEnvironment(@Current Context context, String name) {
+  // ...
+}
+
+@Builtin("as.environment")
+public static Environment asEnvironment(ListVector list) {
+  // ...
+}
+
+@Builtin("as.environment")
+public static Environment asEnvironment(S4Object obj) {
+  // ...
+}
 ```
 
 ### Generic Dispatch
@@ -922,10 +1031,11 @@ attribute) and if there exists a matching function.
 
 This behavior is activated by the `@Generic` and `@GroupGeneric` annotations.
 
-Third Party libraries used by Renjin
+Third-party libraries used by Renjin
 ====================================
 
-To the extent possible, Renjin should focus on the specifics of the R language an delegate "substantive" work to existing specialist libraries for the JVM.
+To the extent possible, Renjin should focus on the specifics of the R language
+an delegate 'substantive' work to existing specialist libraries for the JVM.
 
 This will help us get to a quality implementation of the R language faster, and
 allow Renjin to benefit from innovation and activity of wider communities.
@@ -935,7 +1045,7 @@ allow Renjin to benefit from innovation and activity of wider communities.
 > some cases it may be worth including the source code directly into Renjin's
 > codebase:
 > 
->  * If the library is not packaged or no longer actively maintained
+>  * If the library is not packaged or no longer actively maintained;
 >  * If modifications are required for R that would not be of interest to the library's owner.
 
 This document catalogs the libraries used by Renjin and details for
@@ -955,15 +1065,15 @@ the heavy lifting:
 used by the original R interpreter, which have been compiled to
 [JVM byte code](http://www.netlib.org/java/f2j/). 
 
-Renjin uses the [netlib-java](http://code.google.com/p/netlib-java/) API to
+Renjin uses the [netlib-java](https://github.com/fommil/netlib-java/) API to
 allow users to drop in natively optimized versions (like
-[ATLAS](http://math-atlas.sourceforge.net/)) for production environment before
-falling back to the jvm byte code version of the library.
+[ATLAS](http://math-atlas.sourceforge.net/)) for a production environment before
+falling back to the JVM byte code version of the library.
 
 LAPACK's API is somewhat obscure, but fortunately it is identical to that used
 by the original R interpreter, so in most cases it is best to port the wrapper
-functions from the original  directly. See:
-[src/modules/lapack/Lapack.c](http://www.google.com/codesearch#sg_K9PMjgXA/src/modules/lapack/Lapack.c&q=package:R%20file:Lapack.c%20function:modLa_svd&type=cs&l=76)
+functions from the original  directly. See R's 
+[src/modules/lapack/Lapack.c](http://svn.r-project.org/R/tags/R-2-14-2/src/modules/lapack/Lapack.c).
 
 #### Commons Math
 
@@ -971,7 +1081,7 @@ functions from the original  directly. See:
 functionality, including probability and statistics. 
 
 The `CommonsMath` class provides a few utility routines to bridge the Renjin
-and commons APIs, particularly with reference to Common's `RealMatrix`
+and commons API's, particularly with reference to Common's `RealMatrix`
 interface.
 
 #### Other math libraries
@@ -1000,7 +1110,7 @@ there are implementations for AppEngine, the
 
 * Regular expression implementation is based on the
   [Jakarta Regexp library](http://jakarta.apache.org/regexp/index.html), which has
-  been repackaged into the `r.base.regex` package with minor modifications to
+  been repackaged into the `org.renjin.primitives.text.regex` package with minor modifications to
   accommodate R syntax.
 
 * LZMA compression implementation provided by the
