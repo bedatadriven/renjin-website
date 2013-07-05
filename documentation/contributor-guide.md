@@ -154,30 +154,6 @@ coded in C-- much of the heavy lifting, from linear algebra to regular
 expressions, can be delegating to existing [third-party
 libraries](#third-party-libraries-used-by-renjin) for the JVM.
 
-Interpreter
------------
-
-There are two interpreters under development: the so-called Mark I interpreter (working) and the Mark II jitting interpreter. 
-
-### Mark I
-
-The Mark I is currently used by Renjin and is implemented in the same fashion
-as R.2X. The evaluator simply descends the AST recursively evaluating symbols,
-function calls, and promises as they are encountered. All control flow
-statements are implemented as functions and use exceptions to handle things
-like break and return. 
-
-The Mark I interpreter is about 10-30% faster than the original R interpreter
-on benchmarks that involve a lot of R code. The one big hole is the lack of
-optimization around copy-on-write semantics: assigning elements of a vector
-sequentially in an array is a bit of performance black hole for the moment. 
-
-### Mark II
-
-The Mark II interpreter is under development. It translates the AST to an
-intermediate representation that is more efficent to execute, and will
-eventually feature type inference and narrowing (from vectors to scalars) and
-just-in-time compilation to byte code. 
 
 Preliminaries
 =============
@@ -200,6 +176,10 @@ some of the programming aspects of R.
 
 Characteristics of the R Language
 ---------------------------------
+
+The R-Language can be surprising to programmers coming from a background
+in C or Java. It is a language rooted in Lisp, flavored by Fortran, and 
+continually tweaked by working statisticians for ease of use. 
 
 ### Functional
 
@@ -290,7 +270,7 @@ that's what an R user sees.
 --------------- ------------------- --------------------- ------------------------- 
 list            ListVector          SEXP                  VECSXP                    
 
-expression      ExpressionVector    LangExp               EXPRSXP                   
+expression      ExpressionVector    SEXP                  EXPRSXP                   
 
 logical         LogicalVector       int                   LGLSXP                    
 
@@ -366,6 +346,12 @@ environment         Environment         ENVSXP              A dictionary-like st
                                                             created and used as hashmap by user 
                                                             code. 
 
+externalptr			ExternalPtr								In GNU R, a simple pointer to 
+															some external memory address.
+															
+															In Renjin, an ExternalPtr is also
+															a reference to a JVM object.
+															
 pairlist            PairList            LISTSXP             A Scheme-style linked list, mainly 
                                                             used internally by the interpreter.
 
@@ -382,6 +368,91 @@ _not visible_       Promise             PROMSXP             Holder for lazy-eval
                                                             keep this in the java implementation.
 
 --------------------------------------------------------------------------------------------------
+
+Execution Modes
+===============
+
+The Renjin interpreter is actually composed of three different execution modes in which
+an R expression can be evaluated, depending on the type of workload:
+
+1. The "slow" interpreter, modelled closely after GNU-R, and supporting the full 
+   range and richness of the R language. 
+2. The Just-in-time "vector pipeliner," which constructs optimized, auto-parallelized pipelines for 
+   vector and matrix operations on large sets of data
+3. The "scalar compiler" which is capable of compiling a subset of the R language
+   to highly efficient JVM byte code
+   
+   
+## The Slow Interpreter
+   
+The slow interpreter, whose entry point is Contex.eval(), simply walks the R Abstract Syntax Tree
+at runtime in the same fashion that GNU R does, evaluting symbols and function calls. 
+
+Variables are assigned as elements in the heavyweight `Environment` instance, and each new function
+invocation gets its own Environment and a new context. While there are a many -- many -- aspects of this 
+interpreter that can still be optimized, from argument matching to variable lookup, it is unlikely 
+that this intrerpreter, with all it's flexibility, will likely stay pretty slow.
+
+Instead, Renjin focuses on optimizing workloads that are the most important in statistical computation
+and data prepration and analysis. Renjin accomplishes this by _deferring_ real work as much as possible in the slow
+interpreter, and by compiling critical paths (sapply, vapply, for) of R to JVM byte code.
+
+## The Vector Pipeliner
+
+Deferring work is possible because Renjin introduces a degree of seperation between data and algorithms:
+its builtins (see below) do not operate on raw arrays the way that GNU R does, but rather on instances
+of the `Vector` interface.
+
+So when the slow interpreter encounters an R expression like:
+
+```{.R}
+  x <- runif(1e6)
+  y <- sqrt(x + 1)
+  z <- mean(y) - mean(x)
+  attr(z, 'comments') <- 'still not actually computed'
+  print(length(z)) # prints "1" but doesn't evalute the mean
+  print(z)  # triggers computation
+```
+ 
+it first _does_ allocate a vector for the sequence of random numbers. However, when we add 1 to this 
+vector, it _does not_ allocate a second vector and fill it with `x+1`, but rather returns a sort of "view", 
+an implementation of the DoubleVector interface wraps our original vector and simply adds 1 when its elements are requested:
+
+```{.java}
+// simplifed for illustration:
+interface PlusOneVector extends DoubleVector {
+  Vector x;
+  
+  double getElementAsDouble(int index) {
+	return x.getElementAsDouble(index)+1;
+  }
+  
+  int length() {
+	return x.length();
+  }
+}
+```
+
+Likewise, our implementation of the mean() function will return a `DeferredMean` instance for suitably
+large input.
+
+Note that these views and deferred computations are quite different than GNU R's promises: to the R code, they are 
+fully evaluated vectors with a length and attributes; you can pass them around and do just about everything to them
+except inspect the value of an element.
+
+When we finally pass it to the print() function, impure and thus non-deferrable, evaluation is triggered for the
+arguments.
+
+![Calculation graph](/diagrams/graph1.png)
+
+What we get is a directed acyclic computation graph of all the work we've been putting off. Since we've waited this long,
+we're able to parallelize some of this work, executing the two mean calculations concurrently as they are clearly 
+independent.
+
+## The Scalar Compiler
+
+TODO
+
 
 Implementing primitives
 =======================
@@ -438,15 +509,15 @@ Simply declare your method as a `public static` method in a class in the `r.base
 Here are the implementation of the `is.double` and `match` functions, for example:
 
 ```{.java}
-@Primitive("is.double")
+@Builtin("is.double")
 public static boolean isDouble(SEXP exp) {
-  return exp instanceof DoubleExp;
+  return exp instanceof DoubleVector;
 }
 ```
 
 
 ```{.java}
-@Primitive
+@Internal
 public static IntVector match(AtomicVector search, AtomicVector table, int noMatch, AtomicVector incomparables) {
   //For historical reasons, FALSE is equivalent to NULL.
   if(incomparables.equals( LogicalVector.FALSE ) ) {
@@ -475,7 +546,8 @@ that operate on each element of a vector. For example:
 
 
 ```{.java}
-@Primitive
+@Builtin
+@DataParallel
 public static double divide(double x, double y) {
   return x / y;
 }
@@ -516,7 +588,7 @@ f("is.double", Types.class, 0 /*REALSXP*/, 1, 1);
 
 Renjin will then look for a method with the same name in `Types.class`, or if the
 method name is not a valid java identifier, it will look for a method annotated
-with `@Primitive("is.double")`.
+with `@Builtin("is.double")`.
 
 Then code until your test passes!
 
@@ -633,6 +705,14 @@ base package:
 After performing any necessary convertions, and relying on R for matching
 arguments by name, it calls into the internal primitive `grep` function, which
 only matches arguments positionally. 
+
+Note that if we were to start Renjin completely from scratch, this might not 
+be the best approach; it might be cleaner to move certain functions completely
+to Java or to R to avoid these akward dependencies; but for the moment we want
+to reuse as much as GNU's R-language packages as possible. These are huge,
+complex packages, and the more we can keep the better. So for the moment we are 
+replacing the internal functions written in C with Java implementations so that
+we remain source-level compatible. 
 
 From a primitive-function implementor's perspective, there is no difference
 between an internal and non-internal function; the `.Internal` function is
@@ -870,11 +950,11 @@ public class R$primitive$grep extends BuiltinFunction {
 These wrapper classes are generated by the `r.jvmi.WrapperGenerator` class and
 are written to the `core/target/generated-sources/r-wrappers` folder. 
 
-### Recycling
+### Data Parallel Functions
 
-One of R's greatest strengths is that it provides a large class of functions
-that operate transparently on vectors: `sqrt(4) == 2` and `sqrt(c(4,9,16)) ==
-c(2,3,4)`.
+One of R's greatest strengths is that it provides a large class of what you
+might call "Data Parallel" function, which apply the same computation to all
+elements in a vector: `sqrt(4) == 2` and `sqrt(c(4,9,16)) == c(2,3,4)`.
 
 Implementing such functions require attention to several semantic aspects:
 
@@ -913,15 +993,17 @@ To declare your method as recyclable, you must:
 * return a scalar type.
  
 If you annotate the method with `@DataParallel`, all arguments of scalar type will
-automatically be considered eligible for recycling. If you annotate individual
-arguments, only those arguments will be recycled.
+automatically be considered eligible for recycling. If you do not want to permit
+recycling on a given argument (it should be fixed to the same value for computations
+on all elements), then you can annotate the argument with @Recycle(false)
 
 For example, in the declaration below, the `lowerTail` and `logP` arguments are
 _not_ recycled; only the first element is used. 
 
 ```{.java}
-public static double pbeta(@Recycle double q, @Recycle double shape1, @Recycle double shape2, 
-                           boolean lowerTail, boolean logP) ;
+public static double pbeta(double q, double shape1, double shape2, 
+                           @Recycle(false) boolean lowerTail, 
+						   @Recycle(false) boolean logP) ;
 ```
 
 ### Scalar Types
@@ -945,8 +1027,9 @@ StringVector  String
 
 -------------------------------
 
-If recycling is enabled for the method, then Renjin will loop over the
-arguments, applying each of your **text missing!!!**
+If a method is marked as @DataParallel, then Renjin will loop over each element
+in the argument vectors, invoking your method for each element, and combining 
+the results into an new (Double|Integer|Logical|String)ArrayVector.
 
 ### NA Handling
 
@@ -980,11 +1063,19 @@ environment. You can indicate to the code generation layer that these are
 needed by annotating them with `@Current` as is shown in the next example:
 
 ```{.java}
-@Internal
-public static String getRHome(@Current Context context) throws URISyntaxException {
-  return context.getSession().getHomeDirectory();
+@Internal("R.home")
+public static String getRHome(@Current Session session) throws URISyntaxException {
+  return session.getHomeDirectory();
 }
 ```
+
+The Session class basically corresponds to a GNU R process, and holds all global
+state common to a given R "session." In this way, multiple sessions can coexist 
+within the same Java Virtual Machine process, allowing a web server, for example, to
+handle concurrent requests with different R sessions running on different threads.
+
+A call to R.home(), for example, is evaluated in the context of the _current_ session.
+
 
 ### Overrides
 
@@ -1030,6 +1121,8 @@ they check if their argument is an object (that is, it has a non-empty class
 attribute) and if there exists a matching function.
 
 This behavior is activated by the `@Generic` and `@GroupGeneric` annotations.
+
+
 
 Third-party libraries used by Renjin
 ====================================
