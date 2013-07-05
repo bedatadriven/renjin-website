@@ -119,6 +119,31 @@ hierarchy, and most primitive functions have been written from scratch based on
 documentation and on experimentation with the R Read-Evaluate-Print-Loop
 (REPL), that is the R console. 
 
+Module decomposition
+--------------------
+
+If you look at Renjin's repository, you will see that there are quite a few
+modules. Here we give a short overview of these modules.
+
+From the top-level `pom.xml`:
+
+    <modules>
+      <module>core</module>
+      <module>script-engine</module>
+      <module>cli</module>
+      <module>appengine</module>
+      <module>tests</module>
+      <module>benchmarks</module>
+      <module>repl</module>
+      <module>packages</module>
+      <module>tools</module>
+      <module>samples/swing-repl</module>
+      <module>samples/appengine-repl</module>
+      <module>dist/generic</module>
+      <module>dist/deb</module>
+      <module>appl</module>
+    </modules>
+
 Front End
 ---------
 
@@ -126,11 +151,13 @@ The front end of the interpreter/compiler parses R language programs into an
 Abstract Syntax Tree (AST).
 
 Renjin's
-[lexer](https://github.com/bedatadriven/renjin/blob/master/core/src/main/java/org/renjin/parser/RLexer.java) is ported directly from the original version written in C.
+[lexer](https://github.com/bedatadriven/renjin/blob/master/core/src/main/java/org/renjin/parser/RLexer.java) 
+is ported directly from the original version written in C.
 
 Renjin's parser is built from the original
-[gram.y](http://svn.r-project.org/R/tags/R-2-14-2/src/main/gram.y) using the Java extension of the [Bison parser
-generator](http://www.gnu.org/software/bison/).
+[gram.y](http://svn.r-project.org/R/tags/R-2-14-2/src/main/gram.y) 
+using the Java extension of the 
+[Bison parser generator](http://www.gnu.org/software/bison/).
 
 
 Strings and Character Encodings
@@ -385,23 +412,27 @@ an R expression can be evaluated, depending on the type of workload:
    
 ## The Slow Interpreter
    
-The slow interpreter, whose entry point is Contex.eval(), simply walks the R Abstract Syntax Tree
-at runtime in the same fashion that GNU R does, evaluting symbols and function calls. 
+The slow interpreter, whose entry point is `Context.eval()`, simply walks the
+R Abstract Syntax Tree at runtime in the same fashion that GNU R does,
+evaluting symbols and function calls. 
 
-Variables are assigned as elements in the heavyweight `Environment` instance, and each new function
-invocation gets its own Environment and a new context. While there are a many -- many -- aspects of this 
-interpreter that can still be optimized, from argument matching to variable lookup, it is unlikely 
-that this intrerpreter, with all it's flexibility, will likely stay pretty slow.
+Variables are assigned as elements in the heavyweight `Environment` instance,
+and each new function invocation gets its own Environment and a new context.
+While there are a many --many-- aspects of this interpreter that can still be
+optimized, from argument matching to variable lookup, it is unlikely that this
+interpreter, with all it's flexibility, will get much faster.
 
-Instead, Renjin focuses on optimizing workloads that are the most important in statistical computation
-and data prepration and analysis. Renjin accomplishes this by _deferring_ real work as much as possible in the slow
-interpreter, and by compiling critical paths (sapply, vapply, for) of R to JVM byte code.
+Instead, Renjin focuses on optimizing workloads that are the most important in
+statistical computation and data prepration and analysis. Renjin accomplishes
+this by _deferring_ real work as much as possible in the slow interpreter, and
+by compiling critical paths (`sapply`, `vapply`, `for`) of R to JVM byte code.
 
 ## The Vector Pipeliner
 
-Deferring work is possible because Renjin introduces a degree of seperation between data and algorithms:
-its builtins (see below) do not operate on raw arrays the way that GNU R does, but rather on instances
-of the `Vector` interface.
+Deferring work is possible because Renjin introduces a degree of seperation
+between data and algorithms: its builtins (see below) do not operate on raw
+arrays the way that GNU R does, but rather on instances of the `Vector`
+interface.
 
 So when the slow interpreter encounters an R expression like:
 
@@ -414,9 +445,11 @@ So when the slow interpreter encounters an R expression like:
   print(z)  # triggers computation
 ```
  
-it first _does_ allocate a vector for the sequence of random numbers. However, when we add 1 to this 
-vector, it _does not_ allocate a second vector and fill it with `x+1`, but rather returns a sort of "view", 
-an implementation of the DoubleVector interface wraps our original vector and simply adds 1 when its elements are requested:
+it first _does_ allocate a vector for the sequence of random numbers. However,
+when we add 1 to this vector, it _does not_ allocate a second vector and fill
+it with `x+1`, but rather returns a sort of "view", an implementation of the
+DoubleVector interface wraps our original vector and simply adds 1 when its
+elements are requested:
 
 ```{.java}
 // simplifed for illustration:
@@ -433,20 +466,22 @@ interface PlusOneVector extends DoubleVector {
 }
 ```
 
-Likewise, our implementation of the mean() function will return a `DeferredMean` instance for suitably
-large input.
+Likewise, our implementation of the `mean()` function will return
+a `DeferredMean` instance for suitably large input.
 
-Note that these views and deferred computations are quite different than GNU R's promises: to the R code, they are 
-fully evaluated vectors with a length and attributes; you can pass them around and do just about everything to them
+Note that these views and deferred computations are quite different than GNU
+R's promises: to the R code, they are fully evaluated vectors with a length and
+attributes; you can pass them around and do just about everything to them
 except inspect the value of an element.
 
-When we finally pass it to the print() function, impure and thus non-deferrable, evaluation is triggered for the
-arguments.
+When we finally pass it to the `print()` function, impure and thus
+non-deferrable, evaluation is triggered for the arguments.
 
-![Calculation graph](/diagrams/graph1.png)
+![Calculation graph](diagrams/graph1.png)
 
-What we get is a directed acyclic computation graph of all the work we've been putting off. Since we've waited this long,
-we're able to parallelize some of this work, executing the two mean calculations concurrently as they are clearly 
+What we get is a directed acyclic computation graph of all the work we've been
+putting off. Since we've waited this long, we're able to parallelize some of
+this work, executing the two mean calculations concurrently as they are clearly
 independent.
 
 ## The Scalar Compiler
@@ -490,13 +525,14 @@ public class SqrtTest extends EvalTestCase {
 }
 ```
 
-The `EvalTestCase` provides a simple DSL based on the 
+The `EvalTestCase` provides a simple DSL (_Domain Specific Language_) based on the 
 [Hamcrest Matcher library](https://github.com/hamcrest) that makes writing
 tests a bit simpler. See
 [TypesTest](https://github.com/bedatadriven/renjin/blob/master/core/src/test/java/org/renjin/primitives/TypesTest.java) 
 for a good example of how write tests.
 
-Next, place your test in the `src/test/java` folder. Then compile and make sure your test fails as expected. 
+Next, place your test in the `src/test/java` folder in your package module.
+Then compile and make sure your test fails as expected. 
 
 ### Implement the function class
 

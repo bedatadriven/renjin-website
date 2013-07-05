@@ -2,6 +2,8 @@ title: Renjin.org
 description: Blog about Renjin, the R programming language on the JVM
 url: http://www.renjin.org
 
+renjin-current: 0.7.0-RC2
+
 markdown: pandoc
 pandoc:
     extensions:

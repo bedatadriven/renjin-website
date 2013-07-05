@@ -25,3 +25,6 @@ other people. With this launch we hope to get more people to give Renjin a try
 and to give feedback. So come and see us at the conference or get in touch with
 us via Twitter ([@bedatadriven](https://twitter.com/bedatadriven) and
 [@mj_kallen](https://twitter.com/mj_kallen)).
+
+**Update (2013-07-05):** Alex will be presenting Renjin on Thursday July 11th
+between 18:20 and 19:40 in the *Kaleidoscope II* session.

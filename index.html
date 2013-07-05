@@ -113,9 +113,45 @@ cost.</p>
 <p>Check out the <a href="support.html">support page</a> if you need
 (commercial) support for Renjin.</p>
 
-<h1><a name="downloads">Downloads</a></h1>
+<h1><a name="downloads">Download and install</a></h1>
 
-<p>Please hold while we get these links to you!</p>
+<p>The current version of Renjin is <strong>{{ site.renjin-current }}</strong>. Choose your flavor below and hit the download button!</p>
+
+<div class="row marketing">
+    <!--
+  <div class="span6">
+    <h3>All platforms</h3>
+
+    <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/{{ site.renjin-current }}/renjin-generic-package-{{ site.renjin-current }}.zip" class="btn btn-large btn-warning" type="button">Download renjin-generic-package-{{ site.renjin-current }}.zip</a>
+  </div>
+  -->
+  <div class="span6">
+    <h3>Debian package</h3>
+    
+    <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/{{ site.renjin-current }}/renjin-debian-package-{{ site.renjin-current }}.deb" class="btn btn-large btn-warning" type="button">Download renjin-debian-package-{{ site.renjin-current }}.deb</a>
+  </div>
+</div>
+
+<h2>Requirements</h2>
+
+<p>As Renjin is a Java application it will run on any platform with a JVM
+installed. Therefore, if you want to run Renjin, you need to have installed at
+least version 6 (or greater) of the Java SE Runtime Environment (JRE). If you
+haven't, then download and install it from <a
+    href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>.</p>
+
+<h2>Installation</h2>
+
+<p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
+
+<pre>
+  <code>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</code>
+</pre>
+
+<p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
+
+
+
 
 <h1>Latest news</h1>
 

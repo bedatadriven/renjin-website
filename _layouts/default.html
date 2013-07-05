@@ -37,15 +37,21 @@
             background: url({{ site.url }}/assets/img/renjin-pattern.png) repeat center center;
             opacity: .7;
           }
+          .marketing {
+            text-align: center;
+          }
           div.contentBody {
               min-height: 500px;
           }
           body > footer {
-              background: url({{ site.url }}/assets/img/classy_fabric.png) repeat;
-              color: #bbb;
               margin-top: 5em;
               padding: 2em 0;
+              border-top: 1px solid #eeeeee;
+          /*
+              background: url({{ site.url }}/assets/img/classy_fabric.png) repeat;
+              color: #bbb;
               min-height: 500px;
+          */
           }
           h1 {
             margin: 30px 0 20px 0;
@@ -119,21 +125,21 @@
       <!-- <a class="brand" href="#">renjin</a> -->
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><a href="{{ site.url }}">Home</a></li>
-          <li><a href="{{ site.url }}#about">About</a></li>
-          <li><a href="{{ site.url }}#downloads">Downloads</a></li>
-          <li><a href="{{ site.url }}/blog/">Blog</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#downloads">Downloads</a></li>
+          <li><a href="/blog/">Blog</a></li>
           <li><a href="http://packages.renjin.org.s3.amazonaws.com/index.html">Package Build Status</a></li>
-          <li><a href="{{ site.url }}/support.html">Support</a></li>
+          <li><a href="/support.html">Support</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Documentation <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="{{ site.url }}/documentation/">Overview</a></li>
               <li class="divider"></li>
               <li class="nav-header">Guides for...</li>
-              <li><a href="{{ site.url }}/documentation/analyst-guide.html">Analysts</a></li>
-              <li><a href="{{ site.url }}/documentation/developer-guide.html">Developers</a></li>
-              <li><a href="{{ site.url }}/documentation/contributor-guide.html">Contributors</a></li>
+              <li><a href="/documentation/analyst-guide.html">Analysts</a></li>
+              <li><a href="/documentation/developer-guide.html">Developers</a></li>
+              <li><a href="/documentation/contributor-guide.html">Contributors</a></li>
             </ul>
           </li>
         </ul>
@@ -146,7 +152,7 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <img class="pull-left" src="{{ site.url }}/assets/img/renjin-logo.png" alt="Renjin logo" />
+    <img class="pull-left" src="/assets/img/renjin-logo.png" alt="Renjin logo" />
     <div class="pull-right"><p class="tagline">The R programming language on the JVM</p></div>
   </div> <!-- /container -->
 
@@ -190,6 +196,16 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-20543588-3', 'renjin.org');
+    ga('send', 'pageview');
+
+  </script>
 
 </body>
 </html>
