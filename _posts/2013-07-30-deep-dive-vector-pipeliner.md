@@ -53,7 +53,7 @@ and uses a fraction of the memory required by GNU R, allowing us to scale up to
 our target of 25,000 observations.
 
 Here are the results of a little distance correlation 
-[benchmark](https://gist.gith ub.com/akbertram/87126966fe15f1790ed8) that compares 
+[benchmark](https://gist.github.com/akbertram/87126966fe15f1790ed8) that compares 
 the runtimes of Renjin 0.7.0-RC6, GNU R-3.0.1 and pqR 2013-07-22 in seconds:
 
 <div class="row">
