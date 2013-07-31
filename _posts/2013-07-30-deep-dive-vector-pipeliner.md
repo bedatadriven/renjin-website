@@ -53,19 +53,78 @@ and uses a fraction of the memory required by GNU R, allowing us to scale up to
 our target of 25,000 observations.
 
 Here are the results of a little distance correlation 
-[benchmark](https://gist.github.com/akbertram/87126966fe15f1790ed8) that compares 
+[benchmark](https://gist.gith ub.com/akbertram/87126966fe15f1790ed8) that compares 
 the runtimes of Renjin 0.7.0-RC6, GNU R-3.0.1 and pqR 2013-07-22 in seconds:
 
-    n  GNU-R    pqR    Renjin
------ ------   ----  --------
- 1000      5      3         3
- 2000     20     10         9
- 5000    120     79        52
- 6000           112        74
- 7000           151       100
- 8000           219       133
-10000                     209
-25000 
+<div class="row">
+<div class="span3">
+<h3>Runtimes (in seconds)</h3>
+<table class="table" style="width:auto">
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">GNU-R</th>
+<th style="text-align: right;">pqR</th>
+<th style="text-align: right;">Renjin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">133</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">209</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1319</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="span9">
+<img src="/assets/img/dcor-runtime.png">
+</div>
+</div>
+
 
 In this particular benchmark, Renjin outperforms GNU R by roughly half of the time
 as GNU R 3.0.1. For smaller sizes, Renjin and pqR are roughly even, but as the 
