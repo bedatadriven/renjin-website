@@ -2,6 +2,7 @@
 layout: post
 author: 
     name: Alexander Bertram
+    url: https://plus.google.com/u/0/114356497954701066446
 lang: en
 title: "Deep Dive: Renjin's Vector Pipeliner"
 excerpt: Radford Neal started a great conversation with his comparison of Renjin, pqR and
@@ -259,7 +260,7 @@ space considerations, but because deferring these operations as long as possible
 give us more of an opportuntity to implicitly parallelize them. 
 
 These kinds of operations, however, are expensive to compute, so they are stored
-internally not as views, but as [memorized values](http://en.wikipedia.org/wiki/Memoization). 
+internally not as views, but as [memoized values](http://en.wikipedia.org/wiki/Memoization). 
 
 In fact, in the example above of DCOR, we get all the way to the `if()` statement
 before Renjin will do any computation. At that moment, `V` points to a view 
