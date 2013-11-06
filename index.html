@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Home of the JVM-based interpreter for the R language for statistical computing
 ---
 <h1><a name="about">About</a></h1>
 
@@ -212,7 +212,7 @@ date with the latest news on Renjin. You can also subscribe to the mailing list 
 
 {% for post in site.posts limit:3 %}
 <h2>{{ post.title }} ({{ post.date | date: "%Y-%m-%d" }})</h2>
-  {{ post.excerpt }} 
+  <p>{{ post.excerpt }}</p>
   <p><a href="{{ post.url }}">Read more...</a></p>
 {% endfor %}
 

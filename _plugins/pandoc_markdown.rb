@@ -60,7 +60,7 @@ module Jekyll
 
         def convert(content)
 	  @pandoc_extensions = @config['pandoc']['extensions']
-	  PandocRuby.new(content, *@pandoc_extensions).to_html5(:N)
+	  PandocRuby.new(content, *@pandoc_extensions).to_html5
         end
       end
     end

@@ -2,6 +2,7 @@
 layout: post
 author: 
     name: Alexander Bertram
+    url: https://plus.google.com/u/0/114356497954701066446
 lang: en
 title: "Deep Dive: Renjin's Vector Pipeliner"
 excerpt: Radford Neal started a great conversation with his comparison of Renjin, pqR and
@@ -63,7 +64,7 @@ the runtimes of Renjin 0.7.0-RC6, GNU R-3.0.1 and pqR 2013-07-22 in seconds:
 <thead>
 <tr class="header">
 <th style="text-align: right;">n</th>
-<th style="text-align: right;">GNU-R</th>
+<th style="text-align: right;">GNU R</th>
 <th style="text-align: right;">pqR</th>
 <th style="text-align: right;">Renjin</th>
 </tr>
@@ -126,16 +127,16 @@ the runtimes of Renjin 0.7.0-RC6, GNU R-3.0.1 and pqR 2013-07-22 in seconds:
 </div>
 
 
-In this particular benchmark, Renjin outperforms GNU R by roughly half of the time
-as GNU R 3.0.1. For smaller sizes, Renjin and pqR are roughly even, but as the 
-sample grows larger, Renjin starts to approach a 2x speed up as well.
+In this particular benchmark, Renjin outperforms GNU R by roughly half of the
+time as GNU R 3.0.1. For smaller sizes, Renjin and pqR are roughly even, but as
+the sample grows larger, Renjin starts to approach a 2x speed up as well.
 
-More importantly, Renjin is able to handle sample sizes of up to around 25000 observations,
-a limitation currently imposed by Renjin's 32-bit indexing of arrays.
-(We'll see below that there is a distance matrix at the heart of the `dcor` function, 
-which requires n^2 storage space)
+More importantly, Renjin is able to handle sample sizes of up to around 25000
+observations, a limitation currently imposed by Renjin's 32-bit indexing of
+arrays. (We'll see below that there is a distance matrix at the heart of the
+`dcor` function, which requires n^2 storage space)
 
-GNU-R runs out of memory at n = 6000, and pqR at n = 8000. 
+GNU R runs out of memory at n = 6000, and pqR at n = 8000. 
 
 
 The Challenge
@@ -274,14 +275,13 @@ represent views, and ovals are reducer nodes.
 When the value of V is needed by the `if` statement in order to know how to branch,
 Renjin will search the graph for reducer nodes and evaluate them in parallel. 
 
-
 Fusing Reducer Operators
 ===========================
 
 In this example, all the real work is done by reducers, when we loop through all 
 the values in a view to find their mean, or sum, or rowMeans. 
 
-Renjin's implementation of the mean() function looks something like this (essentially):
+Renjin's implementation of the `mean()` function looks something like this (essentially):
 
 ```{.java}
 public static double mean(Vector x) {
@@ -298,8 +298,9 @@ all of these virtual `getElementAsDouble()` invocations. For large vectors,
 we can do much better by fusing all of the operations implied by our tree into
 a single, fully-inlined loop. 
 
-To look at a simple example, take the expression from the tree above `mean(as.matrix(dist(x)))`. At runtime, Renjin inlines the body of the mean loop into straight line 
-JVM byte code that might look like this in Java:
+To look at a simple example, take the expression from the tree above
+`mean(as.matrix(dist(x)))`. At runtime, Renjin inlines the body of the mean
+loop into straight line JVM byte code that might look like this in Java:
 
 ```{.java}
 public static double mean(Vector distMatrix) {
@@ -329,8 +330,10 @@ public static double mean(Vector distMatrix) {
 The difference between this fused code and tens of millions of virtual method
 invocations for the benchmark above is about *3 orders of magnitude*. 
 
-Writing the bytecode for the fused reducers is relatively fast here to the runtime of the calculation, and is cached so that subsequent reducer operations on a graph
-of the same types can quickly reuse the previously compiled pipeline.
+Writing the bytecode for the fused reducers is relatively fast here to the
+runtime of the calculation, and is cached so that subsequent reducer operations
+on a graph of the same types can quickly reuse the previously compiled
+pipeline.
 
 Beyond Arrays
 =============
@@ -338,21 +341,25 @@ Beyond Arrays
 In this example, all of our data is still in memory, and we execute all of the 
 computations in-process, though with multiple threads.
 
-In the future, the idea is to extend this approach to out-of-memory data structures
-and heterogenous computing environments, where the executor for these computation
-graphs is chosen based on where the underlying data resides.
+In the future, the idea is to extend this approach to out-of-memory data
+structures and heterogenous computing environments, where the executor for
+these computation graphs is chosen based on where the underlying data resides.
 
-In one case, you might have a DoubleVector implementation that points to a database table, and rather than pulling the data into the JVM's process from across the network, we might try to translate the computation graph above into SQL or a stored procedure to be executed within the database.
+In one case, you might have a DoubleVector implementation that points to
+a database table, and rather than pulling the data into the JVM's process from
+across the network, we might try to translate the computation graph above into
+SQL or a stored procedure to be executed within the database.
 
-Perhaps simpler still, you can see the data residing on a Hadoop Distributed Filesystem (HDFS), and Renjin would select the vector backend that could compile the
-graph to a set of map/reduce jobs. 
+Perhaps simpler still, you can see the data residing on a Hadoop Distributed
+Filesystem (HDFS), and Renjin would select the vector backend that could
+compile the graph to a set of map/reduce jobs. 
 
 Limitations & Challenges
 ========================
 
 First caveat, this is example comes from one of our real projects where we added 
 several optimizations to support the use case above. We replaced GNU R's distance
-function, for example, with one that return a view rather than allocated an array.
+function, for example, with one that returns a view rather than allocating an array.
 There are lots of other interesting functions that are not yet deferrable so your 
 mileage may vary. 
 
@@ -376,7 +383,7 @@ periodically, but I would really like Renjin to properly understand this loop
 and the dependency it involves between iterations and optimize accordingly.
 
 Since most of Renjin's inspiration comes from the functional programming community,
-I'd interested to see how the Glassgow Haskell Compiler, for example, handles 
+I'd be interested to see how the Glassgow Haskell Compiler, for example, handles 
 a recursive definition like the one above. 
 
 That fortunately, will be the subject of next week's deep dive when Renjin's JIT

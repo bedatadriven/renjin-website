@@ -19,8 +19,8 @@ priorities.
 Filing a bug report
 -------------------
 
-The project currently uses the issue tracker on the Google Code project page:
-<https://code.google.com/p/renjin/issues/list>.
+The project now uses the issue tracker on Github:
+<https://github.com/bedatadriven/renjin/issues>.
 
 Getting help
 ------------
