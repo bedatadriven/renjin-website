@@ -9,8 +9,9 @@ excerpt: The DALI workshop brought together an amazing group of
    So many great ideas!
 ---
 
-Last week I chance to join the [National Science Foundation Workshop on Dynamic Languages for
-Scalable Data Analytics](http://www.dynali.org/talks.html), or [#dali13](https://twitter.com/search?q=%23dali13).
+Last week I had a chance to join the [National Science Foundation Workshop on Dynamic Languages for
+Scalable Data Analytics](http://www.dynali.org/talks.html), or [#dali13](https://twitter.com/search?q=%23dali13)
+and share an [update](/assets/downloads/Renjin_Road_DALI.pdf) on Renjin's design and progress towards full compatibility with GNU R.
 
 Besides getting a chance to see Beautiful Indianpolis for the first time, it was really
 an incredible group that brought together scientists with real data scalability problems,
