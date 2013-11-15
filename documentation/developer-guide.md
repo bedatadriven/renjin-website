@@ -1,18 +1,17 @@
 ---
 layout: default
-title: Developer guide
+title: Java Developer's guide
 ---
 
 Introduction
 ============
 
-This guide is for developers who want to call R from Java or visa versa. The
-first scenario involves the evaluation of R expressions or scripts from a Java
-application. The second scenario the use of Java classes inside an R program.
-The first scenario is most common so that's the subject of the next section.
+This guide intended for Java developers who wish to call R code from a Java 
+application, webserver, or other project.
 
-Using R within a Java project
------------------------------
+The approach is generally the same for other JVM languages such as Scala,
+Clojure, JRuby, etc, but users of those languages will need to make some mental
+translation from Java syntax to their own.
 
 Before we start, it is good to realize that in these examples we are not
 *calling R* as in GNU R. Technically, we have statements written in the
@@ -21,64 +20,129 @@ the interpreter provided by Renjin. This is what makes Renjin different
 from packages like [rJava](http://www.rforge.net/rJava/) and
 [rcaller](https://code.google.com/p/rcaller/). 
 
-The best way to call R from Java
-is to use the 
+
+Setting up a Java project for Renjin
+------------------------------------
+
+To invoke R code or packages via Renjin requires the Renjin Script Engine and its
+dependencies to be on the classpath. This varies slightly depending on how you
+organize your project.
+
+
+### Eclipse/IntelliJ Project
+
+If you just want to get something up and running quickly in an IDE, you can download
+the renjin-script-engine-with-dependencies.jar and place it into your project's lib folder.
+
+TODO: Link to artifacts
+
+### Maven Projects
+
+For projects organized with Apache Maven, you can simply add Renjin as dependency to
+your project.
+
+TODO: Link to example
+
+
+Evaluating R language Code
+--------------------------
+
+The best way to call R from Java is to use the 
 [javax.scripting](http://docs.oracle.com/javase/6/docs/technotes/guides/scripting/programmer_guide/) 
-interfaces. These interfaces are mature and guaranteed to be stable regardless
+interfaces. These interfaces are mature and guaranteed to be stable regardless 
 of how Renjin's internals evolve.
 
-### A simple primer
+You can create a new instance of a Renjin ScriptEngine using the ScriptEngineManager class.
 
-We start with a very simple Java program to demonstrate how you can evaluate R from Java. The following is an example Java program stored in `SampleScript.java`:
+    import javax.script.*;
+
+    ScriptEngineManager manager = new ScriptEngineManager();
+    ScriptEngine engine = manager.getEngineByName("Renjin");
+    if(engine == null) {
+        throw new RuntimeException("renjin-script-engine.jar or its dependencies cannot be found on the classpath. ");
+    }
+
+
+Unfortunately, ScriptEngineManager.getEngineByName() silently returns null if there
+are any exceptions encountered during the instantation of Renjin's ScriptEngine, so
+you will want to check the return result and throw your own more informative exception
+should the creation fail.
+
+With the ScriptEngine instance in hand, you can now evaluate R langauge source
+code, either from a String, or from a Reader interface. The following snippet, for example,
+constructs a data frame, prints it out, and then does a linear regression on the two values.
 
 ```{.java}
-import javax.script.*;
+   engine.eval("df <- data.frame(x=1:10, y=(1:10)+rnorm(n=10))");
+   engine.eval("print(df)");
+   engine.eval("print(lm(y ~ x, df))");
+```
+   
+You should get the following output on stdout:
 
-public class SampleScript {
-  public static void main(String[] args) throws Exception {
-    // create a script engine manager
-    ScriptEngineManager factory = new ScriptEngineManager();
-    // create a Renjin engine
-    ScriptEngine engine = factory.getEngineByName("Renjin");
-    // evaluate R code from String
-    engine.eval("a <- 2; b <- 3; a*b");
-  }
-}
+```
+      x      y
+   1  1      0.307
+   2  2      3.215
+   3  3      1.436
+   4  4      3.647
+   5  5      5.171
+   6  6      6.225
+   7  7      6.689
+   8  8      7.929
+   9  9      9.359
+  10 10     11.017
+
+  Call:
+  lm(formula = y ~ x, data = df)
+
+  Coefficients:
+  (Intercept) x
+  -0.569       1.103
+   
+ Note that the ScriptEngine won't print everything to standard out like
+ the interactive REPL does, so if you want to output something, you'll need
+ to call print() explicitly.
+``` 
+
+Moving data between Java and R code
+-----------------------------------
+
+Of course, you'll probably want to do more than just print results to
+the console.
+
+Using the javax.script API, you can retrieve the results of R calculations
+as Java objects and provide data to R scripts as function arguments or 
+as variables.
+ 
+### Passing values from Java to R
+
+We can expand on the previous example by passing in the x and y values
+used in the regression from Java rather than hardcoding them. You can do
+this by setting variables in the global R environment, or by wrapping your
+R script in a function to which you can pass arguments. 
+
+Finally, you can expose larger or more complex data from Java by writing 
+wrappers that give access to 
+
+#### Setting variables in the Global Environment
+
+Like many dynamic languages, R scripts are evaluted in the context of an environment
+that looks a lot like a dictionary.
+
+You can define new variables in this environment using the javax.script API:
+
+```{.java}
+engine.put("age", new double[]    { 1,   2,   3,    4,    5,    6,    7,    8,    9,    10 });
+engine.put("height", new double[] { 3.1, 6.4, 8.5,  12.1, 15.4, 17.8, 20.0, 25.3, 27.2, 34.0 });
+engine.eval("df <- data.frame(x=age, y=height");
+engine.eval("print(lm(y ~ x, df))");
 ```
 
-To to compile this example, Java needs to be able to find Renjin's scripting
-engine. A JAR file containing the latest stable build of the scripting engine,
-including all its dependencies, is available for download from
-<http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-script-engine/>.
-Look for the latest release which is not a `SNAPSHOT` build. Currently this should be version {{ site.renjin-current }} and the JAR file will be called `renjin-script-engine-{{ site.renjin-current }}-jar-with-dependencies.jar`. 
-
-Given the following directory layout:
-
-    root/
-    |
-    |_ SampleScript.java
-    |
-    |_ libs/
-       |
-       |_ renjin-script-engine-{{ site.renjin-current }}-jar-with-dependencies.jar
-    
-you can compile and run your sample application using the following commands (assuming you have Java installed of course!) inside the `root` directory:
-
-    javac -classpath .:libs/renjin-script-engine-{{ site.renjin-current }}-jar-with-dependencies.jar SampleScript.java
-    java -classpath .:libs/renjin-script-engine-{{ site.renjin-current }}-jar-with-dependencies.jar SampleScript
-
-and then you see... nothing. This is because Renjin evaluated the statement,
-but we didn't do anything with the result. If we add R's `print` method to the
-expression (i.e. `engine.eval("a <- 2; b <- 3; print(a*b)")`), then Renjin will
-print the result to
-[stdout](http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29).
-This, however, is not very interesting as we want to be able to catch the
-output in Java and store it in a variable for further use.
-
-### Storing results from R in Java variables
+### Accessing the results of R calculations from Java
 
 The `engine.eval()` function returns an object of type `SEXP` which can be
-casted to a `DoubleVector`. These are Renjin's representations of R language
+casted to a `Vector`. These are Renjin's representations of R language
 types. The section
 '[Overview of the type system](/documentation/contributor-guide.html#overview-of-the-type-system)'
  in the contributor guide explains these objects in detail. We change
@@ -94,15 +158,17 @@ public class SampleScript {
     ScriptEngineManager factory = new ScriptEngineManager();
     // create a Renjin engine
     ScriptEngine engine = factory.getEngineByName("Renjin");
-    // evaluate R code from String, cast SEXP to a DoubleVector and store in the 'res' variable
-    DoubleVector res = (DoubleVector)engine.eval("a <- 2; b <- 3; a*b");
-    System.out.println("The result of a*b is: " + res);      
+    // evaluate R code from String, cast Object to an org.renjin.sexp.Vector and store in the 'res' variable
+    Vector res = (DoubleVector)engine.eval("a <- 2; b <- 3; a*b");
+    System.out.println("The result of a*b is: " + res.getElementAsDouble(0));
   }
 }
 ```
 
 Note that we need to import Renjin's object types and that we need to cast the
-output of `engine.eval()` to the desired type.
+output of `engine.eval()` to the desired type. 
+
+See the next 
 
 ### Running R scripts from Java
 
@@ -227,9 +293,9 @@ bob$name <- "Bob II"
 cat(c("Name: ", bob$name, "; Age: ", bob$age))
 ```
 
-Creating and distributing Renjin packages
-=========================================
+Java developer's guide to R objects
+===================================
 
-**TODO:** a whole chapter on how to create packages for Renjin. Assume that
-Maven is a requirement and suggest a single solution (in other words: enforce
-a convention) for the directory layout.
+
+
+
