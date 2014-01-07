@@ -3,7 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <title>{{ site.title }} | {{ page.title }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="{{ site.title }} | {{ page.title }}" />
+        <meta property="og:utl" content="{{site.url}}{{ page.url }}" />
+        <meta property="og:image" content="{{ site.url }}/assets/img/renjin-logo-thumbnail.png" />
         <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
         <![endif]-->
@@ -207,6 +210,18 @@
     ga('create', 'UA-20543588-3', 'renjin.org');
     ga('send', 'pageview');
 
+  </script>
+  <script src="http://fast.wistia.net/static/embed_shepherd-v1.js"></script>
+  <script>
+    wistiaEmbeds.onFind(function(video){
+      video.bind("play", function(){
+        _gaq.push(['_trackEvent', 'Video', 'Play', video.name()]);
+        return this.unbind;
+      }).bind("end", function(){
+        _gaq.push(['_trackEvent', 'Video', 'Complete', video.name()]);
+        return this.unbind;
+      });
+    });
   </script>
 
 </body>
