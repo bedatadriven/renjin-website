@@ -38,8 +38,18 @@ TODO: Link to artifacts
 
 ### Maven Projects
 
-For projects organized with Apache Maven, you can simply add Renjin as dependency to
-your project.
+For projects organized with Apache Maven, you can simply add Renjin's Script Engine as dependency to
+your project:
+
+```{.xml}
+    <dependencies>
+      <dependency>
+        <groupId>org.renjin</groupId>
+        <artifactId>renjin-script-engine</artifactId>
+        <version>{{ site.renjin-current }}</version>
+      </dependency>
+    </dependencies>
+```
 
 TODO: Link to example
 
@@ -99,11 +109,12 @@ You should get the following output on stdout:
   Coefficients:
   (Intercept) x
   -0.569       1.103
-   
- Note that the ScriptEngine won't print everything to standard out like
- the interactive REPL does, so if you want to output something, you'll need
- to call print() explicitly.
-``` 
+```
+
+Note that the ScriptEngine won't print everything to standard out like
+the interactive REPL does, so if you want to output something, you'll need
+to call print() explicitly.
+
 
 Moving data between Java and R code
 -----------------------------------
@@ -133,16 +144,59 @@ that looks a lot like a dictionary.
 You can define new variables in this environment using the javax.script API:
 
 ```{.java}
-engine.put("age", new double[]    { 1,   2,   3,    4,    5,    6,    7,    8,    9,    10 });
-engine.put("height", new double[] { 3.1, 6.4, 8.5,  12.1, 15.4, 17.8, 20.0, 25.3, 27.2, 34.0 });
-engine.eval("df <- data.frame(x=age, y=height");
-engine.eval("print(lm(y ~ x, df))");
+    engine.put("age", new double[]    { 1,   2,   3,    4,    5,    6,    7,    8,    9,    10 });
+    engine.put("height", new double[] { 3.1, 6.4, 8.5,  12.1, 15.4, 17.8, 20.0, 25.3, 27.2, 34.0 });
+    engine.eval("df <- data.frame(x=age, y=height");
+    engine.eval("print(lm(y ~ x, df))");
 ```
 
 ### Accessing the results of R calculations from Java
 
-The `engine.eval()` function returns an object of type `SEXP` which can be
-casted to a `Vector`. These are Renjin's representations of R language
+Renjin uses Java objects to represent R objects, and so all results from `engine.eval()` will
+be an implementation of the SEXP interface.
+
+#### Atomic Vectors
+
+Individual numbers, and simple vectors of numbers all implement the Vector interface. You can 
+access the individual values with the getElementAsXX() methods. For example:
+
+```{.java}
+Vector x = (Vector)engine.eval("1+1");
+Vector y = (Vector)engine.eval("1:10");
+Vector z = (Vector)engine.eval("letters[1]");
+
+System.out.println(String.format("x = %f", x.getElementAsDouble(0)));
+
+for(int i=0;i!=y.length();++i) {
+  System.out.println(String.format("y[%d] = %s", i, y.getElementAsDouble(i)));
+}
+
+System.out.println(String.format("z = %s", y.getElementAsString(i)));
+```
+
+#### Lists
+
+Lists are R's go-to structures for representing data structures, they can contain elements of
+different types, and record-like structures can be created by giving them a `names` attribute.
+The `lm` function, for example, returns a `list` that contains many details about the fitted model.
+
+The `ListVector` class contains several convenience methods to access a list's components from Java.
+For example, we can extract the coefficients from a fitted model:
+
+```{.java}
+ListVector model = (ListVector)engine.eval("x <- 1:10; y <- x*3; lm(y ~ x)");
+Vector coefficients = model.getElementAsVector("coefficients");
+Vector residuals = model.getElementAsVector("residuals");
+
+System.out.println("intercept = " + coefficients.getElementAsDouble(0)); 
+System.out.println("slope = " + coefficients.getElementAsDouble(1)); 
+```
+
+### data.frame
+
+Data.frame are actually 
+
+The `engine.eval()` function returns an object of type `SEXP` which are Renjin'
 types. The section
 '[Overview of the type system](/documentation/contributor-guide.html#overview-of-the-type-system)'
  in the contributor guide explains these objects in detail. We change
