@@ -20,6 +20,6 @@ install the pandoc-ruby gem with the following command:
 Usage
 -----
 
-In the `renjin-docs` folder do `jekyll build` to compile the site, which will
+In the `renjin.org` folder do `jekyll build` to compile the site, which will
 end up in the `_site` folder. Then do `jekyll serve` (or `jekyll serve --watch`
 to regenerate the site on-the-fly) to serve the site at `localhost:4000`.
