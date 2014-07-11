@@ -1,0 +1,145 @@
+// Layout, general layout elements
+
+header {
+  position: relative;
+  height: 540px;
+  background: silver;
+  .block {
+    background: $light;
+  }
+}
+
+footer {
+  padding-top: $space;
+  background: $main;
+  p {
+    @include font-size(14px);
+    color: $light;
+  }
+}
+
+.image-right {
+  float: right;
+  margin: 0 0 $base-line-height $base-line-height;
+  @include media-query(tablet-mobile-only){
+    margin: $space 0;
+  }
+}
+
+.image-left {
+  float: left;
+  margin: 0 $base-line-height $base-line-height 0;
+  @include media-query(tablet-mobile-only){
+    margin: $space 0;
+  }
+}
+
+img {
+  max-width: 100%;
+  @include media-query(tablet-mobile-only){
+    min-width: 100%;
+  }
+}
+
+.newsitem, .block {
+  position: relative;
+}
+
+.readmore {
+  background: $sec;
+  color: $light;
+  @include font-size(14px);
+  text-transform: uppercase;
+  padding: 0 10px;
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  &:hover {
+    color: $light;
+  }
+}
+
+.logo {
+  margin-top: 60px;
+  min-width: inherit;
+  max-width: 320px;
+  @include media-query(tablet-only){
+    max-width: 400px;
+  }
+  @include media-query(mobile-only){
+    max-width: 100%;
+  }
+}
+
+.slogan {
+  color: $main;
+  margin-top: 60px;
+  margin-left: 40px;
+  p {
+    @include font-size(22px);
+  }
+  @include media-query(tablet-mobile-only){
+    margin: 0;
+  }
+}
+
+
+.ups {
+  background: $main-light;
+  padding: $space;
+  h1 {
+    text-align: center;
+  }
+}
+
+tr, th, td {
+  padding: 5px 10px;
+}
+
+tr:nth-child(odd) {
+  background: $light-grey;
+}
+
+input{
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #979797;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.30);
+  margin-bottom: 10px;
+}
+
+button, input[type="submit"], input[type="password"], input[type="search"]  {
+  border-radius: 6px;
+  background-image: -o-linear-gradient(-89deg, #A7BE38 0%, #82952A 100%);
+  background-image: -moz-linear-gradient(-89deg, #A7BE38 0%, #82952A 100%);
+  background-image: -ms-linear-gradient(-89deg, #A7BE38 0%, #82952A 100%);
+  background-image: linear-gradient(-179deg, #A7BE38 0%, #82952A 100%);
+  -moz-box-shadow:    0 1px 2px 0 rgba(0,0,0,0.20);
+  box-shadow:         0 1px 2px 0 rgba(0,0,0,0.20);
+  border: 0;
+  color: $light;
+  padding: 5px 20px;
+  text-shadow: 0 1px 0 #516F3B;
+  margin-bottom: 10px;
+  display: inline-block;
+  line-height: 1.7;
+  -webkit-transition: all 50ms ease-in-out;
+  -moz-transition: all 50ms ease-in-out;
+  -ms-transition: all 50ms ease-in-out;
+  -o-transition: all 50ms ease-in-out;
+  transition: all 50ms ease-in-out;
+  top: 0;
+  &:hover {
+    background-image: -o-linear-gradient(-89deg, #B2CA3F 0%, #90A42F 100%);
+    background-image: -moz-linear-gradient(-89deg, #B2CA3F 0%, #90A42F 100%);
+    background-image: -ms-linear-gradient(-89deg, #B2CA3F 0%, #90A42F 100%);
+    background-image: linear-gradient(-179deg, #B2CA3F 0%, #90A42F 100%);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+  }
+  &:focus {
+    position: relative;
+    top: 2px;
+  }
+}
+

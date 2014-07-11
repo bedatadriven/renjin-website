@@ -1,0 +1,65 @@
+// A very little responsive grid
+
+.grid{
+    margin-left:-$space;
+    list-style:none;
+    margin-bottom:$space;
+    max-width: 60em;
+    margin: 0 auto;
+    @extend .cf;
+    > * {
+      padding-left:$double-space;
+    }
+}
+
+
+// for headers; selecting first heading which is not a grid-item
+.grid > :first-child:not(.grid-item) {
+  margin-left:-$space;
+}
+
+.grid-item {
+  float: left;
+  vertical-align:top;
+  box-sizing: border-box;
+  padding: 0 $space $double-space $space;
+  @include media-query(tablet-mobile-only){
+    width:100%!important;
+    padding-bottom: $space;
+   }
+}
+
+// different types of width
+
+.medium-2, .large-2 {
+  width: 16.666%;
+}
+
+.medium-4, .large-4 {
+  width: 33.333%;
+}
+
+.medium-5, .large-5 {
+  width: 41.665%;
+}
+
+.medium-6, .large-6 {
+  width: 50%;
+}
+
+.medium-7, .large-7 {
+  width: 58.331%;
+}
+
+.medium-8, .large-8 {
+  width: 66.666%;
+}
+
+.medium-10, .large-10 {
+  width: 83.333%;
+}
+
+.medium-12, .large-12 {
+  width: 100%;
+}
+
