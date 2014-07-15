@@ -4,7 +4,9 @@
     margin-left:-$space;
     list-style:none;
     margin-bottom:$space;
-    max-width: 60em;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75em;
     margin: 0 auto;
     @extend .cf;
     > * {
@@ -19,10 +21,12 @@
 }
 
 .grid-item {
+  flex-direction: column;
+  align-items: stretch;
   float: left;
   vertical-align:top;
   box-sizing: border-box;
-  padding: 0 $space $double-space $space;
+  padding: $space;
   @include media-query(tablet-mobile-only){
     width:100%!important;
     padding-bottom: $space;

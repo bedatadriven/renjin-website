@@ -10,9 +10,11 @@ $sec: #0896EB; // felblauw
 $dark: #4A4A4A;
 $light: #FFF;
 $grey: #979797;
-$light-grey: #E1E1E1;
+$light-grey: #F6F5F5;
 
 
+$text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+$box-shadow: 0 1px 2px 0px rgba(0,0,0,0.30);
 // global spaces
 
 $space: 20px;
@@ -24,8 +26,8 @@ $base-font-size: 16px!default;
 $base-line-height: 28px!default;
 $line-height-ratio: $base-line-height / $base-font-size;
 
-$webfont-regular: 'signikaregular';
 $webfont-light: 'signikalight';
+$webfont-regular: 'signikaregular';
 $webfont-bold: 'signikabold';
 $webfont-semibold: 'signikasemibold';
 
