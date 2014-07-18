@@ -1,7 +1,7 @@
 // All mixins and variables that are used
 body {
   color: $dark;
-  font:#{($base-font-size/16px)*1em}/#{$line-height-ratio} $webfont-regular, sans-serif;
+  font:#{($base-font-size/16px)*1em}/#{$line-height-ratio} $webfont-light, sans-serif;
 }
 
 
@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5 {
   color: $main;
   margin: 0;
   letter-spacing: 0.03em;
-  font-family: $webfont-light;
+  font-family: $webfont-regular;
   a {
     text-decoration: none;
   }

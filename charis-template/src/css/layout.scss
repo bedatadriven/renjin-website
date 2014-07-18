@@ -16,10 +16,35 @@ header {
 
 footer {
   padding-top: $space;
-  background: $main;
+  background: darken($main, 5%);
+  .grid-item {
+    padding-bottom: 0;
+  }
+  &:hover {
+     background: $main; 
+    > *, h3, a {
+      color: $light;
+    }
+  }
+  > *, h3, a {
+    color: darken($light-grey, 10%);
+  }
+  h3 {
+    @include font-size(16px);
+  }
   p {
     @include font-size(14px);
+    line-height: 1.6;
+  }
+  li {
+    @include font-size(14px); 
+    line-height: 1.6;
+  }
+  a {
     color: $light;
+    &:hover {
+      color: $sec;
+    }
   }
 }
 
@@ -234,4 +259,25 @@ button, input[type="submit"], input[type="password"], input[type="search"]  {
   }
 }
 
+// newsletter signup
+#mc_embed_signup {
+  margin-top: 30px;
+}
+
+#mc-embedded-subscribe-form {
+  display: flex;
+}
+
+#mc-embedded-subscribe {
+  flex-grow: 1;
+}
+
+#mc-embedded-label {
+  flex-grow: 2;
+  margin-right: 20px;
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 

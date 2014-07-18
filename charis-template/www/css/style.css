@@ -372,12 +372,33 @@ header {
 
 footer {
   padding-top: 20px;
-  background: navy; }
+  background: #000067; }
+  footer .grid-item {
+    padding-bottom: 0; }
+  footer:hover {
+    background: navy; }
+    footer:hover > *, footer:hover h3, footer:hover a {
+      color: white; }
+  footer > *, footer h3, footer a {
+    color: #dedada; }
+  footer h3 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.75; }
   footer p {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 2;
+    line-height: 1.6; }
+  footer li {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 2;
+    line-height: 1.6; }
+  footer a {
     color: white; }
+    footer a:hover {
+      color: #0896eb; }
 
 .image-right {
   float: right;
@@ -550,6 +571,22 @@ button, input[type="submit"], input[type="password"], input[type="search"] {
   button:focus, input[type="submit"]:focus, input[type="password"]:focus, input[type="search"]:focus {
     position: relative;
     top: 2px; }
+
+#mc_embed_signup {
+  margin-top: 30px; }
+
+#mc-embedded-subscribe-form {
+  display: flex; }
+
+#mc-embedded-subscribe {
+  flex-grow: 1; }
+
+#mc-embedded-label {
+  flex-grow: 2;
+  margin-right: 20px; }
+  #mc-embedded-label input {
+    width: 100%;
+    box-sizing: border-box; }
 
 .grid {
   margin-left: -20px;
@@ -750,13 +787,13 @@ nav {
     margin: 0; } }
 body {
   color: #4a4a4a;
-  font: 1em/1.75 "signikaregular", sans-serif; }
+  font: 1em/1.75 "signikalight", sans-serif; }
 
 h1, h2, h3, h4, h5 {
   color: navy;
   margin: 0;
   letter-spacing: 0.03em;
-  font-family: "signikalight"; }
+  font-family: "signikaregular"; }
   h1 a, h2 a, h3 a, h4 a, h5 a {
     text-decoration: none; }
 
