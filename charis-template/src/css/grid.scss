@@ -26,11 +26,19 @@
   float: left;
   vertical-align:top;
   box-sizing: border-box;
-  padding: $space;
+  padding: $space $space 0 $space;
   @include media-query(tablet-mobile-only){
     width:100%!important;
     padding-bottom: $space;
-   }
+  }
+}
+
+header .grid-item {
+  padding: $space;
+}
+
+.home .grid-item{
+  padding-bottom: $space;
 }
 
 // different types of width

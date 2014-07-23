@@ -3,11 +3,15 @@
 header {
   position: relative;
   background: silver;
+  margin-bottom: $double-space;
+}
+
+.home header {
+  margin-bottom: 0;
 }
 
 .intro {
   .block {
-    background: $light;
     padding: 20px;
     min-height: 200px;
     display: block;
@@ -17,6 +21,10 @@ header {
 footer {
   padding-top: $space;
   background: darken($main, 5%);
+  margin-top: $double-space;
+  .home & {
+    margin-top: 0;
+  }
   .grid-item {
     padding-bottom: 0;
   }
@@ -80,11 +88,18 @@ img {
   }
 }
 
+.news h2 {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
 .newsitem {
   padding: $space;
   background: $light;
   border: 1px solid $light;
   box-shadow: $box-shadow;
+  margin-top: 1px;
   .readmore {
     bottom: -1px;
     right: -1px;
@@ -96,12 +111,28 @@ img {
   padding-bottom: 20px;
 }
 
+// all linked white blocks
 .blocklink {
   display: block;
   text-decoration: none;
-  *, p:hover {
-    text-decoration: none;
-    color: $main;
+  background: rgba($light, 0.7);
+  transition: all 0.9s ease;
+  * {
+    text-decoration: none;  
+  }
+  p, h1, h2, h3 {
+    transition: all 0.9s ease;
+  }
+
+  // hoverstate white blocks
+  &:hover {
+    background: rgba($light, 1);
+    p, h1, h2, h3 {
+      transition: all 0.9s ease;
+    }
+    p {
+      color: $main;
+    }
   }
 }
 
@@ -125,7 +156,7 @@ img {
 }
 
 .logo {
-  margin-top: 60px;
+  margin-top: 25px;
   min-width: inherit;
   max-width: 320px;
   @include media-query(tablet-only){
@@ -192,23 +223,26 @@ img {
 
     }
   }
-  .grid-item {
-
+  .blocklink {
+    background: none;
   }
 }
 
 .newsletter {
   box-shadow: $box-shadow;
   background: $light-grey;
+  p:nth-last-child(1) {
+    margin-bottom: 10px;
+  }
 }
 
 .blocks {
   margin-top: 30px;
-  .block {
-    background: $light;
-    padding: $space;
-    margin-bottom: $space;
-  }
+}
+
+.block {
+  padding: $space;
+  margin-bottom: $space;
 }
 
 .row {
@@ -236,13 +270,14 @@ input{
   margin-bottom: 10px;
 }
 
-button, input[type="submit"], input[type="password"], input[type="search"]  {
+button, input[type="submit"], input[type="password"], input[type="search"], .btn  {
   background: $sec;
   color: $light;
   @include font-size(14px);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 4px 12px 4px;
+  display: inline-block;
   text-decoration: none;
   border: 0;
   transition: all 0.5s cubic-bezier(.50,.1,.25,1.25);
@@ -259,9 +294,13 @@ button, input[type="submit"], input[type="password"], input[type="search"]  {
   }
 }
 
+.btn
+
 // newsletter signup
 #mc_embed_signup {
-  margin-top: 30px;
+  @include media-query(desk){
+    margin-top: 30px;
+  }
 }
 
 #mc-embedded-subscribe-form {
