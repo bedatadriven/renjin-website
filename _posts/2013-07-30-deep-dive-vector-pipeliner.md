@@ -13,10 +13,9 @@ excerpt: Radford Neal started a great conversation with his comparison of Renjin
 Radford Neal, the statistician behind pqR, has started a 
 [great conversation](http://radfordneal.wordpress.com/2013/07/24/deferred-evaluation-in-renjin-riposte-and-pqr/#comments) on a 
 [recent blog post](http://radfordneal.wordpress.com/2013/07/24/deferred-evaluation-in-renjin-riposte-and-pqr/) that compares 
-how [pqR](http://radfordneal.github.io/pqR/, 
+how [pqR](http://radfordneal.github.io/pqR/), 
 [Renjin](http://www.renjin.org), and 
-[Riposte](https://github.com/jtalbot/riposte) defer and parallelize  
-computation while evaluating R code. 
+[Riposte](https://github.com/jtalbot/riposte) defer and parallelize computation while evaluating R code. 
 
 In this post, I want to continue this conversation by going into a bit more
 depth about how Renjin's vector pipeliner works, some results we've achieved 
