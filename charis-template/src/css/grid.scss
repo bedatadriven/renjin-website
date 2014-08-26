@@ -1,9 +1,14 @@
 // A very little responsive grid
+// Make sure the grid is always 12 columns in total
+
+// <div class="grid">
+// <div class="grid-item medium-10">Text</div><div class="grid-item medium-2">Text</div>
+// </div>
 
 .grid{
     margin-left:-$space;
     list-style:none;
-    margin-bottom:$space;
+    padding-bottom:$half-space;
     display: flex;
     flex-wrap: wrap;
     max-width: 75em;
@@ -12,6 +17,16 @@
     > * {
       padding-left:$double-space;
     }
+  .grid {
+    margin-left:-$space;
+    width: calc(100% + 40px);
+  }
+}
+
+// no margin left
+.no-margin {
+  margin-left:-$space;
+  margin-top:-$space;
 }
 
 
@@ -43,35 +58,40 @@ header .grid-item {
 
 // different types of width
 
-.medium-2, .large-2 {
+// medium auto, if you want items to take natural space. Also space in between is less.
+.medium-x {
+  padding-right: 0;
+}
+
+.medium-2 {
   width: 16.666%;
 }
 
-.medium-4, .large-4 {
+.medium-4 {
   width: 33.333%;
 }
 
-.medium-5, .large-5 {
+.medium-5 {
   width: 41.665%;
 }
 
-.medium-6, .large-6 {
+.medium-6 {
   width: 50%;
 }
 
-.medium-7, .large-7 {
+.medium-7 {
   width: 58.331%;
 }
 
-.medium-8, .large-8 {
+.medium-8 {
   width: 66.666%;
 }
 
-.medium-10, .large-10 {
+.medium-10 {
   width: 83.333%;
 }
 
-.medium-12, .large-12 {
+.medium-12 {
   width: 100%;
 }
 

@@ -27,6 +27,7 @@ h1 {
 
 h2 {
   @include font-size(24px);
+
 }
 
 h3 {
@@ -34,13 +35,19 @@ h3 {
 }
 
 h4 {
-  @include font-size(20px);
+  @include font-size(18px);
 }
 
+// accent header - please do not use too much
 .accent {
   color: $accent;
   font-family: $webfont-semibold;
   text-shadow: $text-shadow;
+}
+
+// secondary header - when you want to combine multiple headers
+.sec {
+  color: $grey;
 }
 
 a {
@@ -51,7 +58,6 @@ a {
 }
 
 p {
-  font-family: $webfont-light;
   @include font-size(17px);
   margin-bottom: $base-line-height;
   margin-top: 3px;
@@ -115,6 +121,7 @@ pre {
   line-height: 1.5;
   margin-top: 0;
   margin-bottom: 20px;
+  width: 80%;
 }
 
 code {

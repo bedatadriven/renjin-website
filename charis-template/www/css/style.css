@@ -376,13 +376,14 @@ header {
 footer {
   padding-top: 20px;
   background: #000067;
-  margin-top: 40px; }
+  transition: all 0.6s ease-out; }
   .home footer {
     margin-top: 0; }
   footer .grid-item {
     padding-bottom: 0; }
   footer:hover {
-    background: navy; }
+    background: navy;
+    transition: all 0.6s cubic-bezier(0.5, 0.1, 0.25, 1.25); }
     footer:hover > *, footer:hover h3, footer:hover a {
       color: white; }
   footer > *, footer h3, footer a {
@@ -525,6 +526,7 @@ img {
       background: rgba(255, 255, 255, 0.8);
       color: navy; }
     .usp a:before {
+      left: -50px;
       color: #0896eb;
       background: white;
       width: 110px;
@@ -541,6 +543,36 @@ img {
       transition: all 0.2s cubic-bezier(0.5, 0.1, 0.25, 1.25); }
   .usp .blocklink {
     background: none; }
+
+.usp-followup {
+  background: transparent;
+  padding-top: 0; }
+  .usp-followup .grid .grid {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.15); }
+    .usp-followup .grid .grid div {
+      text-align: left;
+      margin-top: 10px; }
+    .usp-followup .grid .grid div:first-child {
+      font-family: "signikasemibold";
+      color: #4a4a4a;
+      text-align: center;
+      margin-top: 0; }
+      .usp-followup .grid .grid div:first-child:before {
+        color: #0896eb;
+        background: white;
+        width: 110px;
+        height: 110px;
+        left: -50px;
+        position: relative;
+        margin-bottom: 20px;
+        margin-left: 50%;
+        border-radius: 50%;
+        display: block;
+        font-size: 53px;
+        padding-top: 27px;
+        box-sizing: border-box;
+        transition: all 0.2s cubic-bezier(0.5, 0.1, 0.25, 1.25);
+        background: #eff4f7; }
 
 .newsletter {
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.3);
@@ -569,11 +601,42 @@ tr, th, td {
 tr:nth-child(odd) {
   background: #f6f5f5; }
 
-input {
+div label {
+  width: 100%;
+  margin-right: 20px;
+  display: inline-block;
+  vertical-align: top; }
+  @media only screen and (min-width: 30em) {
+    div label {
+      width: 35%; } }
+  @media only screen and (min-width: 50em) {
+    div label {
+      width: 30%; } }
+
+@media only screen and (min-width: 30em) {
+  label + input, label + textarea {
+    margin-left: 4px;
+    width: 55%; } }
+@media only screen and (min-width: 50em) {
+  label + input, label + textarea {
+    width: 60%; } }
+
+input + label {
+  width: auto;
+  margin-left: 20px; }
+
+p + select {
+  position: relative;
+  top: -20px; }
+
+input, textarea {
   padding: 8px 10px;
   border: 1px solid #979797;
   box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  margin-bottom: 10px; }
+  margin-bottom: 15px; }
+  @media only screen and (min-width: 30em) {
+    input, textarea {
+      margin-bottom: 20px; } }
 
 button, input[type="submit"], input[type="password"], input[type="search"], .btn {
   background: #0896eb;
@@ -599,7 +662,6 @@ button, input[type="submit"], input[type="password"], input[type="search"], .btn
     top: 2px; }
 
 @media only screen and (min-width: 50em) {
-  .btn
   #mc_embed_signup {
     margin-top: 30px; } }
 
@@ -619,13 +681,20 @@ button, input[type="submit"], input[type="password"], input[type="search"], .btn
 .grid {
   margin-left: -20px;
   list-style: none;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
   max-width: 75em;
   margin: 0 auto; }
   .grid > * {
     padding-left: 40px; }
+  .grid .grid {
+    margin-left: -20px;
+    width: calc(100% + 40px); }
+
+.no-margin {
+  margin-left: -20px;
+  margin-top: -20px; }
 
 .grid > :first-child:not(.grid-item) {
   margin-left: -20px; }
@@ -648,28 +717,31 @@ header .grid-item {
 .home .grid-item {
   padding-bottom: 20px; }
 
-.medium-2, .large-2 {
+.medium-x {
+  padding-right: 0; }
+
+.medium-2 {
   width: 16.666%; }
 
-.medium-4, .large-4 {
+.medium-4 {
   width: 33.333%; }
 
-.medium-5, .large-5 {
+.medium-5 {
   width: 41.665%; }
 
-.medium-6, .large-6 {
+.medium-6 {
   width: 50%; }
 
-.medium-7, .large-7 {
+.medium-7 {
   width: 58.331%; }
 
-.medium-8, .large-8 {
+.medium-8 {
   width: 66.666%; }
 
-.medium-10, .large-10 {
+.medium-10 {
   width: 83.333%; }
 
-.medium-12, .large-12 {
+.medium-12 {
   width: 100%; }
 
 nav {
@@ -852,14 +924,17 @@ h3 {
   line-height: 1.27273; }
 
 h4 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  line-height: 1.4; }
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.55556; }
 
 .accent {
   color: #f5002e;
   font-family: "signikasemibold";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+
+.sec {
+  color: #979797; }
 
 a {
   color: navy; }
@@ -867,7 +942,6 @@ a {
     color: #0896eb; }
 
 p {
-  font-family: "signikalight";
   font-size: 17px;
   font-size: 1.0625rem;
   line-height: 1.64706;
@@ -924,7 +998,8 @@ pre {
   padding: 20px;
   line-height: 1.5;
   margin-top: 0;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  width: 80%; }
 
 code {
   padding: 5px 8px;
