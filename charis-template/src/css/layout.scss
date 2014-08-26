@@ -364,6 +364,9 @@ button, input[type="submit"], input[type="password"], input[type="search"], .btn
   @include media-query(desk){
     margin-top: 30px;
   }
+  label {
+    width: 100%;
+  }
 }
 
 #mc-embedded-subscribe-form {

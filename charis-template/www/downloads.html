@@ -28,7 +28,7 @@
 <header role="banner">
   <div class="grid">
     <div class="medium-4 grid-item">
-      <img src="img/logo.png" alt="TBTL, Task Based Language Teaching" class="logo"/>
+      <img src="img/logo.svg" alt="Renjin logo" class="logo"/>
     </div>
     <div class="medium-8 grid-item">
       <div class="slogan">
@@ -42,7 +42,7 @@
     <div class="medium-12 grid-item">
       <h1>Downloads</h1>
 
-      <p>The current version of Renjin is 0.7.0-RC7. Choose your flavor below and hit the download button!</p>
+      <p>The current version of Renjin is 0.7.0-RC7. You can use Renjin as a standalone application, either in a simple GUI or from the command line, or as a package in a Java application. Select on of the download options and read about the prerequisites and the installation instructions below.</p>
     </div>
   </div>
   <div class="grid">
@@ -61,24 +61,35 @@
     </div>
   </div>
   <div class="medium-6 grid-item">
-    <h3>Command Line Tools</h3>
+    <h2>Command Line Tools</h2>
     <h4 class="sec">Only for Linux</h4>
     <p>Prefer working with the command line, download this version. Any remarks etc. </p>
-      <div class="grid no-margin">
-        <div class="grid-item medium-x">
+    <div class="grid no-margin">
+      <div class="grid-item medium-x">
         <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/0.7.0-RC7/renjin-debian-package-0.7.0-RC7.deb" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
-        </div>
-        <div class="grid-item medium-x">
-          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/0.7.0-RC7/renjin-generic-package-0.7.0-RC7.zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
-        </div>
       </div>
-        </div>
+      <div class="grid-item medium-x">
+        <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/0.7.0-RC7/renjin-generic-package-0.7.0-RC7.zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
       </div>
-      <div class="grid">
-        <div class="medium-12 grid-item">
-    <h3>Java Library</h3>
-    
-    <p>Add to your Maven Project:</p>
+    </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="medium-12 grid-item">
+      <h3>Requirements</h3>
+      <p>As Renjin is a Java application it will run on any platform with a JVM installed. Therefore, if you want to run Renjin, you need to have installed at least version 6 (or greater) of the Java SE Runtime Environment (JRE). If you haven't, then download and install it from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+
+      <h3>Installation</h3>
+      <p>The Swing-based Studio GUI is a very simple demo for the moment. Download the JAR file and double-click to execute, or start with the following command:</p>
+      <pre>java -jar renjin-studio-0.7.0-RC7-jar-with-dependencies.jar</pre>
+
+      <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
+      <pre>sudo dpkg -i renjin-debian-package-0.7.0-RC7.deb</pre>
+      <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
+
+      <h2>Java Library</h2>
+      
+      <p>In a Java application you will mostly use the Renjin Script Engine. Add the following to your Maven project:</p>
         
 <pre>&lt;dependencies&gt;
   &lt;dependency&gt;
@@ -95,22 +106,8 @@
   &lt;/repository&gt;
 &lt;/repositories&gt;
 </pre>
-
-    <h3>Requirements</h3>
-    <p>As Renjin is a Java application it will run on any platform with a JVM installed. Therefore, if you want to run Renjin, you need to have installed at least version 6 (or greater) of the Java SE Runtime Environment (JRE). If you haven't, then download and install it from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
-
-
-    <h3>Installation</h3>
-    <p>The Swing-based Studio GUI is a very simple demo for the moment. Download the .jar file and double-click to execute, or start with the following command:</p>
-
-    <pre>java -jar renjin-studio-0.7.0-RC7-jar-with-dependencies.jar</pre>
-    <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
-
-
-    <pre>sudo dpkg -i renjin-debian-package-0.7.0-RC7.deb</pre>
-    <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
-
-   </div>
+          <p>Read more about using Renjin in a Java application in the <a href="http://docs.renjin.org/en/latest/">documentation</a>.</p>
+      </div>
     </div>
   </div>
 </main>
