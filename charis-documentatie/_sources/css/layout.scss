@@ -1,0 +1,130 @@
+// Layout, general layout elements
+
+.intro {
+  .block {
+    padding: 20px;
+    min-height: 200px;
+    display: block;
+  }
+}
+
+// news letter
+.response {
+  display: none;
+}
+
+.mc-field-group {
+  display: inline;
+}
+
+img {
+  max-width: 100%;
+  @include media-query(tablet-mobile-only){
+    min-width: 100%;
+  }
+}
+
+.news h2 {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+.newsitem {
+  padding: $space;
+  background: $light;
+  border: 1px solid $light;
+  box-shadow: $box-shadow;
+  margin-top: 1px;
+  .readmore {
+    bottom: -1px;
+    right: -1px;
+  }
+}
+
+.newsitem, .block {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+// all linked white blocks
+.blocklink {
+  display: block;
+  text-decoration: none;
+  background: rgba($light, 0.7);
+  transition: all 0.9s ease;
+  * {
+    text-decoration: none;  
+  }
+  p, h1, h2, h3 {
+    transition: all 0.9s ease;
+  }
+
+  // hoverstate white blocks
+  &:hover {
+    background: rgba($light, 1);
+    p, h1, h2, h3 {
+      transition: all 0.9s ease;
+    }
+    p {
+      color: $main;
+    }
+  }
+}
+
+.readmore {
+  background: $sec;
+  color: $light;
+  @include font-size(14px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 2px 12px 1px;
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: all 0.5s cubic-bezier(.50,.1,.25,1.25);
+  &:hover, a:hover & {
+    background: $main;
+    color: $light;
+    transition: all 0.4s cubic-bezier(.50,.1,.25,1.25);
+  }
+}
+
+
+
+
+input, textarea{
+  padding: 8px 10px;
+  border: 1px solid #979797;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.30);
+  margin-bottom: 15px;
+  @include media-query(tablet){ 
+    margin-bottom: $space;
+  }
+}
+
+button, input[type="submit"], input[type="password"], input[type="search"], .btn  {
+  background: $sec;
+  color: $light;
+  @include font-size(14px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 12px 4px;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  transition: all 0.5s cubic-bezier(.50,.1,.25,1.25);
+  box-shadow: none;
+  margin-top: -1px;
+  &:hover, a:hover & {
+    background: $main;
+    color: $light;
+    transition: all 0.4s cubic-bezier(.50,.1,.25,1.25);
+  }
+  &:focus {
+    position: relative;
+    top: 2px;
+  }
+}
+

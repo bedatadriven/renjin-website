@@ -1,15 +1,5 @@
 // Layout, general layout elements
 
-header {
-  position: relative;
-  background: silver;
-  margin-bottom: $double-space;
-}
-
-.home header {
-  margin-bottom: 0;
-}
-
 .intro {
   .block {
     padding: 20px;
@@ -153,31 +143,6 @@ img {
     background: $main;
     color: $light;
     transition: all 0.4s cubic-bezier(.50,.1,.25,1.25);
-  }
-}
-
-.logo {
-  margin-top: 25px;
-  min-width: inherit;
-  max-width: 320px;
-  @include media-query(tablet-only){
-    max-width: 400px;
-  }
-  @include media-query(mobile-only){
-    max-width: 100%;
-  }
-}
-
-.slogan {
-  color: $main;
-  margin-top: 60px;
-  margin-left: 40px;
-  h1 {
-    @include font-size(22px);
-    font-weight: normal;
-  }
-  @include media-query(tablet-mobile-only){
-    margin: 0;
   }
 }
 

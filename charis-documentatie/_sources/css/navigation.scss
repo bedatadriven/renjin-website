@@ -1,7 +1,7 @@
 
 // responsive top menu: http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly
 // desktop
-nav {
+#nav {
   background: $main;
   > a {
     display: none;
@@ -104,19 +104,19 @@ nav {
 }
 
 @media only screen and (max-width: 60em) {
-  nav li {
+  #nav li {
     @include font-size (16px);
   }
-  nav > ul > li > a {
-    line-height: 3.3em;
+  #nav > ul > li > a {
+    line-height: 3.7em;
   }
-  nav li a {
+  #nav li a {
     font-size: inherit;
   }
 }
 
 @media only screen and (max-width: 48em) {
-  nav {
+  #nav {
     position: relative;
     top: auto;
     left: auto;
@@ -155,7 +155,7 @@ nav {
       left: 0;
       right: 0;
       top: 60px;
-      z-index: 100;
+      z-index: 9999;
     }
     > ul > li {
       width: 100%;
@@ -179,7 +179,7 @@ nav {
 }
 
 @media only screen and (max-width: 62.5em) {
-  nav {
+  #nav {
     width: 100%;
     position: static;
     margin: 0;

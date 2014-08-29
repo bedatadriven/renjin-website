@@ -1,0 +1,83 @@
+// All mixins and variables that are used
+
+// colors
+$main: #000080; // blauw
+$main-light: #EFF4F7;// heel licht blauw
+
+$accent: #F5002E; // rood
+$sec: #0896EB; // felblauw
+
+$dark: #4A4A4A;
+$light: #FFF;
+$grey: #979797;
+$light-grey: #F6F5F5;
+
+
+$text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+$box-shadow: 0 1px 2px 0px rgba(0,0,0,0.30);
+$box-shadow-bottom: 0 2px 1px -1px rgba(0,0,0,0.15);
+// global spaces
+
+$space: 20px;
+$half-space: $space / 2;
+$double-space: $space * 2;
+
+// base font size
+$base-font-size: 16px!default;
+$base-line-height: 28px!default;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+$webfont-light: 'signikalight';
+$webfont-regular: 'signikaregular';
+$webfont-bold: 'signikabold';
+$webfont-semibold: 'signikasemibold';
+
+
+// font-size
+//
+// Create a fully formed type style (sizing and vertical rhythm) by passing in a single value, e.g.:
+// `@include font-size(10px);`
+// twitter.com/redclov3r/status/250301539321798657
+
+@mixin font-size($font-size, $line-height:true){
+    font-size:$font-size;
+    font-size:($font-size / $base-font-size)*1rem;
+    @if $line-height == true{
+        line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+// clearfix
+
+.cf{
+    &:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+
+
+// Media query mixin.
+// Not using a media query will, naturally, serve styles to all devices.
+// `@include media-query(mobile){ [styles here] }`
+
+@mixin media-query($media-query){
+
+    @if $media-query == mobile-only{
+        @media only screen and (max-width:35em) { @content; }
+    }
+
+    @if $media-query == tablet-mobile-only{
+        @media only screen and (max-width:50em) { @content; }
+    }
+
+    @if $media-query == tablet{
+        @media only screen and (min-width:30em) { @content; }
+    }
+
+    @if $media-query == desk{
+        @media only screen and (min-width:50em) { @content; }
+    }
+
+}

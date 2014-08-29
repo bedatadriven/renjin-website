@@ -797,18 +797,18 @@ nav {
   nav li ul li a:hover, nav li ul:not(:hover) li.active a {
     background-color: #0896eb; }
 
-@media only screen and (max-width: 60em) {
+@media only screen and (max-width: 50em) {
   nav li {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.75; }
+    font-size: 17px;
+    font-size: 1.0625rem;
+    line-height: 1.64706; }
 
   nav > ul > li > a {
     line-height: 3.3em; }
 
   nav li a {
     font-size: inherit; } }
-@media only screen and (max-width: 48em) {
+@media only screen and (max-width: 40em) {
   nav {
     position: relative;
     top: auto;
@@ -889,9 +889,6 @@ header {
     font-size: 1.375rem;
     line-height: 1.27273;
     font-weight: normal; }
-    @media only screen and (min-width: 50em) {
-      .slogan h1 {
-        margin-left: 40px; } }
   @media only screen and (max-width: 50em) {
     .slogan {
       margin: 0; } }

@@ -1,0 +1,233 @@
+// All mixins and variables that are used
+body {
+  color: $dark;
+  font:#{($base-font-size/16px)*1em}/#{$line-height-ratio} $webfont-light, sans-serif;
+}
+
+
+h1, h2, h3, h4, h5 {
+  color: $main;
+  margin: 0;
+  letter-spacing: 0.03em;
+  font-family: $webfont-regular;
+  font-weight: normal;
+  a {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  @include font-size(30px);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  + p {
+    margin-top: -10px;
+  }
+}
+
+h2 {
+  @include font-size(24px);
+
+}
+
+h3 {
+  @include font-size(22px);
+}
+
+h4 {
+  @include font-size(18px);
+}
+
+// accent header - please do not use too much
+.accent {
+  color: $accent;
+  font-family: $webfont-semibold;
+  text-shadow: $text-shadow;
+}
+
+// secondary header - when you want to combine multiple headers
+.sec {
+  color: $grey;
+}
+
+a {
+  color: $main;
+  &:hover, &:active {
+    color: $sec;
+  }
+}
+
+p {
+  @include font-size(17px);
+  margin-bottom: $base-line-height;
+  margin-top: 3px;
+  + p {
+    margin-top: -$base-line-height / 2;
+  }
+  + ul {
+    margin-top: -$base-line-height / 2;
+  }
+  + .meta {
+    margin-top: -$base-line-height;
+  }
+}
+
+ul, ol {
+  @include font-size(17px);
+  margin-bottom: $base-line-height;
+}
+
+
+.meta {
+  @include font-size(14px);
+  color: $grey;
+  font-family: $webfont-light;
+}
+
+ul, ol {
+  padding-left: $space;
+  margin: 5px 0 10px 0;
+  a {
+    text-decoration: none;
+  }
+}
+
+ul li {
+  list-style: none;
+  position: relative;
+}
+
+pre, code {
+  font-family: Monaco, Menlo, Consolas,"Courier New",monospace;
+  @include font-size(12px);
+}
+
+p + pre {
+  margin-top: -20px;
+}
+
+pre {
+  background: $light-grey;
+  box-shadow:inset 0 0 2px 1px rgba(0,0,0,0.1);
+  padding: $space;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 20px;
+
+}
+
+code {
+  padding: 5px 8px;
+  color: $accent;
+  white-space: nowrap;
+  background-color: $light-grey;
+  box-shadow:inset 0 0 2px 1px rgba(0,0,0,0.1);
+}
+
+
+@font-face {
+    font-family: 'signikalight';
+    src: url('../webfont/signika-light-webfont.eot');
+    src: url('../webfont/signika-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../webfont/signika-light-webfont.woff') format('woff'),
+         url('../webfont/signika-light-webfont.ttf') format('truetype'),
+         url('../webfont/signika-light-webfont.svg#signikalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../webfont/signika-regular-webfont.eot');
+    src: url('../webfont/signika-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../webfont/signika-regular-webfont.woff') format('woff'),
+         url('../webfont/signika-regular-webfont.ttf') format('truetype'),
+         url('../webfont/signika-regular-webfont.svg#signikaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikasemibold';
+    src: url('../webfont/signika-semibold-webfont.eot');
+    src: url('../webfont/signika-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../webfont/signika-semibold-webfont.woff') format('woff'),
+         url('../webfont/signika-semibold-webfont.ttf') format('truetype'),
+         url('../webfont/signika-semibold-webfont.svg#signikasemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikabold';
+    src: url('../webfont/signika-bold-webfont.eot');
+    src: url('../webfont/signika-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../webfont/signika-bold-webfont.woff') format('woff'),
+         url('../webfont/signika-bold-webfont.ttf') format('truetype'),
+         url('../webfont/signika-bold-webfont.svg#signikabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../webfont/fontello.eot?97218295');
+  src: url('../webfont/fontello.eot?97218295#iefix') format('embedded-opentype'),
+       url('../webfont/fontello.woff?97218295') format('woff'),
+       url('../webfont/fontello.ttf?97218295') format('truetype'),
+       url('../webfont/fontello.svg?97218295#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?97218295#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-trophy:before { content: '\e800'; } /* '' */
+.icon-cloud:before { content: '\e801'; } /* '' */
+.icon-database:before { content: '\e802'; } /* '' */
+.icon-fire:before { content: '\e803'; } /* '' */
+.icon-attach:before { content: '\e804'; } /* '' */
+.icon-beaker:before { content: '\e805'; } /* '' */
+.icon-truck:before { content: '\e806'; } /* '' */
+.icon-diamond:before { content: '\e807'; } /* '' */
+.icon-clock:before { content: '\e808'; } /* '' */
