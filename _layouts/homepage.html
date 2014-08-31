@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Renjin.org | Home of the JVM-based interpreter for the R language for statistical computing</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>{{ site.title }} | {{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="{{ site.title }} | {{ page.title }}" />
+    <meta property="og:utl" content="{{site.url}}{{ page.url }}" />
+    <meta property="og:image" content="{{ site.url }}/assets/img/renjin-logo-thumbnail.png" />
+
     <link href="css/style.css" rel="stylesheet" media="all">
     <!--[if lt IE 9]>
     <script src="http://html5shiv-printshiv.googlecode.com/svn/trunk/html5shiv-printshiv.js"></script>
@@ -20,7 +24,7 @@
         <li><a href="/">Documentation</a></li>
         <li><a href="/">Support</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="/">Blog</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
     </ul>
 </nav>
 <header role="banner">
@@ -131,28 +135,7 @@
     <div class="grid">   
       <h2 class="accent">Latest news</h2> 
       <div class="medium-6 grid-item">
-        <a href="#" class="newsitem blocklink">
-          <h4>Publication title</h4>
-          <p>Radford Neal started a great conversation with his comparison of Renjin, pqR and Riposte. I want to continue this conversation by going into a bit more depth about how Renjin's vector pipeliner works.</p>
-          <div class="meta">Published in May 23 2014</div>
-          <div class="readmore">Read more</div>
-        </a>
-
-        <a href="#" class="newsitem blocklink">
-          <h4>Publication title</h4>
-          <p>Radford Neal started a great conversation with his comparison of Renjin, pqR and Riposte. I want to continue this conversation by going into a bit more depth about how Renjin's vector pipeliner works.</p>
-          <div class="meta">Published in May 23 2014</div>
-          <div class="readmore">Read more</div>
-        </a>
-
-        <a href="#" class="newsitem blocklink">
-          <h4>Publication title</h4>
-          <p>Radford Neal started a great conversation with his comparison of Renjin, pqR and Riposte. I want to continue this conversation by going into a bit more depth about how Renjin's vector pipeliner works. Renjin, pqR and Riposte. </p>
-          <p>I want to continue this conversation by going into a bit more depth about how Renjin's vector pipeliner works.</p>
-          <div class="meta">Published in May 23 2014</div>
-          <div class="readmore">Read more</div>
-        </a>
-
+          {{ content }}
       </div>
 
       <div class="medium-6 grid-item">
@@ -218,5 +201,15 @@
     </div>
   </div>
 </footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-20543588-3', 'renjin.org');
+    ga('send', 'pageview');
+
+  </script>
 </body>
 </html>

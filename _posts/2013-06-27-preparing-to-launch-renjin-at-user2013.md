@@ -5,6 +5,7 @@ author:
     url: https://plus.google.com/u/0/111907942618741434760
 lang: en
 title: Preparing to launch Renjin at UseR!2013
+excerpt: We are pleased to announce that we will be officially launching Renjin at the User!2013 conference, which will be held July 9-13 in Albacete, Spain. Together with an official release version, we are preparing a new website with updated documentation and much more.
 ---
 
 We are pleased to announce that we will be officially launching Renjin at the

@@ -4,10 +4,7 @@ url: http://www.renjin.org
 
 renjin-current: 0.7.0-RC7
 
-markdown: pandoc
-pandoc:
-    extensions:
-        - smart
+markdown: rdiscount
 
 exclude: [README.md]
 

@@ -1,0 +1,218 @@
+---
+layout: default
+title: Home of the JVM-based interpreter for the R language for statistical computing
+---
+<h1><a name="about">About</a></h1>
+
+<p>Renjin is a JVM-based interpreter for the <a
+    href="http://www.r-project.org">R language for statistical computing</a>.
+This project is an initiative of <a
+    href="http://www.bedatadriven.com">BeDataDriven</a>, a company
+providing consulting in analytics and decision support systems.</p>
+
+<h2>R on the JVM</h2>
+
+<p>Over the past two decades, the R language for statistical computing has
+emerged as the de facto standard for analysts, statisticians, and scientists.
+Today, a wide range of enterprises &ndash;from pharmaceuticals to
+insurance&ndash; depend on R for key business uses.  Renjin is a new
+implementation of the R language and environment for the Java Virtual Machine
+(JVM), whose goal is to enable transparent analysis of big data sets
+ and seamless integration with other
+enterprise systems such as databases and application servers.</p>
+
+<p>Renjin is still under development, but it is already being used in
+production for a number of our client projects, and <a
+    href="http://packages.renjin.org">supports most CRAN packages,</a>
+including some with C/Fortran dependencies.</p> 
+
+<h2>Why Renjin?</h2>
+
+<p>We built Renjin, a new interpreter for the JVM because
+we wanted the beauty, the flexibility, and power of R with the performance 
+of the Java Virtual Machine.</p>
+
+<h3>Bigger data</h3>
+
+<p>R has been traditionally limited by the need to fit data sets into memory,
+and working with even modest sets of data can quickly exhaust memory due to
+historical limitations in GNU R interpreter’s implementation.</p>
+
+<p>Renjin will allow R scripts to transparently interact with data wherever it’s
+stored, whether that’s on disk, in a remote database, or in the cloud.</p>
+
+<p>While there have been attempts to bring big data to the original
+interpreter, these have generally provided a parallel set of data structures
+and algorithms, threatening a fragmentation of the language and platform.
+Renjin, in contrast, will allow existing R code to run on larger datasets with no
+modification, using R’s familiar and standard data structures and
+algorithms.</p>
+
+<h3>Better performance</h3>
+
+<p>Renjin offers performance improvements in executing R code on several fronts:</p>
+<ul>
+    <li><strong>Vector operations:</strong> Renjin’s deferred computation
+    engine automatically parallelizes and optimizes vector operation to run an
+    order of magnitude faster, without the memory demands of computing
+    intermediate structures</li>
+    <li><strong>Matrix operations:</strong> Renjin allows the user to plugin
+    best-of-class implementations of BLAS, LAPACK, and FFT.</li>
+    <li><strong>Scalar operations:</strong> Renjin will compile frequently used
+    portions of R code to JVM byte code on the fly, dramatically increasing
+    performance of R’s notorious performance on for loops and other predominantly
+    scalar code [2013Q3]</li>
+</ul>
+
+<p>These improvements make it possible to perform real-time analyses using
+complex models.</p>
+
+<h3>Cloud-ready</h3>
+
+<p>Renjin enables R developers to deploy their code to Platform-as-a-Service
+providers like Google Appengine, Amazon Beanstalk or Heroku without worrying
+about scale or infrastructure. Renjin is pure Java - it can run anywhere.</p>
+
+<p>You can <a href="http://renjindemo.appspot.com/">try the live demo</a> of
+the interpreter on Google Appengine to see Renjin in action.</p>
+
+<h3>Seamless integration with the rest of the enterprise</h3>
+
+<p>Built on the JVM, Renjin allows R code to interact directly with JVM
+libraries and data structures, without the need for expensive data transfer or
+brittle inter-process communication.</p>
+
+<p>Java and Scala developers can expose their data directly to R scripts by
+implementing a simple interface. To the R developer, the data looks no
+different than a normal R data structure.</p>
+
+<p>Renjin runs safely in multithreaded application servers, allowing embedders
+to create as many independent “apartments” to run existing single-threaded R
+code, or to allow multi- threaded access if the user’s R code is written in a
+pure, functional manner.  Renjin allows developers to choose the right language
+for the different components of an enterprise system, without worrying how
+they’ll interact.</p>
+
+<h3>More productive development cycle</h3>
+
+<p>Many enterprises will prototype analyses and models in R because of it’s
+ease of use, but then port the results to Java/C++ for production use, either
+because of performance limitations or due to poor interoperability between the
+original R VM and other enterprise systems.</p>
+
+<p>With Renjin, analysts can move directly from prototype to production. R
+scripts can be packaged as JARs and called directly from JVM-based environments
+and referenced directly by other JVM languages like Java, Scala, JRuby, or
+Clojure.</p>
+
+<h3>Open-source and cutting-edge</h3>
+
+<p>Like R itself, the Renjin source code is available under an open-source
+license. That means you get to stand on the shoulders of giants at little or no
+cost.</p>
+
+<h3>Support</h3>
+
+<p>Check out the <a href="support.html">support page</a> if you need
+(commercial) support for Renjin.</p>
+
+
+<h1><a name="downloads">Downloads</a></h1>
+
+<p>The current version of Renjin is <strong>{{ site.renjin-current }}</strong>. Choose your flavor below and hit the download button!</p>
+
+<div class="row">
+  
+  <div class="span6">
+    <h3>Renjin Studio GUI</h3>
+    <p>All Platforms</p>
+    
+    <p>
+    <a href="http://www.renjin.org/webstart/studio.jnlp" class="btn btn-large btn-warning"
+    onclick="ga('send', 'event', 'download', 'webstart');" type="button">Open with WebStart</a>
+    </p>
+    
+      <p>
+    <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-studio/{{ site.renjin-current }}/renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar" class="btn btn-large btn-warning" type="button"
+    onclick="ga('send', 'event', 'download', 'zip');">Download JAR</a>
+    </p>
+  </div>  
+   
+  <div class="span6">
+    <h3>Command Line Tools</h3>
+    <p>Linux</p>
+    
+    <p>
+    <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/{{ site.renjin-current }}/renjin-debian-package-{{ site.renjin-current }}.deb" class="btn btn-large btn-warning" type="button"
+    onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
+    </p>
+    
+    <p>
+    <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/{{ site.renjin-current }}/renjin-generic-package-{{ site.renjin-current }}.zip" class="btn btn-large btn-warning" type="button"
+    onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <h3>Java Library</h3>
+    
+    <p>Add to your Maven Project:</p>
+        
+<pre>&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.renjin&lt;/groupId&gt;
+    &lt;artifactId&gt;renjin-script-engine&lt;/artifactId&gt;
+    &lt;version&gt;{{ site.renjin-current }}&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;bedatadriven&lt;/id&gt;
+    &lt;name&gt;bedatadriven public repo&lt;/name&gt;
+    &lt;url&gt;http://nexus.bedatadriven.com/content/groups/public/&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;</pre>
+   </div>
+</div>
+
+<h2>Requirements</h2>
+
+<p>As Renjin is a Java application it will run on any platform with a JVM
+installed. Therefore, if you want to run Renjin, you need to have installed at
+least version 6 (or greater) of the Java SE Runtime Environment (JRE). If you
+haven't, then download and install it from <a
+    href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>.</p>
+
+<h2>Installation</h2>
+
+<p>The Swing-based Studio GUI is a very simple demo for the moment. Download the .jar file and double-click to execute, 
+or start with the following command:</p>
+
+<pre>
+  <code>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</code>
+</pre>
+
+<p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
+
+<pre>
+  <code>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</code>
+</pre>
+
+<p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
+
+
+
+
+<h1>Latest news</h1>
+
+<p>Visit the <a href="blog/">blog page</a> to read all articles or subscribe to the blog's 
+<a href="{{ site.url }}/feed.xml">RSS feed</a> to stay up to
+date with the latest news on Renjin. You can also subscribe to the mailing list below.</p>
+
+{% for post in site.posts limit:3 %}
+<h2>{{ post.title }} ({{ post.date | date: "%Y-%m-%d" }})</h2>
+  <p>{{ post.excerpt }}</p>
+  <p><a href="{{ post.url }}">Read more...</a></p>
+{% endfor %}
+

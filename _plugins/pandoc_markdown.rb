@@ -1,4 +1,3 @@
-# Source is https://github.com/dsanson/jekyll-pandoc-plugin/blob/master/pandoc_markdown.rb
 module Jekyll
   module Converters
     class Markdown < Converter
@@ -50,7 +49,7 @@ module Jekyll
     class Markdown
       class PandocParser
         def initialize(config)
-	  require 'pandoc-ruby'
+          require 'pandoc-ruby'
           @config = config
         rescue LoadError
           STDERR.puts 'You are missing a library required for Pandoc. Please run:'
@@ -59,8 +58,17 @@ module Jekyll
         end
 
         def convert(content)
-	  @pandoc_extensions = @config['pandoc']['extensions']
-	  PandocRuby.new(content, *@pandoc_extensions).to_html5
+          extensions = config_option('extensions', [])
+          format = config_option('format', 'html5')
+
+          PandocRuby.new(content, *extensions).send("to_#{format}")
+        end
+
+        def config_option(key, default=nil)
+          case @config['pandoc']
+            when nil then default
+            else @config['pandoc'].fetch(key, default)
+          end
         end
       end
     end
