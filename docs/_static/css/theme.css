@@ -365,6 +365,40 @@ th {
   min-height: 200px;
   display: block; }
 
+.footer {
+  padding-top: 20px;
+  background: #000067;
+  transition: all 0.6s ease-out; }
+  .home .footer {
+    margin-top: 0; }
+  .footer .grid-item {
+    padding-bottom: 0; }
+  .footer:hover {
+    background: navy;
+    transition: all 0.6s cubic-bezier(0.5, 0.1, 0.25, 1.25); }
+    .footer:hover > *, .footer:hover h3, .footer:hover a {
+      color: white; }
+  .footer > *, .footer h3, .footer a {
+    color: #dedada; }
+  .footer h3 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.75; }
+  .footer p {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 2;
+    line-height: 1.6; }
+  .footer li {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 2;
+    line-height: 1.6; }
+  .footer a {
+    color: white; }
+    .footer a:hover {
+      color: #0896eb; }
+
 .response {
   display: none; }
 
@@ -678,20 +712,20 @@ header .grid-item {
     margin: 0; } }
 header {
   position: relative;
-  background: silver;
-  margin-bottom: 40px;
-  display: none !important; }
+  background: silver; }
+  header .grid-item {
+    padding: 0 20px; }
 
 .home header {
   margin-bottom: 0; }
 
 .logo {
-  margin-top: 25px;
+  margin-top: 15px;
   min-width: inherit;
-  max-width: 320px; }
+  max-width: 120px; }
   @media only screen and (max-width: 35em) {
     .logo {
-      max-width: 100%; } }
+      max-width: 90px; } }
 
 .slogan {
   color: navy;
@@ -3827,7 +3861,6 @@ div[class^='highlight'] pre {
   background: #e3e3e3; }
 
 .wy-menu-vertical li.current a {
-  border-right: solid 1px #c9c9c9;
   padding: 0.4045em 2.427em; }
 
 .wy-menu-vertical li.current a:hover {
@@ -3940,9 +3973,12 @@ div[class^='highlight'] pre {
   background: #f6f5f5; }
 
 .wy-grid-for-nav {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  margin: 0 auto;
+  max-width: 75em;
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.3); }
 
 .wy-nav-side {
   position: absolute;
@@ -3952,8 +3988,7 @@ div[class^='highlight'] pre {
   overflow: hidden;
   min-height: 100%;
   background: #f6f5f5;
-  z-index: 200;
-  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.3); }
+  z-index: 200; }
 
 .wy-nav-top {
   display: none;
@@ -4006,14 +4041,14 @@ i.fa-bars:before {
 
 .wy-nav-content-wrap {
   margin-left: 300px;
-  background: #fcfcfc;
+  background: #fff;
   min-height: 100%; }
 
 .wy-nav-content {
   padding: 1.618em 3.236em;
   height: 100%;
   max-width: 800px;
-  margin: auto; }
+  box-shadow: inset 1px 0px 2px 0px rgba(0, 0, 0, 0.3); }
 
 .wy-body-mask {
   position: fixed;
@@ -4054,7 +4089,8 @@ footer p {
 #search-results .search li a {
   font-size: 120%;
   margin-bottom: 12px;
-  display: inline-block; }
+  display: inline-block;
+  box-shadow: 0 1px -2px 0px rgba(0, 0, 0, 0.3); }
 
 #search-results .context {
   color: gray;

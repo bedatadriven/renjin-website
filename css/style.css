@@ -365,38 +365,38 @@ th {
   min-height: 200px;
   display: block; }
 
-footer {
+footer, footer.footer {
   padding-top: 20px;
   background: #000067;
   transition: all 0.6s ease-out; }
-  .home footer {
+  .home footer, .home footer.footer {
     margin-top: 0; }
-  footer .grid-item {
+  footer .grid-item, footer.footer .grid-item {
     padding-bottom: 0; }
-  footer:hover {
+  footer:hover, footer.footer:hover {
     background: navy;
     transition: all 0.6s cubic-bezier(0.5, 0.1, 0.25, 1.25); }
-    footer:hover > *, footer:hover h3, footer:hover a {
+    footer:hover > *, footer:hover h3, footer:hover a, footer.footer:hover > *, footer.footer:hover h3, footer.footer:hover a {
       color: white; }
-  footer > *, footer h3, footer a {
+  footer > *, footer h3, footer a, footer.footer > *, footer.footer h3, footer.footer a {
     color: #dedada; }
-  footer h3 {
+  footer h3, footer.footer h3 {
     font-size: 16px;
     font-size: 1rem;
     line-height: 1.75; }
-  footer p {
+  footer p, footer.footer p {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 2;
     line-height: 1.6; }
-  footer li {
+  footer li, footer.footer li {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 2;
     line-height: 1.6; }
-  footer a {
+  footer a, footer.footer a {
     color: white; }
-    footer a:hover {
+    footer a:hover, footer.footer a:hover {
       color: #0896eb; }
 
 .image-right {

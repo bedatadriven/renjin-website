@@ -1,24 +1,24 @@
 header {
   position: relative;
   background: silver;
-  margin-bottom: $double-space;
-  display: none!important;
+  .grid-item {
+    padding: 0 20px;
+  }
 }
 
 .home header {
   margin-bottom: 0;
 }
 
-
 .logo {
-  margin-top: 25px;
+  margin-top: 15px;
   min-width: inherit;
-  max-width: 320px;
+  max-width: 120px;
   @include media-query(tablet-only){
-    max-width: 400px;
+    max-width: 90px;
   }
   @include media-query(mobile-only){
-    max-width: 100%;
+    max-width: 90px;
   }
 }
 
