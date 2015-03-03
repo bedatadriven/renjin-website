@@ -1,75 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Renjin.org | Home of the JVM-based interpreter for the R language for statistical computing</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet" media="all">
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv-printshiv.googlecode.com/svn/trunk/html5shiv-printshiv.js"></script>
-    <![endif]-->
-</head>
-<body>
-<nav id="nav" role="navigation">
-    <a href="#nav" title="Show navigation">Show navigation</a>
-    <a href="#" title="Hide navigation">Hide navigation</a>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="downloads.html">Downloads</a></li>
-        <li><a href="/">Packages</a></li>
-        <li><a href="/">Documentation</a></li>
-        <li><a href="/">Support</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="/">Blog</a></li>
-    </ul>
-</nav>
-
-<header role="banner">
-  <div class="grid">
-    <div class="medium-4 grid-item">
-      <img src="img/logo.svg" alt="Renjin logo" class="logo"/>
-    </div>
-    <div class="medium-8 grid-item">
-      <div class="slogan">
-        <h1>Renjin is a JVM-based interpreter for the R language for statistical computing. </h1>
-      </div>
-    </div>
-  </div>
-</header>
+---
+layout: default
+title: Downloads
+---
+{% include navigation.html active="downloads" %}
+{% include header_large.html %}
 <main role="main">
   <div class="grid">
     <div class="medium-12 grid-item">
       <h1>Downloads</h1>
 
-      <p>The current version of Renjin is 0.7.0-RC7. You can use Renjin as a standalone application, either in a simple GUI or from the command line, or as a package in a Java application. Select on of the download options and read about the prerequisites and the installation instructions below.</p>
+      <p>The current version of Renjin is {{ site.renjin-current }}. You can use Renjin as a standalone application, either in a simple GUI or from the command line, or as a package in a Java application. Select on of the download options and read about the prerequisites and the installation instructions below.</p>
     </div>
   </div>
   <div class="grid">
     <div class="medium-6 grid-item">
       <h3>Renjin Studio GUI</h3>
       <h4 class="sec">Available for all platforms</h4>
-      <p>This is our latest Renjin Studio. When you are looking for a GUI to etc. </p>
+      <p>Renjin studio provides a very basic GUI to interact with the
+      interpreter which works on all platforms with Java installed.</p>
 
       <div class="grid no-margin">
         <div class="grid-item medium-x">
           <a href="http://www.renjin.org/webstart/studio.jnlp" class="btn btn-large btn-warning" onclick="ga('send', 'event', 'download', 'webstart');" type="button">Open with WebStart</a>
         </div>
         <div class="grid-item medium-x">
-          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-studio/0.7.0-RC7/renjin-studio-0.7.0-RC7-jar-with-dependencies.jar" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download JAR</a>
+            <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-studio/{{ site.renjin-current }}/renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download JAR</a>
         </div>
     </div>
   </div>
   <div class="medium-6 grid-item">
     <h2>Command Line Tools</h2>
     <h4 class="sec">Only for Linux</h4>
-    <p>Prefer working with the command line, download this version. Any remarks etc. </p>
+    <p>Prefer working in a terminal? Download one of the following packages.</p>
     <div class="grid no-margin">
       <div class="grid-item medium-x">
-        <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/0.7.0-RC7/renjin-debian-package-0.7.0-RC7.deb" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
+          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/{{ site.renjin-current }}/renjin-debian-package-{{ site.renjin-current }}.deb" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
       </div>
       <div class="grid-item medium-x">
-        <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/0.7.0-RC7/renjin-generic-package-0.7.0-RC7.zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
+          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/{{ site.renjin-current }}/renjin-generic-package-{{ site.renjin-current }}.zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
       </div>
     </div>
     </div>
@@ -81,10 +49,10 @@
 
       <h3>Installation</h3>
       <p>The Swing-based Studio GUI is a very simple demo for the moment. Download the JAR file and double-click to execute, or start with the following command:</p>
-      <pre>java -jar renjin-studio-0.7.0-RC7-jar-with-dependencies.jar</pre>
+      <pre>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</pre>
 
       <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
-      <pre>sudo dpkg -i renjin-debian-package-0.7.0-RC7.deb</pre>
+      <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
       <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
 
       <h2>Java Library</h2>
@@ -95,7 +63,7 @@
   &lt;dependency&gt;
     &lt;groupId&gt;org.renjin&lt;/groupId&gt;
     &lt;artifactId&gt;renjin-script-engine&lt;/artifactId&gt;
-    &lt;version&gt;0.7.0-RC7&lt;/version&gt;
+    &lt;version&gt;{{ site.renjin-current }}&lt;/version&gt;
   &lt;/dependency&gt;
 &lt;/dependencies&gt;
 &lt;repositories&gt;
@@ -106,57 +74,8 @@
   &lt;/repository&gt;
 &lt;/repositories&gt;
 </pre>
-          <p>Read more about using Renjin in a Java application in the <a href="http://docs.renjin.org/en/latest/">documentation</a>.</p>
+          <p>Read more about using Renjin in a Java application in the <a href="http://docs.renjin.org/">documentation</a>.</p>
       </div>
     </div>
   </div>
 </main>
-
-<footer>
-  <div class="grid">
-    <div class="medium-4 grid-item">
-      <h3>Downloads</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Download 1</a></li>
-        <li><a href="#">Download 2</a></li>
-        <li><a href="#">Download 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Documentation</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Download 1</a></li>
-        <li><a href="#">Download 2</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Contribute</h3>
-      <p>We are always looking for contributers. <a href="#">Contact us</a></p>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Packages</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Newsitem 1</a></li>
-        <li><a href="#">Newsitem 2</a></li>
-        <li><a href="#">Newsitem 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>News</h3>
-      <ul>
-        <li><a href="#">Newsitem 1</a></li>
-        <li><a href="#">Newsitem 2</a></li>
-        <li><a href="#">Newsitem 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Support</h3>
-      <p>This project is an initiative of BeDataDriven, a company providing consulting in analytics and decision support systems. <a href="#">Contact us</a></p>
-    </div>
-  </div>
-</footer>
-</body>
-</html>

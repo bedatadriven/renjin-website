@@ -2,19 +2,45 @@
 layout: default
 title: Support
 ---
+{% include navigation.html active="support" %}
+{% include header_large.html %}
+<main role="main">
+  <div class="grid">
+    <div class="medium-12 grid-item">
 <h1>Support</h1>
 
 <h2>Technical support</h2>
 
-<p>Start by browsing the relevant <a href="documentation/">documentation</a> to
-see if you can find an answer to your question. If you still need help, then
-<a href="mailto:renjin-dev@googlegroups.com">send a message</a> to the
-renjin-dev mailing list. You can find past messages and answers at 
-<a href="http://groups.google.com/group/renjin-dev">http://groups.google.com/group/renjin-dev</a>.
+<p>Start by browsing the relevant <a
+    href="http://docs.renjin.org">documentation</a> to see if you can find an
+answer to your question. If you still need help, then <a
+    href="mailto:renjin-dev@googlegroups.com">send a message</a> to the
+renjin-dev mailing list. You can find past messages and answers at <a
+    href="http://groups.google.com/group/renjin-dev">http://groups.google.com/group/renjin-dev</a>
+which is embedded below.</p>
+
+<p>
+<iframe id="forum_embed"
+ src="javascript:void(0)"
+ scrolling="no"
+ frameborder="0"
+ width="100%"
+ height="700">
+</iframe>
 </p>
 
 <h2>Commercial support</h2>
 
-<p><a href="http://www.bedatadriven.com">BeDataDriven</a> plans to provide 
+<p><a href="http://www.bedatadriven.com">BeDataDriven</a> provides 
 commercial support for Renjin. If interested, please contact Maarten-Jan Kallen
 by e-mail at <span class="obfuscate-email">moc.nevirdatadeb@jm</span>.</p>
+  </div>
+  </div>
+</main>
+<script type="text/javascript">
+ document.getElementById("forum_embed").src =
+  "https://groups.google.com/forum/embed/?place=forum/renjin-dev" +
+  "&showsearch=true&showpopout=true&parenturl=" +
+  encodeURIComponent(window.location.href);
+</script>
+

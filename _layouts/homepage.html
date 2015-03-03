@@ -14,19 +14,7 @@
     <![endif]-->
 </head>
 <body class="home">
-<nav id="nav" role="navigation">
-    <a href="#nav" title="Show navigation">Show navigation</a>
-    <a href="#" title="Hide navigation">Hide navigation</a>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="/">Downloads</a></li>
-        <li><a href="/">Packages</a></li>
-        <li><a href="/">Documentation</a></li>
-        <li><a href="/">Support</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="/blog/index.html">Blog</a></li>
-    </ul>
-</nav>
+{% include navigation.html active="home" %}
 <header role="banner">
   <div class="grid">
     <div class="medium-4 grid-item">
@@ -47,7 +35,7 @@
       </a>
     </div>
     <div class="medium-4 grid-item">
-      <a href="http://docs.renjin.org/en/latest/" class="block blocklink">
+      <a href="http://docs.renjin.org/" class="block blocklink">
         <h2 class="accent">Documentation</h3>
         <p>Read the developer documentation to get started with integrating Renjin into your Java application.</p>
         <div class="readmore">To the documentation</div>
@@ -139,68 +127,26 @@
       </div>
 
       <div class="medium-6 grid-item">
-        <a href="#" class="block blocklink">
+        <a href="http://packages.renjin.org" class="block blocklink">
           <h3>Packages</h3>
-          <p>Right now we have 310 packages, 40% work, 32% may work and 28% doesn’t work.</p>
-          <div class="readmore">Take a look at our packages</div>
+          <p>CRAN packages are automatically built and tested against Renjin.
+          Many of them can be loaded directly into Renjin without the need to
+          install them first.</p>
+          <div class="readmore">Go to the package repository</div>
         </a>
 
-        <a href="#" class="block blocklink">
+        <a href="/support.html" class="block blocklink">
           <h3>Commercial support</h3>
-          <p>This project is an initiative of BeDataDriven, a company providing consulting in analytics and decision support systems. We can help with making visualisations and doing your laundry. </p>
-          <div class="readmore">Take a look at our packages</div>
+          <p>Renjin is a project initiated by BeDataDriven, a company
+          providing consulting in analytics and decision support systems. We
+          also provide commercial support for Renjin.</p>
+          <div class="readmore">Check your support options</div>
         </a>
       </div>
     </div>
   </div>
 </main>
-
-<footer>
-  <div class="grid">
-    <div class="medium-4 grid-item">
-      <h3>Downloads</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Download 1</a></li>
-        <li><a href="#">Download 2</a></li>
-        <li><a href="#">Download 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Documentation</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Download 1</a></li>
-        <li><a href="#">Download 2</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Contribute</h3>
-      <p>We are always looking for contributers. <a href="#">Contact us</a></p>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Packages</h3>
-      <p>Take a look at our download page, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="#">Newsitem 1</a></li>
-        <li><a href="#">Newsitem 2</a></li>
-        <li><a href="#">Newsitem 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>News</h3>
-      <ul>
-        <li><a href="#">Newsitem 1</a></li>
-        <li><a href="#">Newsitem 2</a></li>
-        <li><a href="#">Newsitem 3</a></li>
-      </ul>
-    </div>
-    <div class="medium-4 grid-item">
-      <h3>Support</h3>
-      <p>This project is an initiative of BeDataDriven, a company providing consulting in analytics and decision support systems. <a href="#">Contact us</a></p>
-    </div>
-  </div>
-</footer>
+{% include footer.html %}
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

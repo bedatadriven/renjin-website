@@ -1,5 +1,4 @@
 ---
-layout: none
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -9,31 +8,6 @@ layout: none
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>http://www.renjin.org/documentation/index.html</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>http://www.renjin.org/documentation/contributor-guide.html</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>http://www.renjin.org/documentation/developer-guide.html</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>http://www.renjin.org/documentation/analyst-guide.html</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>http://www.renjin.org/blog/index.html</loc>
-    <changefreq>weekly</changefreq>
   </url>
 
   {% for post in site.posts %}

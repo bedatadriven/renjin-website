@@ -1,19 +1,25 @@
 ---
 layout: default
 ---
+{% include navigation.html active='blog' %}
+{% include header_large.html %}
+
+<main role="main">
+  <div class="grid">
+    <div class="medium-12 grid-item">
+
 <article itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+
     <h1 itemprop="name headline">{{ page.title }}</h1>
     <p class="byline">
     Published by <a itemprop="author" itemscope itemtype="http://schema.org/Person" href="{{ page.author.url }}?rel=author">{{ page.author.name }}</a> 
     on <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemProp="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>.
     </p>
-  </header>
 {{ content }}
   <hr />
-  <footer>
+
     <p>Read more at <a href="{{ site.url }}/blog/">Renjin's blog</a> or subscribe to the blog's <a href="{{ site.url}}/feed.xml">RSS feed</a>.
-  </footer>
+
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'renjin'; 
@@ -29,3 +35,6 @@ layout: default
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 </article>
+</div>
+</div>
+</main>

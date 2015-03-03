@@ -6,8 +6,9 @@
 		<title>{{ site.title }}</title>
 		<description>{{ site.description }}</description>
 		<link>{{ site.url }}</link>
-		<atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="{{ site.url }}/r-bloggers-feed.xml" rel="self" type="application/rss+xml" />
 		{% for post in site.posts limit:10 %}
+        {% if post.tags contains 'r-bloggers' %}
 			<item>
 				<title>{{ post.title }}</title>
 				<description>{{ post.content | xml_escape }}</description>
@@ -15,6 +16,7 @@
 				<link>{{ site.url }}{{ post.url }}</link>
 				<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
 			</item>
+        {% endif %}
 		{% endfor %}
 	</channel>
 </rss>

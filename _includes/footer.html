@@ -1,0 +1,51 @@
+<footer>
+  <div class="grid">
+    <div class="medium-4 grid-item">
+      <h3>Downloads</h3>
+      <p>Take a look at our download page, or choose one of our downloads directly. </p>
+      <ul>
+        <li><a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/{{ site.renjin-current }}/renjin-debian-package-{{ site.renjin-current }}.deb" onclick="ga('send', 'event', 'download', 'debian');">Renjin CLI for Debian/Ubuntu [.deb]</a></li>
+        <li><a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-studio/{{ site.renjin-current }}/renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar" onclick="ga('send', 'event', 'download', 'zip');">Renjin Studio (GUI) for all platforms [.jar]</a></li>
+        <li><a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-script-engine/{{ site.renjin-current }}/renjin-script-engine-{{ site.renjin-current }}-jar-with-dependencies.jar" onclick="ga('send', 'event', 'download', 'zip');">Renjin Script Engine for Java projects [.jar]</a></li>
+      </ul>
+    </div>
+    <div class="medium-4 grid-item">
+      <h3>Documentation</h3>
+      <p>We have documentation on how to use Renjin in Java projects as well as on Renjin's internals.</p>
+      <ul>
+        <li><a href="http://docs.renjin.org/">Using Renjin in your Java project</a></li>
+        <li><a href="https://github.com/bedatadriven/renjin/wiki">Wiki on GitHub about Renjin's internals</a></li>
+      </ul>
+    </div>
+    <div class="medium-4 grid-item">
+      <h3>Contribute</h3>
+      <p>Renjin is an open-source project. Go to the <a href="https://github.com/bedatadriven/renjin/">source code on GitHub</a>.</p>
+    </div>
+    <div class="medium-4 grid-item">
+      <h3>Packages</h3>
+      <p>Take a look at our <a href="http://packages.renjin.org">package
+          repository browser</a> for the state of compatibility of CRAN
+      packages in Renjin. </p>
+      <!--
+      <ul>
+        <li><a href="#">Newsitem 1</a></li>
+        <li><a href="#">Newsitem 2</a></li>
+        <li><a href="#">Newsitem 3</a></li>
+      </ul>
+      -->
+    </div>
+    <div class="medium-4 grid-item">
+      <h3>News</h3>
+      <ul>
+        {% for post in site.posts limit: 3 %}
+        <li><a href="{{ post.url }}">{{ post.title }} ({{ post.date | date: "%Y-%m-%d" }})</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="medium-4 grid-item">
+      <h3>Support</h3>
+      <p>This project is an initiative of <a href="http://www.bedatadriven.com">BeDataDriven</a>, a company providing consulting in analytics and decision support systems. Read about our <a href="/support.html">support options for Renjin</a>. </p>
+    </div>
+  </div>
+</footer>
+
