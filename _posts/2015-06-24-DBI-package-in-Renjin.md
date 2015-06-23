@@ -11,6 +11,7 @@ excerpt: R's DBI package provides unified access to a variety of databases.
     RPostgreSQL, RMySQL, MonetDB.R and ROracle.
 ---
   
+![A sample session using RSQLite in Renjin](/assets/img/rsqlite-in-renjin.png)\
 
 For some months now, we have been working together with
 [CWI Database Architectures group](https://www.cwi.nl/research-groups/database-architectures)
