@@ -9,7 +9,10 @@ title: Downloads
     <div class="medium-12 grid-item">
       <h1>Downloads</h1>
 
-      <p>The current version of Renjin is {{ site.renjin-current }}. You can use Renjin as a standalone application, either in a simple GUI or from the command line, or as a package in a Java application. Select on of the download options and read about the prerequisites and the installation instructions below.</p>
+      <p>You can use Renjin as a standalone application, either in a simple GUI
+      or from the command line, or as a package in a Java application. Select
+      on of the download options and read about the prerequisites and the
+      installation instructions below.</p>
     </div>
   </div>
   <div class="grid">
@@ -24,7 +27,7 @@ title: Downloads
           <a href="http://www.renjin.org/webstart/studio.jnlp" class="btn btn-large btn-warning" onclick="ga('send', 'event', 'download', 'webstart');" type="button">Open with WebStart</a>
         </div>
         <div class="grid-item medium-x">
-            <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-studio/{{ site.renjin-current }}/renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download JAR</a>
+            <a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'studio');">Download JAR</a>
         </div>
     </div>
   </div>
@@ -34,10 +37,10 @@ title: Downloads
     <p>Prefer working in a terminal? Download one of the following packages.</p>
     <div class="grid no-margin">
       <div class="grid-item medium-x">
-          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-debian-package/{{ site.renjin-current }}/renjin-debian-package-{{ site.renjin-current }}.deb" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
+          <a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-debian-package&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'debian');">Download .deb</a>
       </div>
       <div class="grid-item medium-x">
-          <a href="http://nexus.bedatadriven.com/content/groups/public/org/renjin/renjin-generic-package/{{ site.renjin-current }}/renjin-generic-package-{{ site.renjin-current }}.zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
+          <a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-generic-package&v={{ site.renjin-current }}&e=zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'download', 'zip');">Download .zip</a>
       </div>
     </div>
     </div>
@@ -50,6 +53,7 @@ title: Downloads
       <h3>Installation</h3>
       <p>The Swing-based Studio GUI is a very simple demo for the moment. Download the JAR file and double-click to execute, or start with the following command:</p>
       <pre>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</pre>
+      <p>where <code>{{ site.renjin-current }}</code> should be replaced with the version number.</p>
 
       <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
       <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
@@ -63,7 +67,7 @@ title: Downloads
   &lt;dependency&gt;
     &lt;groupId&gt;org.renjin&lt;/groupId&gt;
     &lt;artifactId&gt;renjin-script-engine&lt;/artifactId&gt;
-    &lt;version&gt;{{ site.renjin-current }}&lt;/version&gt;
+    &lt;version&gt;RELEASE&lt;/version&gt;
   &lt;/dependency&gt;
 &lt;/dependencies&gt;
 &lt;repositories&gt;

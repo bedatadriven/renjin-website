@@ -2,7 +2,7 @@ title: Renjin.org
 description: Homepage of Renjin, the R programming language on the JVM
 url: http://www.renjin.org
 
-renjin-current: 0.7.0-RC7
+renjin-current: RELEASE
 
 markdown: pandoc
 pandoc:
