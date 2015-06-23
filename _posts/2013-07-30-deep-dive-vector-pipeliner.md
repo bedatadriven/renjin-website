@@ -7,7 +7,7 @@ lang: en
 title: "Deep Dive: Renjin's Vector Pipeliner"
 excerpt: Radford Neal started a great conversation with his comparison of Renjin, pqR and
    Riposte. I want to continue this conversation by going into a bit more
-  depth about how Renjin's vector pipeliner works, and where we want to go with it.
+   depth about how Renjin's vector pipeliner works, and where we want to go with it.
 ---
 
 Radford Neal, the statistician behind pqR, has started a 

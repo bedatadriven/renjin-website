@@ -9,6 +9,6 @@ pandoc:
     extensions:
         - smart
 
-exclude: [README.md]
+exclude: [README.md, old/, elementen.html, documentation/, docs/, img/, assets/css/, assets/config.codekit]
 
 permalink: /blog/:year-:month-:day-:title.html
