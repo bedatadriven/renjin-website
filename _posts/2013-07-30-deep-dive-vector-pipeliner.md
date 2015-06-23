@@ -120,11 +120,9 @@ the runtimes of Renjin 0.7.0-RC6, GNU R-3.0.1 and pqR 2013-07-22 in seconds:
 </tbody>
 </table>
 </div>
-<div class="span9">
-<img src="/assets/img/dcor-runtime.png">
-</div>
 </div>
 
+![Runtime numbers for the distance correlation calculations](/assets/img/dcor-runtime.png)
 
 In this particular benchmark, Renjin outperforms GNU R by roughly half of the
 time as GNU R 3.0.1. For smaller sizes, Renjin and pqR are roughly even, but as
@@ -173,8 +171,9 @@ function (x, y, index = 1)
   V <- sqrt(dVarX * dVarY)
   if (V > 0) 
     dCor <- dCov/V
-  else dCor <- 0
-    return(list(dCov = dCov, dCor = dCor, dVarX = dVarX, dVarY = dVarY))
+  else
+    dCor <- 0
+  return(list(dCov = dCov, dCor = dCor, dVarX = dVarX, dVarY = dVarY))
 }
 ```
 
@@ -193,8 +192,10 @@ Renjin, on the other hand, doesn't allocate any memory at all in this first step
 for large vectors, it simply returns a _view_ of the underlying data, computing 
 the individual elements as they are needed.
 
-The `dist()` function and the `as.matrix.dist()` both return Java objects that implement the `DoubleVector` interface and compute their elements on demand. To both
-R and Java code, the result of the `dist()` function looks exactly like any other vector, complete with a length and a set of attributes.
+The `dist()` function and the `as.matrix.dist()` both return Java objects that
+implement the `DoubleVector` interface and compute their elements on demand. To
+both R and Java code, the result of the `dist()` function looks exactly like
+any other vector, complete with a length and a set of attributes.
 
 
 ```{.java}
@@ -246,7 +247,8 @@ tagged as `@Deferrable` to indicate that it has no side affects (called
 circles) and so can be evaluated at any time in the future without changing the behavior of the program. 
 
 For primitive functions annotated with `@DataParallel`, Renjin generates
-a subclass of DoubleVector ([example]([a view](https://gist.github.com/akbertram/6116334)), and when an expression like x^3 is evaluated, Renjin will simply return an 
+a subclass of DoubleVector ([example]([a view](https://gist.github.com/akbertram/6116334)),
+and when an expression like x^3 is evaluated, Renjin will simply return an
 instance of the view which calculates its elements on demand, first as the
 value of the distance matrix cell, and then cubing it.
 
@@ -266,7 +268,7 @@ before Renjin will do any computation. At that moment, `V` points to a view
 which references another view which references... and so on. You can think of it 
 as a directed computation graph:
 
-![Directed Graph](/assets/img/dcor-graph1.png)
+![Directed Graph for the distance correlation calculation](/assets/img/dcor-graph1.png)
 
 Where squares represent in-memory arrays, with lengths in brackets, paralellograms
 represent views, and ovals are reducer nodes.
