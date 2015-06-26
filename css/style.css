@@ -453,7 +453,7 @@ img {
 .blocklink {
   display: block;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   transition: all 0.9s ease; }
   .blocklink * {
     text-decoration: none; }
@@ -872,7 +872,9 @@ nav {
     margin: 0; } }
 header {
   position: relative;
-  background: silver;
+  background-image: url(/assets/img/strange_beast.png);
+  background-repeat: no-repeat;
+  background-position: center top;
   margin-bottom: 40px; }
 
 .home header {
@@ -891,6 +893,7 @@ header {
   margin-top: 60px;
   margin-left: 40px; }
   .slogan h1 {
+  background: rgba(255, 255, 255, 0.8);
     font-size: 22px;
     font-size: 1.375rem;
     line-height: 1.27273;
