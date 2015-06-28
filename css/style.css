@@ -1124,3 +1124,14 @@ code {
   content: '\e808'; }
 
 /* '' */
+
+/* pure CSS to retain 4:3 ratio on content (http://stackoverflow.com/a/10441480/3660721) */
+div.ratio4-3 {
+    margin-bottom: 2em;
+    width: 70%;
+    padding-bottom: 52.5%;
+    position: relative; }
+div.ratio4-3 > div {
+    border: 1px solid navy;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0; }
