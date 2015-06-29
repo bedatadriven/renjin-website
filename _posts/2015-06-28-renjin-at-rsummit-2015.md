@@ -22,7 +22,7 @@ the groups behind the alternative R interpreters are presenting the current
 status of their efforts. This includes Renjin, the interpreter that runs in the
 Java Virtual Machine. So this was a great opportunity to present the first results of
 [Hannes Mühleisen's](https://twitter.com/hfmuehleisen)
-[research project in collaboration with BeDataDriven](www.bedatadriven.com/news/2014/collaboration-with-cwi.html).
+[research project in collaboration with BeDataDriven](http://www.bedatadriven.com/news/2014/collaboration-with-cwi.html).
 
 Below are the slides from the presentation and we will highlight some of these
 in the remainder of this article.
