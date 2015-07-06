@@ -5,7 +5,7 @@ author:
     url: https://plus.google.com/u/0/111907942618741434760
 lang: en
 tags: r-bloggers
-title: "Renjin presented at the R Summit & Workshop in Copenhagen"
+title: "Renjin presented at the R Summit &amp; Workshop in Copenhagen"
 excerpt: BeDataDriven was invited to attend the special workshop on the
     R programming language taking place right before the 2015 UseR! conference
     in Denmark. We took the opportunity to present our research project "R as 
