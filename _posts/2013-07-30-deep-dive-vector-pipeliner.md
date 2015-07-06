@@ -247,7 +247,7 @@ tagged as `@Deferrable` to indicate that it has no side affects (called
 circles) and so can be evaluated at any time in the future without changing the behavior of the program. 
 
 For primitive functions annotated with `@DataParallel`, Renjin generates
-a subclass of DoubleVector ([example]([a view](https://gist.github.com/akbertram/6116334)),
+a subclass of DoubleVector ([example](https://gist.github.com/akbertram/6116334)),
 and when an expression like x^3 is evaluated, Renjin will simply return an
 instance of the view which calculates its elements on demand, first as the
 value of the distance matrix cell, and then cubing it.
@@ -261,7 +261,7 @@ space considerations, but because deferring these operations as long as possible
 give us more of an opportuntity to implicitly parallelize them. 
 
 These kinds of operations, however, are expensive to compute, so they are stored
-internally not as views, but as [memoized values](http://en.wikipedia.org/wiki/Memoization). 
+internally not as views, but as [memoized values](https://en.wikipedia.org/wiki/Memoization). 
 
 In fact, in the example above of DCOR, we get all the way to the `if()` statement
 before Renjin will do any computation. At that moment, `V` points to a view 
