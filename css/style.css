@@ -191,8 +191,8 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
-  font-size: 1em; }
+  font-size: .9em;
+  font-family: "Inconsolata", "Consolata", "Monaco", monospace; }
 
 /* Forms
    ========================================================================== */
@@ -356,6 +356,8 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+  table + p {
+  margin-top: 28px; }
 
 td,
 th {
@@ -973,7 +975,8 @@ ul, ol {
   font-size: 17px;
   font-size: 1.0625rem;
   line-height: 1.64706;
-  margin-bottom: 28px; }
+  margin-bottom: 28px;
+  max-width: 40em; }
 
 .meta {
   font-size: 14px;
@@ -996,12 +999,6 @@ ul li {
     left: -18px;
     position: absolute;
     float: left; }
-
-pre, code {
-  font-family: Monaco, Menlo, Consolas,"Courier New",monospace;
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1.33333; } /* changed from 2.33333 */
 
 p + pre {
   margin-top: -20px; }
