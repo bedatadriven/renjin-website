@@ -21,7 +21,7 @@ In designing the repository and Renjin's package loading mechanisms, we've
 stayed pretty faithful to the way GNU R works, but we have made some subtle
 changes to address a few pain points with the current system. I wanted to
 outline a few of our goals and describe how we've tried to address them
-with Renjin and packages.renjin.org.
+with Renjin and `packages.renjin.org`.
 
 ## New package releases should never break other packages
 
@@ -31,10 +31,10 @@ packages might depend.
 
 Jeroen Ooms did a great 
 [write up](http://journal.r-project.org/archive/2013-1/ooms.pdf)
-of this problem, and cites an incident where a new version of ggplot2
+of this problem, and cites an incident where a new version of `ggplot2`
 was released, and suddenly all of the hundreds of packages were forced to
-interact with a different version of ggplot2 than that which they had been 
-tested against. Confusion and chaos ensued, and ggplot2 0.9.0 had to be 
+interact with a different version of `ggplot2` than that which they had been 
+tested against. Confusion and chaos ensued, and `ggplot2 0.9.0` had to be 
 rolled back.
 
 There's no reason this _has_ to happen: other package ecosystems like Java's and
@@ -52,10 +52,10 @@ based on publication dates.
 
 The second thing that's important is that multiple versions of a package
 are able to co-exist side by side. You might want to use the latest and
-greatest version of ggplot2 when starting a new project, but if you're using 
-an older package that depends on an earlier version of ggplot2, or you're 
+greatest version of `ggplot2` when starting a new project, but if you're using 
+an older package that depends on an earlier version of `ggplot2`, or you're 
 rerunning your own analysis from six months ago, you'll want the older 
-version of ggplot2.
+version of `ggplot2`.
 
 The [Packrat](https://rstudio.github.io/packrat/) project has recently
 made this a lot easier to do with GNU R, but Renjin supports this out of
@@ -84,7 +84,7 @@ handle C code as complex as gdal yet.
 The upside is that a package once built for Renjin encapsulates all of its
 dependencies, and can be effortlessly used on any platform: Linux, Mac OS X,
 Windows, wherever there's a JVM available, and you'll never have to spend 
-a sleepless night trying to get a fortran compiler to build on some random 
+a sleepless night trying to get a Fortran compiler to build on some random 
 version of Solaris on your client's backoffice system so you can for the love
 of god please just get randomForest running!! 
 
@@ -130,7 +130,7 @@ use your personal domain as a groupId, or a subdomain that you control,
 such as `com.github.akbertram`. 
 
 When you call the library function, you should use the fully-qualified name,
-for example, `library(com.github.akbertram.myPackage')` but if you leave
+for example, `library("com.github.akbertram.myPackage")` but if you leave
 off the groupId, Renjin will assume that you mean a CRAN package and 
 look for `org.renjin.cran.myPackage`.
 
@@ -144,7 +144,7 @@ would on any other JVM library. Renjin compiles R packages into a Java Archive
 For a Maven project, you can include the package as a library by adding 
 a dependency to your `pom.xml` file:
 
-```
+```{.xml}
 <dependencies>
     <dependency>
       <groupId>org.renjin.cran</groupId>

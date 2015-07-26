@@ -24,15 +24,13 @@ In the `renjin.org` folder do `jekyll build` to compile the site, which will
 end up in the `_site` folder. Then do `jekyll serve` (or `jekyll serve --watch`
 to regenerate the site on-the-fly) to serve the site at `localhost:4000`.
 
-Todo
-----
+Draft blog posts
+----------------
 
-The site is currently being redesigned and the following is a list of to-do's:
+Write draft blog posts in the `_drafts` folder (don't include the date in the
+file name), then use the `--drafts` option with `jekyll serve` to host the site
+locally with the draft blog articles as if they were published.
 
-- [ ] update texts on About page
-- [ ] add Disqus javascript to blog posts
-- [ ] add Debian repository option to Downloads page
-- [ ] add a backgound image to the header
-- [ ] fix the source code being incorrectly displayed on a single line
-- [ ] check that all links function correctly
-- [ ] update this README
+Once you are happy with a draft blog article, `git mv` it to the `_posts`
+folder and add the date to the file name.
+
