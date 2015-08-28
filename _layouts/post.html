@@ -12,7 +12,8 @@ layout: default
 
     <h1 itemprop="name headline">{{ page.title }}</h1>
     <p class="byline">
-    Published by <a itemprop="author" itemscope itemtype="http://schema.org/Person" href="{{ page.author.url }}?rel=author">{{ page.author.name }}</a> 
+    Published by {% if page.author.url %}<a itemprop="author" itemscope itemtype="http://schema.org/Person" href="{{ page.author.url }}?rel=author">{{ page.author.name }}</a>
+    {% else %}<span itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author.name }}</span>{% endif %}
     on <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemProp="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>.
     </p>
 {{ content }}
