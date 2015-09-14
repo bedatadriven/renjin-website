@@ -88,22 +88,6 @@ a sleepless night trying to get a Fortran compiler to build on some random
 version of Solaris on your client's backoffice system so you can for the love
 of god please just get randomForest running!! 
 
-## A unique package version should always refer to the same binary, bit for bit
-
-Source code is not the only thing that determines the behavior of a package.
-Whenever a package involves native code, the resulting binary depends on the
-configuration used to build the package, the compiler used, and the versions
-of standard and specialized libraries present on the system where the package
-was compiled.
-
-For this reason, when a CRAN package is built through the Renjin pipeline,
-the resulting archive is given a version that includes both the version number
-and the build number.
-
-So if you reference `org.renjin.cran:survey:3.30-3-b227` in your application 
-or analysis script, you can be sure that you six months from now, ten _years_ 
-from now, you can run _exactly_ the same code on a completely different
-operating system and get the same results.
 
 ## Package naming and loading should support any repository, not just CRAN
 
@@ -113,7 +97,7 @@ and more R packages are being hosted exclusively on GitHub.
 
 With this growth, identifying a package only by a single name like 
 `survey` starts to become problematic. Is that the `survey` package from
-CRAN or the one on that guy's GitHub account, or the ACME's internal fork?
+CRAN or the one on that guy's GitHub account, or ACME's internal fork?
 
 In JVM land, packages are qualified with a 'groupId' that helps disambiguate
 libraries with the same simple name. The convention is to use a domain name
@@ -149,7 +133,7 @@ a dependency to your `pom.xml` file:
     <dependency>
       <groupId>org.renjin.cran</groupId>
       <artifactId>survey</artifactId>
-      <version>1.3-37</version>
+      <version>3.30-3-b227</version>
     </dependency>
 </dependencies>
 ```
@@ -171,6 +155,22 @@ repositories {
 The [scicom](https://github.com/rbotafogo/scicom) project goes even
 further by providing fluent access to R functions and data structures in 
 JRuby, via Renjin. 
+
+## A unique package version should always refer to the same binary, bit for bit
+
+Source code is not the only thing that determines the behavior of a package.
+Whenever a package involves native code, the resulting binary depends on the
+configuration used to build the package, the compiler used, and the versions
+of standard and specialized libraries present on the system where the package
+was compiled.
+
+For this reason, when a CRAN package is built through the Renjin pipeline,
+the resulting archive is given a version that includes both the version number
+and the build number.
+
+So if you reference `org.renjin.cran:survey:3.30-3-b227` in your application's `pom.xml` file, you can be sure that you six months from now, ten _years_ 
+from now, you can run _exactly_ the same code on a completely different
+operating system and get the same results.
 
 
 ## Enterprises should be able to manage R package dependencies with existing, best-in-class tools
