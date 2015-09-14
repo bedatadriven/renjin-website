@@ -177,7 +177,7 @@ operating system and get the same results.
 
 Because Renjin organizes R packages using the same conventions as Maven, Ant,
 and Ivy, enterprises who strictly manage dependencies with tools like 
-[Sonatype Nexus](http://www.sonatype.org/nexus/), Artifactory, or Apache Archiva.
+[Sonatype Nexus](http://www.sonatype.org/nexus/), Artifactory, or Apache Archiva can extend these policies and benefits to R development as well.
 
 These artifact repositories allow organizations to set, enforce, and audit
 policies concerning the use of dependencies within an organization.
