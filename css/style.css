@@ -1132,3 +1132,8 @@ div.ratio4-3 > div {
     border: 1px solid navy;
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0; }
+
+section.footnotes hr {
+    width: 5em;
+    margin-left: 0px;
+}
