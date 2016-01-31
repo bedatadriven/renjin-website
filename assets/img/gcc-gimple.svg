@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 686.315 289"
+   height="289"
+   width="686.315"
+   xml:space="preserve"
+   version="1.1"
+   id="svg4948"><metadata
+     id="metadata4954"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs4952"><clipPath
+       id="clipPath4962"
+       clipPathUnits="userSpaceOnUse"><path
+         style="clip-rule:evenodd"
+         id="path4964"
+         d="M 0,0 792,0 792,612 0,612 0,0 Z" /></clipPath><clipPath
+       id="clipPath5442"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path5444"
+         d="m 396,-39 0,0 0,689.1 0,0 0,-689.1 z" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,-74.5,676.125)"
+     id="g4956"><g
+       id="g4958"><g
+         clip-path="url(#clipPath4962)"
+         id="g4960"><path
+           id="path4966"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,521.6 0,19.3" /><path
+           id="path4968"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,501.6 0,20" /><path
+           id="path4970"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,481.7 0,19.9" /><path
+           id="path4972"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,447.3 0,34.4" /><path
+           id="path4974"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,384 0,63.3" /><path
+           id="path4976"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,349.6 0,34.4" /><path
+           id="path4978"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,329.6 0,20" /><path
+           id="path4980"
+           style="fill:none;stroke:#000000;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+           d="m 308.7,309.7 0,19.9" /><g
+           id="g4982"><text
+             id="text4984"
+             style="font-style:italic;font-variant:normal;font-size:12px;font-family:'Liberation Serif';-inkscape-font-specification:LiberationSerif-Italic;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,526.9)"><tspan
+               id="tspan4986"
+               y="0"
+               x="0 7.9920001 10.992 18.983999 24.983999 30.983999 36.287998">C Code:</tspan></text>
+</g><g
+           id="g4988"><text
+             id="text4990"
+             style="font-style:italic;font-variant:normal;font-size:12px;font-family:'Liberation Serif';-inkscape-font-specification:LiberationSerif-Italic;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,311.6,526.9)"><tspan
+               id="tspan4992"
+               y="0"
+               x="0 8.6879997 11.892 20.58 26.58 29.964001 35.268002">Gimple:</tspan></text>
+</g><g
+           id="g4994"><text
+             id="text4996"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,507.9)"><tspan
+               id="tspan4998"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">double</tspan></text>
+</g><g
+           id="g5000"><text
+             id="text5002"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,102.8,507.9)"><tspan
+               id="tspan5004"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998 64.800003 72 79.199997 86.400002 93.599998 100.8 108 115.2 122.4 129.60001 136.8 144 151.2 158.39999"> sum(double *x, int n) </tspan></text>
+</g><g
+           id="g5006"><text
+             id="text5008"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,268.4,507.9)"><tspan
+               id="tspan5010"
+               y="0"
+               x="0">{</tspan></text>
+</g><g
+           id="g5012"><text
+             id="text5014"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,487.9)"><tspan
+               id="tspan5016"
+               y="0"
+               x="0 7.1999998">  </tspan></text>
+</g><g
+           id="g5018"><text
+             id="text5020"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,74,487.9)"><tspan
+               id="tspan5022"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">double</tspan></text>
+</g><g
+           id="g5024"><text
+             id="text5026"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,117.2,487.9)"><tspan
+               id="tspan5028"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001"> sum = </tspan></text>
+</g><g
+           id="g5030"><text
+             id="text5032"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,167.6,487.9)"><tspan
+               id="tspan5034"
+               y="0"
+               x="0">0</tspan></text>
+</g><g
+           id="g5036"><text
+             id="text5038"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,174.8,487.9)"><tspan
+               id="tspan5040"
+               y="0"
+               x="0">;</tspan></text>
+</g><g
+           id="g5042"><text
+             id="text5044"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,487.9)"><tspan
+               id="tspan5046"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5048"><text
+             id="text5050"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,487.9)"><tspan
+               id="tspan5052"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">&lt;sum, </tspan></text>
+</g><g
+           id="g5054"><text
+             id="text5056"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,429.3,487.9)"><tspan
+               id="tspan5058"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">constant</tspan></text>
+</g><g
+           id="g5060"><text
+             id="text5062"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,486.9,487.9)"><tspan
+               id="tspan5064"
+               y="0"
+               x="0 7.1999998">, </tspan></text>
+</g><g
+           id="g5066"><text
+             id="text5068"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,501.3,487.9)"><tspan
+               id="tspan5070"
+               y="0"
+               x="0 7.1999998 14.4">0.0</tspan></text>
+</g><g
+           id="g5072"><text
+             id="text5074"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,522.9,487.9)"><tspan
+               id="tspan5076"
+               y="0"
+               x="0">&gt;</tspan></text>
+</g><g
+           id="g5078"><text
+             id="text5080"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,468)"><tspan
+               id="tspan5082"
+               y="0"
+               x="0 7.1999998">  </tspan></text>
+</g><g
+           id="g5084"><text
+             id="text5086"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,74,468)"><tspan
+               id="tspan5088"
+               y="0"
+               x="0 7.1999998 14.4">for</tspan></text>
+</g><g
+           id="g5090"><text
+             id="text5092"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,95.6,468)"><tspan
+               id="tspan5094"
+               y="0"
+               x="0">(</tspan></text>
+</g><g
+           id="g5096"><text
+             id="text5098"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,102.8,468)"><tspan
+               id="tspan5100"
+               y="0"
+               x="0 7.1999998 14.4">int</tspan></text>
+</g><g
+           id="g5102"><text
+             id="text5104"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,124.4,468)"><tspan
+               id="tspan5106"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998 64.800003"> i=0; i&lt;n;</tspan></text>
+</g><g
+           id="g5108"><text
+             id="text5110"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,196.4,468)"><tspan
+               id="tspan5112"
+               y="0"
+               x="0 7.1999998">++</tspan></text>
+</g><g
+           id="g5114"><text
+             id="text5116"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,210.8,468)"><tspan
+               id="tspan5118"
+               y="0"
+               x="0 7.1999998 14.4">i) </tspan></text>
+</g><g
+           id="g5120"><text
+             id="text5122"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,232.4,468)"><tspan
+               id="tspan5124"
+               y="0"
+               x="0">{</tspan></text>
+</g><g
+           id="g5126"><text
+             id="text5128"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,311.6,453.5)"><tspan
+               id="tspan5130"
+               y="0"
+               x="0 7.1999998 14.4">L2:</tspan></text>
+</g><g
+           id="g5132"><text
+             id="text5134"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,468)"><tspan
+               id="tspan5136"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5138"><text
+             id="text5140"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,468)"><tspan
+               id="tspan5142"
+               y="0"
+               x="0 7.1999998 14.4 21.6">&lt;i, </tspan></text>
+</g><g
+           id="g5144"><text
+             id="text5146"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,414.9,468)"><tspan
+               id="tspan5148"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">constant</tspan></text>
+</g><g
+           id="g5150"><text
+             id="text5152"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,472.5,468)"><tspan
+               id="tspan5154"
+               y="0"
+               x="0 7.1999998">, </tspan></text>
+</g><g
+           id="g5156"><text
+             id="text5158"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,486.9,468)"><tspan
+               id="tspan5160"
+               y="0"
+               x="0">0</tspan></text>
+</g><g
+           id="g5162"><text
+             id="text5164"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,494.1,468)"><tspan
+               id="tspan5166"
+               y="0"
+               x="0">&gt;</tspan></text>
+</g><g
+           id="g5168"><text
+             id="text5170"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,453.5)"><tspan
+               id="tspan5172"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998">condition</tspan></text>
+</g><g
+           id="g5174"><text
+             id="text5176"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,407.7,453.5)"><tspan
+               id="tspan5178"
+               y="0"
+               x="0">&lt;</tspan></text>
+</g><g
+           id="g5180"><text
+             id="text5182"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,414.9,453.5)"><tspan
+               id="tspan5184"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998">less_than</tspan></text>
+</g><g
+           id="g5186"><text
+             id="text5188"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,479.7,453.5)"><tspan
+               id="tspan5190"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">, i, n&gt; </tspan></text>
+</g><g
+           id="g5192"><text
+             id="text5194"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,537.3,453.5)"><tspan
+               id="tspan5196"
+               y="0"
+               x="0 7.1999998">L1</tspan></text>
+</g><g
+           id="g5198"><text
+             id="text5200"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,551.7,453.5)"><tspan
+               id="tspan5202"
+               y="0"
+               x="0"> </tspan></text>
+</g><g
+           id="g5204"><text
+             id="text5206"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,558.9,453.5)"><tspan
+               id="tspan5208"
+               y="0"
+               x="0 7.1999998 14.4 21.6">else</tspan></text>
+</g><g
+           id="g5210"><text
+             id="text5212"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,587.7,453.5)"><tspan
+               id="tspan5214"
+               y="0"
+               x="0"> </tspan></text>
+</g><g
+           id="g5216"><text
+             id="text5218"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,594.9,453.5)"><tspan
+               id="tspan5220"
+               y="0"
+               x="0 7.1999998">L3</tspan></text>
+</g><g
+           id="g5222"><text
+             id="text5224"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,433.6)"><tspan
+               id="tspan5226"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">    sum </tspan></text>
+</g><g
+           id="g5228"><text
+             id="text5230"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,117.2,433.6)"><tspan
+               id="tspan5232"
+               y="0"
+               x="0 7.1999998">+=</tspan></text>
+</g><g
+           id="g5234"><text
+             id="text5236"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,131.6,433.6)"><tspan
+               id="tspan5238"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36"> x[i];</tspan></text>
+</g><g
+           id="g5240"><text
+             id="text5242"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,311.6,433.6)"><tspan
+               id="tspan5244"
+               y="0"
+               x="0 7.1999998 14.4">L1:</tspan></text>
+</g><g
+           id="g5246"><text
+             id="text5248"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,433.6)"><tspan
+               id="tspan5250"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5252"><text
+             id="text5254"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,433.6)"><tspan
+               id="tspan5256"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">&lt;temp1, </tspan></text>
+</g><g
+           id="g5258"><text
+             id="text5260"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,443.7,433.6)"><tspan
+               id="tspan5262"
+               y="0"
+               x="0 7.1999998 14.4 21.6">mult</tspan></text>
+</g><g
+           id="g5264"><text
+             id="text5266"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,472.5,433.6)"><tspan
+               id="tspan5268"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001">, i, 8&gt;</tspan></text>
+</g><g
+           id="g5270"><text
+             id="text5272"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,419.1)"><tspan
+               id="tspan5274"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5276"><text
+             id="text5278"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,419.1)"><tspan
+               id="tspan5280"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">&lt;temp2, </tspan></text>
+</g><g
+           id="g5282"><text
+             id="text5284"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,443.7,419.1)"><tspan
+               id="tspan5286"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998 64.800003 72 79.199997">pointer_plus</tspan></text>
+</g><g
+           id="g5288"><text
+             id="text5290"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,530.1,419.1)"><tspan
+               id="tspan5292"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998 64.800003 72">, x, temp1&gt;</tspan></text>
+</g><g
+           id="g5294"><text
+             id="text5296"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,404.7)"><tspan
+               id="tspan5298"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5300"><text
+             id="text5302"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,404.7)"><tspan
+               id="tspan5304"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">&lt;temp3, </tspan></text>
+</g><g
+           id="g5306"><text
+             id="text5308"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,443.7,404.7)"><tspan
+               id="tspan5310"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">memref</tspan></text>
+</g><g
+           id="g5312"><text
+             id="text5314"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,486.9,404.7)"><tspan
+               id="tspan5316"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">, temp2&gt;</tspan></text>
+</g><g
+           id="g5318"><text
+             id="text5320"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,390.2)"><tspan
+               id="tspan5322"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5324"><text
+             id="text5326"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,390.2)"><tspan
+               id="tspan5328"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">&lt;sum, </tspan></text>
+</g><g
+           id="g5330"><text
+             id="text5332"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,429.3,390.2)"><tspan
+               id="tspan5334"
+               y="0"
+               x="0 7.1999998 14.4">add</tspan></text>
+</g><g
+           id="g5336"><text
+             id="text5338"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,450.9,390.2)"><tspan
+               id="tspan5340"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002 57.599998 64.800003 72 79.199997 86.400002">, temp3, sum&gt;</tspan></text>
+</g><g
+           id="g5342"><text
+             id="text5344"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,370.3)"><tspan
+               id="tspan5346"
+               y="0"
+               x="0 7.1999998">  </tspan></text>
+</g><g
+           id="g5348"><text
+             id="text5350"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,74,370.3)"><tspan
+               id="tspan5352"
+               y="0"
+               x="0">}</tspan></text>
+</g><g
+           id="g5354"><text
+             id="text5356"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,370.3)"><tspan
+               id="tspan5358"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">assign</tspan></text>
+</g><g
+           id="g5360"><text
+             id="text5362"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,370.3)"><tspan
+               id="tspan5364"
+               y="0"
+               x="0 7.1999998 14.4 21.6">&lt;i, </tspan></text>
+</g><g
+           id="g5366"><text
+             id="text5368"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,414.9,370.3)"><tspan
+               id="tspan5370"
+               y="0"
+               x="0 7.1999998 14.4">add</tspan></text>
+</g><g
+           id="g5372"><text
+             id="text5374"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,436.5,370.3)"><tspan
+               id="tspan5376"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001">, i, 1&gt;</tspan></text>
+</g><g
+           id="g5378"><text
+             id="text5380"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,355.8)"><tspan
+               id="tspan5382"
+               y="0"
+               x="0 7.1999998 14.4 21.6">goto</tspan></text>
+</g><g
+           id="g5384"><text
+             id="text5386"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,371.7,355.8)"><tspan
+               id="tspan5388"
+               y="0"
+               x="0">&lt;</tspan></text>
+</g><g
+           id="g5390"><text
+             id="text5392"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,378.9,355.8)"><tspan
+               id="tspan5394"
+               y="0"
+               x="0 7.1999998">L2</tspan></text>
+</g><g
+           id="g5396"><text
+             id="text5398"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,393.3,355.8)"><tspan
+               id="tspan5400"
+               y="0"
+               x="0">&gt;</tspan></text>
+</g><g
+           id="g5402"><text
+             id="text5404"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,335.9)"><tspan
+               id="tspan5406"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36 43.200001 50.400002">  return</tspan></text>
+</g><g
+           id="g5408"><text
+             id="text5410"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,117.2,335.9)"><tspan
+               id="tspan5412"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999"> sum;</tspan></text>
+</g><g
+           id="g5414"><text
+             id="text5416"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#009900;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,311.6,335.9)"><tspan
+               id="tspan5418"
+               y="0"
+               x="0 7.1999998 14.4">L3:</tspan></text>
+</g><g
+           id="g5420"><text
+             id="text5422"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,342.9,335.9)"><tspan
+               id="tspan5424"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999 36">return</tspan></text>
+</g><g
+           id="g5426"><text
+             id="text5428"
+             style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,386.1,335.9)"><tspan
+               id="tspan5430"
+               y="0"
+               x="0 7.1999998 14.4 21.6 28.799999">&lt;sum&gt;</tspan></text>
+</g><g
+           id="g5432"><text
+             id="text5434"
+             style="font-variant:normal;font-weight:bold;font-size:12px;font-family:Courier;-inkscape-font-specification:Courier-Bold;writing-mode:lr-tb;fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(1,0,0,-1,59.6,315.9)"><tspan
+               id="tspan5436"
+               y="0"
+               x="0">}</tspan></text>
+</g></g></g><g
+       id="g5438"><g
+         id="g5440" /><g
+         id="g5446"><g
+           style="opacity:0.5"
+           id="g5448"
+           clip-path="url(#clipPath5442)"><g
+             id="g5450" /></g></g></g></g></svg>
