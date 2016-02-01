@@ -18,7 +18,7 @@ without sacrificing platform independence.
 ## Motivation
 
 Supporting R packages with native code is a big deal: 48% of CRAN's 33 MLOC of
-code is native code. and so while our ultimate goal is to allow users to write
+code is native code. And so while our ultimate goal is to allow users to write
 fast R code without falling back to another language, if we're to be serious
 about running existing R packages, then we need a solution for the existing 
 native code base.
@@ -103,8 +103,8 @@ json-encoded Gimple files to Java class files, using the ASM bytecode library.
 
 ![High level Overview of GCC and GCC-Bridge](/assets/img/renjin-gcc.svg)
 
-Note that we're not compiling to the Java <em>language</em>. Like Scala or
-Clojure, we're targeting the Java <em>Virtual Machine</em>, the virtual
+Note that we're not compiling to the Java *language*. Like Scala or
+Clojure, we're targeting the Java *Virtual Machine*, the virtual
 machine original designed for Java but that has its own standard instruction
 set.
 
@@ -159,7 +159,7 @@ basic C standard library functions like `fopen()` at this point.
 There's alot of interesting things to talk about, so this will be the first 
 post in a series. In subsequent posts, I'll dive into
 the compiler's internals and look at how we handle anathmas like pointer
-arithmatic and malloc(); I'll explore the performance implications of running C
+arithmatic and `malloc()`; I'll explore the performance implications of running C
 code on the JVM; and finally I'll review the current limitations of the compiler
 and some potential ways forward.
 
