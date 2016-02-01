@@ -135,7 +135,7 @@ to [Java methods](https://github.com/bedatadriven/renjin/blob/master/tools/gnur-
 initially [generated](https://github.com/bedatadriven/renjin/blob/master/tools/gnur-compiler/generateStubs.groovy)
 from GNU R's own header files.
 
-# Kicking the Tires
+## Kicking the Tires
 
 GCC-Bridge is an important part of the Renjin toolchain for GNU R packages,
 but it can also be used independently of Renjin.
@@ -154,7 +154,7 @@ Keep in mind that we've worked primarily on compiling scientific code
 that does pure computation, so you won't find implementations of many
 basic C standard library functions like `fopen()` at this point.
 
-# Next Steps
+## Next Steps
 
 There's alot of interesting things to talk about, so this will be the first 
 post in a series. In subsequent posts, I'll dive into
