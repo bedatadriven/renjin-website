@@ -150,6 +150,6 @@
   </div>
 </main>
 {% include footer.html %}
-{% include tracking.html %}
+{% if jekyll.environment == "production" %}{% include tracking.html %}{% endif %}
 </body>
 </html>
