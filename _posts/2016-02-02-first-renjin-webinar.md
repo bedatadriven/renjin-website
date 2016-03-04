@@ -47,5 +47,5 @@ Europe:
 
 ## Sign up
 
-You can sign up for the webinar [here](https://attendee.gotowebinar.com/register/2604583989233495298).
+This webinar has already taken place. You can watch the recording [here](/blog/2016-03-04-recording-of-introduction-to-renjin-webinar.html).
 

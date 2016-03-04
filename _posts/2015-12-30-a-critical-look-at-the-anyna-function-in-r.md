@@ -21,7 +21,7 @@ less than ideal and that the design of Renjin's R interpreter provides a much
 more flexible approach to performance improvement.
 
 When we presented our work on Renjin during the
-[R Summit in Copenhagen](http://www.renjin.org/blog/2015-06-28-renjin-at-rsummit-2015.html)
+[R Summit in Copenhagen](/blog/2015-06-28-renjin-at-rsummit-2015.html)
 I briefly touched on my dismay at the introduction of the `anyNA()` function.
 But before I tell you about what is wrong with this function I will explain why
 it was introduced in the first place.
@@ -158,7 +158,7 @@ without adding more functions. We believe that users should not have to rewrite
 their R programs to achieve faster code execution or to reduce memory
 requirements.
 
-Convinced? Curious? [Download Renjin](http://www.renjin.org/downloads.html) and
+Convinced? Curious? [Download Renjin](/downloads.html) and
 give it a try!
 
 [^1]: note that `anyNA()` nowadays does a little more than just replace
