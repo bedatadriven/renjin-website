@@ -24,10 +24,11 @@ title: Downloads
 
       <div class="grid no-margin">
         <div class="grid-item medium-x">
-            <a href="#maven" class="btn btn-large btn-warning" type="button">Add to Maven Project</a>
+            <a href="#maven" class="btn btn-large btn-warning" type="button"
+            onclick="ga('send', 'event', 'Download', 'Click', 'Add to Maven Project');">Add to Maven Project</a>
         </div>
         <div class="grid-item medium-x">
-            <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&c=jar-with-dependencies&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Java Library');">Download Standalone .JAR</a>
+            <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&c=jar-with-dependencies&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Standalone Java Library');">Download Standalone .JAR</a>
         </div>
 
     </div>
@@ -39,9 +40,6 @@ title: Downloads
       interpreter which works on all platforms with Java installed.</p>
 
       <div class="grid no-margin">
-        <!-- <div class="grid-item medium-x">
-          <a href="http://www.renjin.org/webstart/studio.jnlp" class="btn btn-large btn-warning" onclick="ga('send', 'event', 'Download', 'Click', 'Open with webstart');" type="button">Open with WebStart</a>
-        </div> -->
         <div class="grid-item medium-x">
             <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&c=jar-with-dependencies&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin Studio');">Download .JAR</a>
         </div>
@@ -58,6 +56,9 @@ title: Downloads
       <div class="grid-item medium-x">
           <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-debian-package&e=deb&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Debian package');">Download .deb</a>
       </div>
+    <div class="grid-item medium-x">
+          <a href="#apt" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Install via apt');">Install via apt</a>
+      </div>
     </div>
     </div>
   </div>
@@ -66,16 +67,32 @@ title: Downloads
       <h2>Requirements</h2>
       <p>Renjin will run on any platform with a JVM installed. Therefore, if you want to run Renjin, you need to have installed at least version 7 (or greater) of the Java SE Runtime Environment (JRE). If you haven't, then download and install it from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 
-      <h2>Installation</h2>
+      <h2>Running the GUI</h2>
       <p>The Swing-based Studio GUI is a very simple demo for the moment. Download the JAR file and double-click to execute, or start with the following command:</p>
       <pre>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</pre>
       <p>where <code>{{ site.renjin-current }}</code> should be replaced with the version number.</p>
 
+      <h2>Installing the .deb package</h2>
+
       <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
       <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
       <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
+  
+      <h2 id="apt">Installing via apt</h2>
+      <p>You can also add the Renjin repository to your system to get automatic
+      updates of the Renjin command line tools on Debian and Ubuntu systems.</p>
+      
+      <p>Create a file called <code>/etc/apt/sources.list.d/renjin.list</code> with the content:</p>
+      
+      <pre>deb http://nexus.bedatadriven.com/content/repositories/renjin-release/ ./</pre>
+      
+      <p>Then run:</p>
+      
+<pre>sudo apt-get update
+sudo apt-get install renjin</pre>
+       
 
-      <h2 id="maven">Maven/Gradle/Ivy Dependency</h2>
+      <h2 id="maven">Adding to a Maven Project</h2>
       
       <p>We definitely recommend using a build tool such a Maven, particularly 
       if you're planning on including R which often have several levels of transitive dependencies.</p>
