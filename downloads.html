@@ -72,7 +72,7 @@ title: Downloads
       <pre>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</pre>
       <p>where <code>{{ site.renjin-current }}</code> should be replaced with the version number.</p>
 
-      <h2>Installing the .deb package</h2>
+      <h2>Installing the .deb Package</h2>
 
       <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
       <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
@@ -84,7 +84,7 @@ title: Downloads
       
       <p>Create a file called <code>/etc/apt/sources.list.d/renjin.list</code> with the content:</p>
       
-      <pre>deb http://nexus.bedatadriven.com/content/repositories/renjin-release/ ./</pre>
+      <pre>deb https://nexus.bedatadriven.com/content/repositories/renjin-release/ ./</pre>
       
       <p>Then run:</p>
       
@@ -94,8 +94,8 @@ sudo apt-get install renjin</pre>
 
       <h2 id="maven">Adding to a Maven Project</h2>
       
-      <p>We definitely recommend using a build tool such a Maven, particularly 
-      if you're planning on including R which often have several levels of transitive dependencies.</p>
+      <p>Using a a modern build tool such a Maven is definitely recommended, particularly 
+      if you're planning on including R packages which often have several levels of transitive dependencies.</p>
     
       <p>You can add Renjin to your Maven project by adding the following to your <code>pom.xml</code> file:</p>
         
