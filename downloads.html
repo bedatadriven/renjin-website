@@ -56,9 +56,6 @@ title: Downloads
       <div class="grid-item medium-x">
           <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-debian-package&e=deb&v={{ site.renjin-current }}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Debian package');">Download .deb</a>
       </div>
-    <div class="grid-item medium-x">
-          <a href="#apt" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Install via apt');">Install via apt</a>
-      </div>
     </div>
     </div>
   </div>
@@ -78,21 +75,6 @@ title: Downloads
       <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
       <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
   
-      <h2 id="apt">Installing via apt</h2>
-      <p>You can also add the Renjin repository to your system to get automatic
-      updates of the Renjin command line tools on Debian and Ubuntu systems.</p>
-      
-      <p>Create a file called <code>/etc/apt/sources.list.d/renjin.list</code> with the content:</p>
-      
-      <pre>deb https://nexus.bedatadriven.com/content/repositories/renjin-release/ ./</pre>
-      
-      <p>Then run:</p>
-      
-<pre>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B71EB5FA4FE5A5F6
-sudo apt-get update
-sudo apt-get install renjin</pre>
-       
-
       <h2 id="maven">Adding to a Maven Project</h2>
       
       <p>Using a a modern build tool such a Maven is definitely recommended, particularly 
