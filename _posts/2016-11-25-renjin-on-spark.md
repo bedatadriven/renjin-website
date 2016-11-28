@@ -35,7 +35,7 @@ You can access the publications
 David Russell (onetapbeyond) has also written an Apache Spark package called 
 Apache Spark Renjin Executer (REX) “to let Scala and Java developers use R 
 from Spark.” 
-![REX diagram (by <a href="https://github.com/onetapbeyond/renjin-spark-executor">David Russel</a>).](/assets/img/rex-diagram.jpg)
+![REX diagram (by <a href="https://github.com/onetapbeyond/renjin-spark-executor">David Russel</a>).](/assets/img/rex-diagram.svg)
 Read more about [https://github.com/onetapbeyond/renjin-spark-executor](REX).
 
 
