@@ -11,32 +11,32 @@ excerpt: There is a growing interest in combining Spark with Renjin, because Ren
 
 
 Researchers from Purdue University and Huawei Technologies have developed 
-a new framework called **RABID** which combines Spark with Renjin.
+a new framework called **RABID** which combines **Spark** with **Renjin**.
 
 
 ![RABID performance and R Compatibility as compared to other solutions.](/assets/img/rabid-plot.png)
 
 
-The authors choose to use Renjin as the default R interpreter because “it 
+The authors choose to use Renjin as the default R interpreter because “*it 
 [Renjin], like Spark, is implemented in Java, and consequently can be better 
-integrated with Spark”. According to the study, by using Renjin, worker 
+integrated with Spark*”. According to the study, by using Renjin, worker 
 processes can share the cached dataset copy of Spark worker and, hence, 
-“reduce both latency and memory overheads”. In subsequent study, the authors 
+“*reduce both latency and memory overheads*”. In subsequent study, the authors 
 used RABID with their VM scheduling algorithm for efficient scheduling of 
 Virtual Machines in a data center, reducing the number of physical machines 
 by 15% and helped to make our planet more green.
 
 
-You can access the publications 
-[https://doi.org/10.1109/BigData.Congress.2014.107](here) and 
-[https://doi.org/10.1109/IPDPS.2015.90](here).
+You can access the publications [here](https://doi.org/10.1109/BigData.Congress.2014.107) and [here](https://doi.org/10.1109/IPDPS.2015.90).
 
 
 David Russell (onetapbeyond) has also written an Apache Spark package called 
-Apache Spark Renjin Executer (REX) “to let Scala and Java developers use R 
-from Spark.” 
-![REX diagram (by <a href="https://github.com/onetapbeyond/renjin-spark-executor">David Russel</a>).](/assets/img/rex-diagram.svg)
-Read more about [https://github.com/onetapbeyond/renjin-spark-executor](REX).
+Apache Spark Renjin Executer (REX) “*to let Scala and Java developers use R 
+from Spark*.” 
+
+![REX diagram(adapted from [David Russell](https://github.com/onetapbeyond/renjin-spark-executor)).](/assets/img/rex-diagram.svg)
+
+Read more about [REX](https://github.com/onetapbeyond/renjin-spark-executor).
 
 
 In our October newsletter we informed you about improvements we made to Renjin 
