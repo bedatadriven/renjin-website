@@ -74,13 +74,14 @@ and I think there is tremendous value in finding backward-compatible solutions.
 
 # Profiling
 
-Kirill Müller shared progress on an R Foundation project to improve profiling of R and native code. I think there's a chance to develop
+Kirill Müller shared progress on an R Foundation project to improve profiling of R and native code ([video](https://www.youtube.com/watch?v=THgNl-cN7Vc&list=PLIptkSEKleN17z3IAF6Pjc6tU755W67kv&index=2)). I think there's a chance to develop
 a common raw output format for profiling tools on which a rich set of analysis tools can be written in R. We added a very basic
 profiler to Renjin awhile back, so we'll follow this closely to see if we can also support this common target.
 
 # Graphics
 
-The FastR team from Oracle has made some great progress on supporting graphics in their Graal-based R interpreter that I think Renjin
+The FastR team from Oracle has made some great progress on supporting graphics in their Graal-based R interpreter 
+([video](https://www.youtube.com/watch?v=otXTGBTb-3w&list=PLIptkSEKleN17z3IAF6Pjc6tU755W67kv&index=3)) that I think Renjin
 can leverage. After some experimentation, they settled on supporting the grid interface rather than the comparatively low-level
 grDevices interface which apparently is very tightly coupled to the GNU R interpreter internals. Their 
 [implementation](https://github.com/graalvm/fastr/tree/master/com.oracle.truffle.r.library/src/com/oracle/truffle/r/library/fastrGrid) is open source
