@@ -12,8 +12,7 @@ If you missed the session at [useR! 2013](http://www.edii.uclm.es/~useR-2013/)
 or if you couldn’t attend the conference, here’s the video of Alex’ presentation of Renjin, the interpreter for the R programming language written in Java.
 
 
-<iframe src="//fast.wistia.net/embed/iframe/ivwhih0yta" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="360"></iframe>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+<script src="https://fast.wistia.com/embed/medias/ivwhih0yta.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_embed wistia_async_ivwhih0yta" style="height:360px;width:640px">&nbsp;</div>
 
 
 

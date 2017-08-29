@@ -13,8 +13,7 @@ excerpt: Watch a video recording of the Introduction to Renjin webinar which
 In case you missed the webinar on March 3rd or if you just want to replay it: a recording of the main part of the webinar is below.
 
 
-<iframe src="//fast.wistia.net/embed/iframe/7r9v5iv0br" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="360"></iframe>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>  
+<script src="https://fast.wistia.com/embed/medias/7r9v5iv0br.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_embed wistia_async_7r9v5iv0br" style="height:360px;width:640px">&nbsp;</div>
 
 
 ## Contents
