@@ -9,6 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
   <link href="/css/style.css" rel="stylesheet" media="all">
+  <!-- syntax highlighting -->
+  <link href="/css/default.css" rel="stylesheet" media="all">
   <style>
     .obfuscate-email {
       /* simple e-mail obfuscation */

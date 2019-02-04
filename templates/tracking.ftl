@@ -9,6 +9,7 @@
   ga('send', 'pageview');
 
 </script>
+
 <!-- Wistia Video -->
 <script src="http://fast.wistia.net/static/embed_shepherd-v1.js"></script>
 <script>
@@ -21,4 +22,10 @@ wistiaEmbeds.onFind(function(video){
     return this.unbind;
   });
 });
+</script>
+
+<!-- Syntax highlighting -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
 </script>

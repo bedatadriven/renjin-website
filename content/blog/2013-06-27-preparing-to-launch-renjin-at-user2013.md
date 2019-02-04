@@ -9,7 +9,7 @@ excerpt=We are pleased to announce that we will be officially launching Renjin a
 
 We are pleased to announce that we will be officially launching Renjin at the [User!2013 conference](http://www.edii.uclm.es/~useR-2013/), which will be held July 9-13 in Albacete, Spain. Together with an official release version, we are preparing a new website with updated documentation and much more.
 
-![Renjin logo](/media/logo.png)
+![Renjin logo](/assets/img/logo.png)
 
 After almost three years of development at [BeDataDriven](http://www.bedatadriven.com), we believe Renjin has now reached a state in which its potential can be fully utilized. With a fresh new logo and website at [renjin.org](http://www.renjin.org) we're ready to push R programming in the Java Virtual Machine (JVM) to the next level.
 

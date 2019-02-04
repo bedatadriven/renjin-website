@@ -26,3 +26,23 @@ Use `jbake -s` to start a local server at `http://localhost:8820` to test the we
 Use `./deploy.sh` to deploy the site to the Google Cloud bucket (note: this
 requires `gsutil` and access permission to the bucket).
 
+## Notes on markdown
+
+To include source code, use a block like
+
+```markdown
+```r
+f <- function(x) x^2
+```
+
+where the language indicator should not be wrapped in brackets like `{r}` or `{java}`.
+
+To include tables, use the MultiMarkdown format like so
+
+```markdown
+| col1 | col2 |
+| ---- | ---- |
+|    1 |    a |
+|    2 |    b |
+```
+

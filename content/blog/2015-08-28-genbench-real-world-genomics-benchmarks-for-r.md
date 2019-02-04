@@ -45,10 +45,10 @@ benchmarks five times (consecutively, to avoid any competition for resources)
 and upload the resulting timings to our database:
 
 * Run the benchmarks using wrapper script that also installs any required packages (specifically, we ran [this commit](https://github.com/biolion/genbench/commit/193af69d580861f09b856b6140eb0aceb5bbe7d1) of the benchmarks)
-  * `/usr/local/$RVERSION/bin/R -f run_benchmarks.R --args 5`
+* `/usr/local/$RVERSION/bin/R -f run_benchmarks.R --args 5`
 * Switch to the `/db` directory and upload the resulting timings from the database
-  * `cd db`
-  * `R -f upload_benchmarks.R --args --usr=foo --pwd=bar --conn=jdbc:mysql://[host]/Rbenchmarks`
+* `cd db`
+* `R -f upload_benchmarks.R --args --usr=foo --pwd=bar --conn=jdbc:mysql://[host]/Rbenchmarks`
 
 ## Code
 
@@ -162,25 +162,25 @@ res_np <- lapply(names(res_np), function(x){
 Let's have a look at the top results, sorted by Kruskal-Wallis:
 
 
-                                 df   chisq   kruskal.logp        f   anova.logp
-------------------------------  ---  ------  -------------  -------  -----------
-mrna_seq edgeR_voom norm          4   27.43          -4.79   265.20       -19.35
-mutation mutation fam.score       4   27.43          -4.79   557.42       -23.31
-mrna_seq edgeR_voom limma         4   27.43          -4.79   325.74       -20.44
-mutation mutation fam.prepare     4   26.74          -4.65   430.87       -21.93
-mutation mutation pop.fig1b       4   26.58          -4.62   328.81       -20.49
+|                               |   df |  chisq |  kruskal.logp |       f |  anova.logp |
+|------------------------------ | ---- | ------ | ------------- | ------- | ----------- |
+|mrna_seq edgeR_voom norm       |    4 |  27.43 |         -4.79 |  265.20 |      -19.35 |
+|mutation mutation fam.score    |    4 |  27.43 |         -4.79 |  557.42 |      -23.31 |
+|mrna_seq edgeR_voom limma      |    4 |  27.43 |         -4.79 |  325.74 |      -20.44 |
+|mutation mutation fam.prepare  |    4 |  26.74 |         -4.65 |  430.87 |      -21.93 |
+|mutation mutation pop.fig1b    |    4 |  26.58 |         -4.62 |  328.81 |      -20.49 |
 
 
 and the bottom:
 
 
-                                                 df   chisq   kruskal.logp      f   anova.logp
-----------------------------------------------  ---  ------  -------------  -----  -----------
-mrna_seq edgeR_voom load                          4    1.44          -0.08   1.25        -0.50
-simulated_GEO_matrix chocolate_geo svd            4    3.74          -0.35   1.53        -0.65
-integration igraph decompose                      1    2.53          -0.95   3.99        -1.09
-protein rppa km                                   4    7.98          -1.03   3.67        -1.74
-simulated_GEO_matrix chocolate_geo regression     4    9.01          -1.21   0.69        -0.22
+|                                               |  df |  chisq |  kruskal.logp |     f |  anova.logp |
+|---------------------------------------------- | --- | ------ | ------------- | ----- | ----------- |
+|mrna_seq edgeR_voom load                       |   4 |   1.44 |         -0.08 |  1.25 |       -0.50 |
+|simulated_GEO_matrix chocolate_geo svd         |   4 |   3.74 |         -0.35 |  1.53 |       -0.65 |
+|integration igraph decompose                   |   1 |   2.53 |         -0.95 |  3.99 |       -1.09 |
+|protein rppa km                                |   4 |   7.98 |         -1.03 |  3.67 |       -1.74 |
+|simulated_GEO_matrix chocolate_geo regression  |   4 |   9.01 |         -1.21 |  0.69 |       -0.22 |
 
 Interesting to see that the biggest performance changes are found in iterative
 tasks and not in data loading or well-established statistics, for example in
@@ -289,4 +289,3 @@ Focus on the linear algebra and stats operations below:
 (e) Clinical data and Data Integration
 Alongside some graphical methods using iGraph, we focus on machine learning approaches including clustering, and prediction using naive Bayes and robust linear model approaches
 
-     
