@@ -30,10 +30,9 @@ requires `gsutil` and access permission to the bucket).
 
 To include source code, use a block like
 
-```markdown
-```r
-f <- function(x) x^2
-```
+    ```r
+    f <- function(x) x^2
+    ```
 
 where the language indicator should not be wrapped in brackets like `{r}` or `{java}`.
 
