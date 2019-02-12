@@ -42,7 +42,7 @@
 
       <div class="grid no-margin">
         <div class="grid-item medium-x">
-		<a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&c=jar-with-dependencies&v=${config.renjin_current}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin Studio');">Download .JAR</a>
+		  <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&c=jar-with-dependencies&v=${config.renjin_current}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin Studio');">Download .JAR</a>
         </div>
     </div>
   </div>
@@ -55,8 +55,8 @@
 	     <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-generic-package&v=${config.renjin_current}&e=zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin ZIP archive');">Download .zip</a>
       </div>
       <div class="grid-item medium-x">
-	      <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-debian-package&e=deb&v=${config.renjin_current}" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Debian package');">Download .deb</a>
-      </div>
+	      <a href="#apt" class="btn btn-large btn-warning" type="button">Install via APT</a>
+    </div>
     </div>
     </div>
   </div>
@@ -70,19 +70,30 @@
       <pre>java -jar renjin-studio-{{ site.renjin-current }}-jar-with-dependencies.jar</pre>
       <p>where <code>{{ site.renjin-current }}</code> should be replaced with the version number.</p>
 
-      <h2>Installing the .deb Package</h2>
+      <h2 id="apt">Debian and Ubuntu</h2>
+      <p>You can add our APT repository and get regular updates automatically.</p>
 
-      <p>The Debian package can be installed on Ubuntu Linux using the following command:</p>
-      <pre>sudo dpkg -i renjin-debian-package-{{ site.renjin-current }}.deb</pre>
-      <p>After this, you can start Renjin by simply typing <code>renjin</code> on your command line.</p>
-  
+      <pre>
+# 1. Add the Renjin repository signing keys to be able to verify downloaded packages
+sudo apt-key adv --keyserver hkp://packages.renjin.org:80 --recv-keys EB2514FC345926E9
+
+# 2. Add the Renjin repository
+echo deb http://packages.renjin.org/repo/apt stable main | sudo tee /etc/apt/sources.list.d/renjin.list
+
+# 3. Update list of available packages
+sudo apt-get update
+
+# 4. Install Renjin
+sudo apt-get install renjin
+</pre>
+
       <h2 id="maven">Adding to a Maven Project</h2>
-      
-      <p>Using a a modern build tool such a Maven is definitely recommended, particularly 
+
+      <p>Using a a modern build tool such a Maven is definitely recommended, particularly
       if you're planning on including R packages which often have several levels of transitive dependencies.</p>
-    
+
       <p>You can add Renjin to your Maven project by adding the following to your <code>pom.xml</code> file:</p>
-        
+
 <pre>&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.renjin&lt;/groupId&gt;
@@ -99,9 +110,9 @@
 &lt;/repositories&gt;
 </pre>
 
-     <p>You can find details on adding Renjin to your 
+     <p>You can find details on adding Renjin to your
 
-	<a href="http://docs.renjin.org/en/latest/library/project-setup.html#gradle">Gradle</a>, 
+	<a href="http://docs.renjin.org/en/latest/library/project-setup.html#gradle">Gradle</a>,
         <a href="http://docs.renjin.org/en/latest/library/project-setup.html#scala-build-tool-sbt">SBT</a>, and other types of projects in our
 	 <a href="http://docs.renjin.org/en/latest/library/project-setup.html">Project Setup Guide</a>.
       </div>
