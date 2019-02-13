@@ -9,9 +9,8 @@ mkdir -p $BUILD_DIR
 # build the static website using JBake (https://jbake.org/):
 jbake -b
 
-# deploy the new site by copying to the server:
-cp appengine.yaml $BUILD_DIR
-gcloud --project=renjinci app deploy $BUILD_DIR
+# deploy to AppEngine
+gcloud --project=renjinci app deploy
 
 cd $ROOT_DIR
 
