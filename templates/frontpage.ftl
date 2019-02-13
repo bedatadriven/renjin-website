@@ -58,7 +58,7 @@
       <div class="medium-6 grid-item">
         <h3>Subscribe to our newsletter</h3>
         <p>Receive updates about releases, packages, and other news right in your inbox.
-        Curious? <a href="http://us7.campaign-archive.com/home/?u=d15c4a781ddc4b9bdcec62993&id=57c04ae38b">Have a look at the newsletter archive.</a></p>
+        Curious? <a href="https://us7.campaign-archive.com/home/?u=d15c4a781ddc4b9bdcec62993&id=57c04ae38b">Have a look at the newsletter archive.</a></p>
       </div>
       <div class="medium-6 grid-item">
         <div id="mc_embed_signup">
