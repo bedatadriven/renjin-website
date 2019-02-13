@@ -11,7 +11,7 @@
 </script>
 
 <!-- Wistia Video -->
-<script src="http://fast.wistia.net/static/embed_shepherd-v1.js"></script>
+<script src="//fast.wistia.net/static/embed_shepherd-v1.js"></script>
 <script>
 wistiaEmbeds.onFind(function(video){
   video.bind("play", function(){
