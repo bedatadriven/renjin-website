@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Stop on first error
+set -e
+
 ROOT_DIR=$PWD
 BUILD_DIR=output
 
