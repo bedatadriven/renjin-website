@@ -1,9 +1,14 @@
 header {
   position: relative;
-  background-image: url(/assets/img/strange_beast.png);
+  background-image: url(/assets/img/hero.jpg);
+  background-size:     cover;
   background-repeat: no-repeat;
   background-position: center top;
   margin-bottom: $double-space;
+}
+
+header.home {
+
 }
 
 .home header {

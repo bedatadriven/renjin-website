@@ -5,7 +5,7 @@
     </div>
     <div class="medium-8 grid-item">
       <div class="slogan">
-        <h1>Renjin is a JVM-based interpreter for the R language for statistical computing. </h1>
+        <h1>Accelerate your analytics workflow with seamless R and JVM integration</h1>
       </div>
     </div>
   </div>
