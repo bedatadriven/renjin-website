@@ -12,11 +12,6 @@
   <!-- syntax highlighting -->
   <link href="/css/default.css" rel="stylesheet" media="all">
   <style>
-    .obfuscate-email {
-      /* simple e-mail obfuscation */
-      direction: rtl; 
-      unicode-bidi: bidi-override;
-    }
     article img {
       margin: 2em 0;
     }
