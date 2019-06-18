@@ -11,7 +11,7 @@
           <article itemscope itemtype="http://schema.org/BlogPosting">
             <h1 itemprop="name headline">${content.title}</h1>
             <p class="byline">
-            Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">${content.author}</span>
+            Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">${content.author!"Maarten-Jan Kallen"}</span>
 	    on <time pubdate datetime="${content.date?string('yyyy-MM-dd')}" itemProp="datePublished">${content.date?string('yyyy-MM-dd')}</time>.
             </p>
             ${content.body}
