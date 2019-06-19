@@ -7,30 +7,17 @@
     <#else>
     <li><a href="/index.html">Home</a></li>
     </#if>
-    <#if active == "downloads">
-    <li class="active"><a href="/downloads.html">Downloads</a></li>
+
+    <#if active == "solutions">
+    <li class="active"><a href="/solutions.html">Solutions</a></li>
     <#else>
-    <li><a href="/downloads.html">Downloads</a></li>
+    <li><a href="/downloads.html">Solutions</a></li>
     </#if>
-    <#if active == "packages">
-    <li class="active"><a href="http://packages.renjin.org">Packages</a></li>
+
+    <#if active == "resources">
+    <li class="active"><a href="#">Resources</a></li>
     <#else>
-    <li><a href="http://packages.renjin.org">Packages</a></li>
-    </#if>
-    <#if active == "documentation">
-    <li class="active"><a href="http://docs.renjin.org">Documentation</a></li>
-    <#else>
-    <li><a href="http://docs.renjin.org">Documentation</a></li>
-    </#if>
-    <#if active == "support">
-    <li class="active"><a href="/support.html">Support</a></li>
-    <#else>
-    <li><a href="/support.html">Support</a></li>
-    </#if>
-    <#if active == "about">
-    <li class="active"><a href="/about.html">About</a></li>
-    <#else>
-    <li><a href="/about.html">About</a></li>
+    <li><a href="#">Resources</a></li>
     </#if>
     <#if active == "blog">
     <li class="active"><a href="/blog">Blog</a></li>

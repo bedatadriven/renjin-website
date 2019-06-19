@@ -21,8 +21,43 @@ dependencies {
     jbake 'com.vladsch.flexmark:flexmark-profile-pegdown:0.40.8'
     jbake 'org.eclipse.jetty:jetty-server:9.2.26.v20180806'
     jbake 'org.apache.commons:commons-vfs2:2.2'
+    jbake 'org.slf4j:slf4j-simple:1.7.26'
 
     sass 'com.vaadin:vaadin-sass-compiler:0.9.13'
+}
+
+task compileSassPreview(type: JavaExec) {
+
+    main = 'com.vaadin.sass.SassCompiler'
+    classpath = configurations.sass
+
+    inputs.dir 'src/sass/'
+    outputs.file "$buildDir/preview/css/style.css"
+
+    args 'src/sass/style.scss'
+    args "$buildDir/preview/css/style.css"
+
+    doFirst {
+        project.file("$buildDir/output/css").mkdirs()
+    }
+}
+
+task preview(type: JavaExec) {
+
+    dependsOn 'compileSassPreview'
+
+    main = 'org.jbake.launcher.Main'
+    classpath = configurations.jbake
+
+    args '--server'
+    args 'src/jbake'
+    args "$buildDir/preview"
+
+    logging.captureStandardOutput LogLevel.INFO
+
+    doFirst {
+        println 'Open preview at http://localhost:8820/'
+    }
 }
 
 task compileSass(type: JavaExec) {
@@ -30,11 +65,15 @@ task compileSass(type: JavaExec) {
     main = 'com.vaadin.sass.SassCompiler'
     classpath = configurations.sass
 
+    args '-compress'
     args 'src/sass/style.scss'
-    args "$buildDir/output/css/style.css"
+    args "$buildDir/css/style.css"
+
+    inputs.dir 'src/sass'
+    outputs.file "$buildDir/css/style.css"
 
     doFirst {
-        project.file("$buildDir/output/css").mkdirs()
+        project.file("$buildDir/css").mkdirs()
     }
 }
 
@@ -44,20 +83,37 @@ task bake(type: JavaExec) {
     classpath = configurations.jbake
 
     main = 'org.jbake.launcher.Main'
-//    args 'src/jbake'
-//    args "$buildDir/jbake"
+    args 'src/jbake'
+    args "$buildDir/jbake"
 
+    inputs.dir 'src/jbake'
+    outputs.dir "$buildDir/jbake"
+
+    logging.captureStandardOutput LogLevel.INFO
+    logging.captureStandardError LogLevel.INFO
 }
 
-task preview(type: JavaExec) {
 
+task stage(type: Copy) {
     dependsOn 'compileSass'
+    dependsOn 'bake'
 
-    main = 'org.jbake.launcher.Main'
-    classpath = configurations.jbake
+    into "$buildDir/staged"
+    from "src/app"
+    from("$buildDir/jbake") {
+        into 'output'
+    }
+    from("$buildDir/css") {
+        into 'output/css'
+    }
+}
 
-    args '--server'
-    args 'src/jbake'
-    args "$buildDir/output"
-
+task deploy(type: Exec) {
+    dependsOn 'stage'
+    
+    executable 'gcloud'
+    args '--project', 'renjinci'
+    args 'app', 'deploy'
+    args "$buildDir/staged"
+    args "--version=1"
 }

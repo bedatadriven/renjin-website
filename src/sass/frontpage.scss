@@ -1,0 +1,76 @@
+
+.quickstart,
+.quickstart h2 {
+  font-family: Monaco, Menlo, Consolas,"Ubuntu Mono", monospace;
+  font-size: 20px;
+}
+
+.quickstart {
+  .quickstart__block {
+    margin-bottom: 16px;
+    padding: 0;
+
+    h2 {
+      color: $grey;
+    }
+
+    div {
+      padding-left: 20px;
+      text-indent: -20px;
+    }
+
+    .r {
+      color: $main;
+    }
+
+    .comment {
+      color: $grey;
+    }
+  }
+
+  .quickstart__docs {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+
+.casestudy {
+  background: $main-light;
+  padding: $double-space $space;
+
+  .package {
+    font-family: $codefont;
+  }
+
+  .grid {
+    align-items: center;
+  }
+  figure {
+    text-align: center;
+  }
+}
+
+.certified {
+  ul {
+    list-style: disc;
+    list-style-position: outside;
+  }
+}
+
+.casestudy,
+.quickstart,
+.certified {
+  .readmore {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.casestudy,
+.certified {
+
+  p, li {
+    font-size: 24px;
+  }
+}

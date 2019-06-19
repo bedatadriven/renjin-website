@@ -105,7 +105,7 @@ ul li {
 }
 
 pre, code {
-  font-family: Monaco, Menlo, Consolas,"Courier New",monospace;
+  font-family: $codefont;
   @include font-size(12px);
 }
 

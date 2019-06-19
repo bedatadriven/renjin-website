@@ -1,9 +1,6 @@
 header {
   position: relative;
-  background-image: url(/assets/img/hero.jpg);
-  background-size:     cover;
-  background-repeat: no-repeat;
-  background-position: center top;
+  background-color: silver;
   margin-bottom: $double-space;
 }
 
@@ -20,10 +17,10 @@ header.home {
   margin-top: 25px;
   min-width: inherit;
   max-width: 320px;
-  @include media-query(tablet-only){
+  @include media-query(tablet-only) {
     max-width: 400px;
   }
-  @include media-query(mobile-only){
+  @include media-query(mobile-only) {
     max-width: 100%;
   }
 }
