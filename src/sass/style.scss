@@ -3,9 +3,16 @@
 @import 'normalize';
 @import 'mixins';
 
+@import 'type';
+@import 'button';
+
+@import 'body';
 @import 'layout';
-@import 'grid';
 @import 'navigation';
 @import 'header';
-@import 'type';
+@import 'footer';
+
 @import 'frontpage';
+@import 'quickstart';
+
+@import 'mailchimp';

@@ -1,6 +1,6 @@
 <footer>
-  <div class="grid">
-    <div class="medium-4 grid-item">
+  <div>
+    <div>
       <h3>Downloads</h3>
       <p>Take a look at our <a href="/downloads.html">download page</a>, or choose one of our downloads directly. </p>
       <ul>
@@ -9,7 +9,7 @@
         <li><a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-script-engine&c=jar-with-dependencies&v=${config.renjin_current}&e=jar" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin script-engine');">Renjin Script Engine for Java projects [.jar]</a></li>
       </ul>
     </div>
-    <div class="medium-4 grid-item">
+    <div>
       <h3>Documentation</h3>
       <p>Learn how to use Renjin interactively or in Java projects:</p>
       <ul>
@@ -17,17 +17,17 @@
         <li><a href="http://javadoc.renjin.org">Renjin Javadoc</a></li>
       </ul>
     </div>
-    <div class="medium-4 grid-item">
+    <div>
       <h3>Contribute</h3>
       <p>Renjin is an open-source project. Go to the <a href="https://github.com/bedatadriven/renjin/">source code on GitHub</a>.</p>
     </div>
-    <div class="medium-4 grid-item">
+    <div>
       <h3>Packages</h3>
       <p>Take a look at our <a href="http://packages.renjin.org">package
           repository browser</a> for the state of compatibility of CRAN
       packages in Renjin. </p>
     </div>
-    <div class="medium-4 grid-item">
+    <div>
       <h3>News</h3>
      <#assign count = 0>
      <#list published_posts>
@@ -40,7 +40,7 @@
       </ul>
      </#list>
     </div>
-    <div class="medium-4 grid-item">
+    <div>
       <h3>Support</h3>
       <p>This project is an initiative of <a
           href="http://www.bedatadriven.com" rel="nofollow">BeDataDriven</a>, a company

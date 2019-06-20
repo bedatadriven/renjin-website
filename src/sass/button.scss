@@ -1,0 +1,26 @@
+
+
+
+button, input[type="submit"], input[type="password"], input[type="search"], .btn  {
+  background: $sec;
+  color: $light;
+  @include font-size(14px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 12px 4px;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  transition: all 0.5s cubic-bezier(.50,.1,.25,1.25);
+  box-shadow: none;
+  margin-top: -1px;
+  &:hover, a:hover & {
+    background: $main;
+    color: $light;
+    transition: all 0.4s cubic-bezier(.50,.1,.25,1.25);
+  }
+  &:focus {
+    position: relative;
+    top: 2px;
+  }
+}

@@ -1,0 +1,30 @@
+
+
+
+// newsletter signup
+#mc_embed_signup {
+  @include media-query(desk){
+    margin-top: 30px;
+  }
+  label {
+    width: 100%;
+  }
+}
+
+#mc-embedded-subscribe-form {
+  display: flex;
+}
+
+#mc-embedded-subscribe {
+  flex-grow: 1;
+}
+
+#mc-embedded-label {
+  flex-grow: 2;
+  margin-right: 20px;
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+

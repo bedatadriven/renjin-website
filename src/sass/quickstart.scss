@@ -1,0 +1,55 @@
+
+
+
+.quickstart,
+.quickstart h2 {
+  font-family: $codefont;
+  font-size: 1.25rem;
+}
+
+.quickstart {
+
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  .quickstart__block {
+    margin-bottom: 1rem;
+    padding: 0;
+
+    h2 {
+      color: $grey;
+    }
+
+    div {
+      padding-left: 1.25rem;
+      text-indent: -1.25rem
+    }
+
+    .r {
+      color: $main;
+    }
+
+    .comment {
+      color: $grey;
+    }
+  }
+
+  .quickstart__docs {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+@media screen and (max-width: 50rem) {
+
+  .quickstart {
+    font-size: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    h2 {
+      font-size: 1rem;
+    }
+
+  }
+}

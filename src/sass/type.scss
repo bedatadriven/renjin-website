@@ -58,10 +58,9 @@ a {
 }
 
 p {
-  @include font-size(17px);
+  font-size: 1.25rem;
   margin-bottom: $base-line-height;
   margin-top: 3px;
-  max-width: 40em;
   + p {
     margin-top: -$base-line-height / 2;
   }
@@ -239,3 +238,8 @@ code {
 .icon-truck:before { content: '\e806'; } /* '' */
 .icon-diamond:before { content: '\e807'; } /* '' */
 .icon-clock:before { content: '\e808'; } /* '' */
+
+
+span.package {
+  font-family: $codefont;
+}
