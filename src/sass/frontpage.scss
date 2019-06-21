@@ -5,6 +5,11 @@ header.hero {
   background: none;
 }
 
+.hero > img {
+  height: auto !important;
+  max-width: unset;
+}
+
 .hero > div {
   position: absolute;
   left: 0;
