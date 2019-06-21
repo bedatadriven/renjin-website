@@ -1,14 +1,33 @@
 
 
+
+header.hero {
+  background: none;
+}
+
+.hero > div {
+  position: absolute;
+  left: 0;
+  right: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.hero h1 {
+}
+
+
+
 main.landing {
 
-  .landing__block {
-    background: $light;
+  > div {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
 
-  .landing__block--dark {
+  > div:nth-child(odd) {
     background: $main-light;
   }
 
@@ -42,3 +61,4 @@ main.landing {
     display: none;
   }
 }
+

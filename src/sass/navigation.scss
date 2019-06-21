@@ -2,7 +2,10 @@
 // responsive top menu: http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly
 // desktop
 nav {
-  background: $main;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
   > a {
     display: none;
   }
@@ -24,7 +27,7 @@ nav {
       text-decoration: none;
       @include font-size (20px);
       &:active {
-        background-color: $light !important;
+        //background-color: $light !important;
         color: $main;
       }
     }
@@ -46,7 +49,7 @@ nav {
   }
   > ul {
     height: 60px;
-    background-color: $main;
+    //background-color: $main;
     display: flex;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -62,9 +65,9 @@ nav {
         line-height: 2.9em;
         text-align: center;
       }
-      &:not(:last-child) > a {
-        border-right: 1px solid $main;
-      }
+      //&:not(:last-child) > a {
+      //  border-right: 1px solid $main;
+      //}
       &:hover > a {
         background-color: $sec;
       }
@@ -75,7 +78,7 @@ nav {
   }
   li {
     ul {
-      background-color: $main;
+      //background-color: $main;
       display: none;
       position: absolute;
       top: 100%;
@@ -181,7 +184,7 @@ nav {
 @media only screen and (max-width: 62.5em) {
   nav {
     width: 100%;
-    position: static;
+    position: absolute;
     margin: 0;
   }
 }

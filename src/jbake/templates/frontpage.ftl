@@ -4,13 +4,35 @@
 <body class="home">
 <#assign active = "home">
 <#include "navigation.ftl">
-<#include "frontpage_banner.ftl">
+
+<header class="hero">
+  <img src="/assets/img/hero.jpg" width="1920" height="858" alt="Photo of an R and a Java developer">
+  <div>
+    <h1>Renjin is a JVM-based interpreter for the R language</h1>
+    <div>
+      <a href="#quickstart">Quick start</a>
+    </div>
+  </div>
+</header>
+
 <main class="landing">
 
-
-  <div class="landing__block">
+  <div>
     <div>
-      <h1>Quickstart</h1>
+      <h1>Seamless integration between R and Java</h1>
+
+      <ul>
+        <li>Embed Renjin directly in your Java project as a library</li>
+        <li>Zero-overhead data sharing between R and Java</li>
+        <li>Pure-Java versions of CRAN and BioConductor packages</li>
+        <li>Multi-threaded execution</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <h1 id="quickstart">Quickstart</h1>
 
       <div class="quickstart">
         <div class="quickstart__block">
@@ -36,7 +58,7 @@
     </div>
   </div>
 
-  <div class="landing__block landing__block--dark">
+  <div>
     <div class="casestudy">
 
       <div class="casestudy__body">
@@ -59,7 +81,7 @@
   </div>
 
 
-  <div class="landing__block">
+  <div>
     <div>
       <h1>Certified Releases</h1>
 
@@ -69,12 +91,13 @@
         <li>Long-term support for Renjin Certified Build</li>
         <li>48-hour SLA for critical defects</li>
         <li>Early-access to bug fixes</li>
+        <li>Access to Java 6 and Java 7 compatible builds</li>
       </ul>
       <a href="/casestudy/opsfactor.html" class="btn">Details &amp; Pricing ⟶</a>
     </div>
   </div>
 
-  <div class="landing__block landing__block--dark">
+  <div>
     <div class="casestudy">
 
       <div class="casestudy__graphic casestudy--flipped">
