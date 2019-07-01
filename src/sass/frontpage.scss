@@ -11,10 +11,6 @@ header.hero {
   min-height: calc(100vw / 3.37);
   height: 50vh;
 
-  > div {
-    padding-top: 80px;
-  }
-
   h1, h2 {
     color: white;
   }
@@ -25,7 +21,24 @@ header.hero {
   h2 {
     font-size: 16px;
   }
+
+  .btn-group {
+    margin-top: 32px;
+  }
+
+  .btn {
+    padding: 8px 16px 8px;
+    margin-bottom: 8px;
+    text-transform: none;
+    font-size: 20px;
+  }
+
+  .btn:nth-child(2) {
+    background: $light;
+    color: black;
+  }
 }
+
 
 // Grow the size of the titles for larger
 // devices
@@ -46,6 +59,9 @@ header.hero {
     h1 {
       font-size: 48px;
     }
+    h2 {
+      font-size: 28px;
+    }
   }
 }
 
@@ -53,6 +69,8 @@ header.hero {
 
 
 main.landing {
+  padding-top: 0;
+  padding-bottom: 0;
 
   > div {
     padding-top: 5rem;

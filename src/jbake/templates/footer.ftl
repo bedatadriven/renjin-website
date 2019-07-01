@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div>
-      <h3>Documentation</h3>
+      <h3>Resources</h3>
       <p>Learn how to use Renjin interactively or in Java projects:</p>
       <ul>
         <li><a href="http://docs.renjin.org/">Official documentation</a></li>

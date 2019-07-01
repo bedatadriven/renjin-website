@@ -11,7 +11,7 @@
 
         <h2>Documentation</h2>
 
-        <p>You can find comprehensive documentation at our <a href="docs.renjin.org">documentation center</a>, including: </p>
+        <p>You can find comprehensive <a href="docs.renjin.org">documentation</a> on Renjin, including: </p>
 
         <ul>
             <li><a href="http://docs.renjin.org/en/latest/library/index.html">Using Renjin as a Java Library</a></li>
@@ -31,7 +31,10 @@
             <li><a href="/blog/2017-08-10-processing-r.html">Processing.R enables users to write Processing sketches in R.</a></li>
         </ul>
 
-        <h2>Downloads</h2>
+        <h2>Packages</h2>
+
+        <p>Builds of CRAN and BioConductor packages are available from our </p>
+
     </div>
 </main>
 <#include "footer.ftl">

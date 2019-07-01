@@ -1,0 +1,45 @@
+
+
+table.comparison {
+  width: 100%;
+  font-size: 18px;
+
+
+  tr {
+    background: none;
+    border-bottom: 1px solid $main;
+  }
+
+  thead {
+    th, td {
+      vertical-align: bottom;
+    }
+  }
+
+  tbody {
+    th {
+      text-align: left;
+      font-weight: normal;
+      padding-left: 24px;
+      color: $main;
+    }
+
+    th[colspan="3"] {
+      font-weight: bold;
+      padding-left: 0;
+    }
+
+    td {
+      text-align: center;
+    }
+  }
+
+  a, a:visited {
+    text-decoration: none;
+    color: $dark
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

@@ -26,14 +26,15 @@ button, input[type="submit"], input[type="password"], input[type="search"], .btn
 }
 
 
-.button-group {
-  margin-bottom: 32px;
+.btn-group {
+  margin-bottom: 14px;
 
   .btn {
     margin-right: 8px;
+    margin-bottom: 8px;
   }
 }
 
-p + .button-group {
+p + .btn-group {
   margin-top: -15px;
 }

@@ -7,8 +7,14 @@
 
 <header class="hero">
   <div>
-    <h1>Extend your Java project with<br>The Power of R</h1>
-    <h2>Renjin is a JVM-based interpreter for the R language</h2>
+    <div>
+      <h1>Extend your Java project with<br>The Power of R</h1>
+      <h2>Renjin is a JVM-based interpreter for the R language</h2>
+    </div>
+    <div class="btn-group">
+      <a href="#quickstart" class="btn">Quick start for free</a>
+      <a href="/enterprise.html" class="btn">Upgrade to Renjin Enterprise Support</a>
+    </div>
   </div>
 </header>
 
@@ -33,7 +39,6 @@
 
       <div class="quickstart">
         <div class="quickstart__block">
-          <#--            <h2>// Add Renjin to your Maven, Gradle, Scala, or Clojure project in minutes</h2>-->
           <div>RenjinScriptEngine engine = new RenjinScriptEngine();</div>
         </div>
         <div class="quickstart__block">
@@ -80,12 +85,12 @@
 
   <div>
     <div>
-      <h1>Certified Releases</h1>
+      <h1 id="professional">Renjin Enterprise Support</h1>
 
       <p>For mission-critical applications, purchase an annual support subscription that includes:</p>
 
       <ul>
-        <li>Long-term support for Renjin Certified Build</li>
+        <li>Long-term support for Renjin Certified Releases</li>
         <li>48-hour SLA for critical defects</li>
         <li>Early-access to bug fixes</li>
         <li>Access to Java 6 and Java 7 compatible builds</li>

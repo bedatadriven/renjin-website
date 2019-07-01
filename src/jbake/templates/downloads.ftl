@@ -19,7 +19,7 @@
         <p>Add Renjin to any Java, Scala, or other JVM project and run R
             code with the standard Java Scripting API.</p>
 
-        <div class="button-group">
+        <div class="btn-group">
             <a href="#maven" class="btn btn-large btn-warning" type="button"
                onclick="ga('send', 'event', 'Download', 'Click', 'Add to Maven Project');">Add to Maven Project</a>
             <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-script-engine&c=jar-with-dependencies&v=${config.renjin_current}&e=jar" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Standalone Java Library');">Download Standalone .JAR</a>
@@ -40,7 +40,7 @@
         <h4 class="sec">*nix and Mac OS X platforms</h4>
         <p>Prefer working in a terminal? Download one of the following packages.</p>
 
-        <div class="button-group">
+        <div class="btn-group">
             <a href="https://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-generic-package&v=${config.renjin_current}&e=zip" class="btn btn-large btn-warning" type="button" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin ZIP archive');">Download .zip</a>
             <a href="#apt" class="btn btn-large btn-warning" type="button">Install via APT</a>
         </div>
