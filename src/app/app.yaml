@@ -8,6 +8,14 @@ handlers:
   static_files: output/index.html
   upload: output/index.html
 
+- url: /blog/
+  static_files: output/blog/index.html
+  upload: output/blog/index.html
+
+- url: /blog
+  static_files: output/blog/index.html
+  upload: output/blog/index.html
+
 - url: /(.*)
   static_files: output/\1
   upload: output/(.*)
