@@ -8,8 +8,8 @@
 <header class="hero">
   <div>
     <div>
-      <h1>Extend your Java project with<br>The Power of R</h1>
-      <h2>Renjin is a JVM-based interpreter for the R language</h2>
+      <h1>Bring the Power of R<br>to Java</h1>
+      <h2>Renjin is the JVM-based interpreter for the R language</h2>
     </div>
     <div class="btn-group">
       <a href="#quickstart" class="btn">Quick start for free</a>

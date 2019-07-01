@@ -2,46 +2,15 @@ header {
   position: relative;
   background-color: silver;
 
-  // leave room for the navigation menu
-  padding-top: 80px;
-
 }
 
 header[role="banner"] {
+  padding-top: 40px;
   padding-bottom: 40px;
-
-  > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    img {
-      display: block;
-      margin-top: 25px;
-      min-width: inherit;
-      max-width: 320px;
-      @include media-query(tablet-only) {
-        max-width: 400px;
-      }
-      @include media-query(mobile-only) {
-        max-width: 100%;
-      }
-
-    }
-
-    .slogan {
-      color: $main;
-      h1 {
-        @include font-size(22px);
-        font-weight: normal;
-        @include media-query(desk){
-          margin-left: 40px;
-        }
-      }
-      @include media-query(tablet-mobile-only){
-        margin: 0;
-      }
-    }
-  }
 }
 
+.logo {
+  margin-top: 25px;
+  min-width: inherit;
+  width: 125px;
+}

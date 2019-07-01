@@ -11,6 +11,9 @@ header.hero {
   min-height: calc(100vw / 3.37);
   height: 50vh;
 
+  // leave room for the navigation menu
+  padding-top: 80px;
+
   h1, h2 {
     color: white;
   }

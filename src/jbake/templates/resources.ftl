@@ -33,7 +33,10 @@
 
         <h2>Packages</h2>
 
-        <p>Builds of CRAN and BioConductor packages are available from our </p>
+        <p>Builds of CRAN and BioConductor packages for Renjin are available from our repository:</p>
+        <ul>
+            <li><a href="http://packages.renjin.org/packages">Browse packages A-Z</a></li>
+        </ul>
 
     </div>
 </main>
