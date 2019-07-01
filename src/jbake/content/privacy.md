@@ -36,6 +36,10 @@ servers. This section details which data we store and why we store this data.
 We use cookies to track your usage of the website and the platform,
 see the "Cookies" section below for more details on which cookies we use.
 
+When you subscribe to our Newsletter we collect your name, email and organization type in order to offer you customized and relevant updates and marketing material regarding Renjin. By subscribing to our Newsletter, you agree that BeDataDriven may collect and use the personal data you provided for sharing marketing material and other updates regarding Renjin that you agree to receive, in accordance with our Privacy Policy. You can unsubscribe at any time by clicking the link in the footer of our emails, via the Unsubscribe option provided by Mailchimp. We will treat your information with respect.
+
+We use Mailchimp as our marketing platform. By subscribing to our Newsletter, you acknowledge that your information will be transferred to Mailchimp for processing. Learn more about [Mailchimp's privacy practices](https://mailchimp.com/legal/)
+
 ## Where we store your data
 
 The platform runs on infrastructure provided as part of the Google Cloud
