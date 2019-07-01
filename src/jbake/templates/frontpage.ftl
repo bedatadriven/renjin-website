@@ -6,7 +6,7 @@
 <#include "navigation.ftl">
 
 <header class="hero">
-  <img src="/assets/img/hero.jpg" width="1920" height="858" alt="Photo of an R and a Java developer">
+  <img src="/assets/img/hero2.jpg" alt="Photo of an R and a Java developer">
   <div>
     <h1>Renjin is a JVM-based interpreter for the R language</h1>
     <div>
@@ -32,7 +32,7 @@
 
   <div>
     <div>
-      <h1 id="quickstart">Quickstart</h1>
+      <h1 id="quickstart">Java Quickstart</h1>
 
       <div class="quickstart">
         <div class="quickstart__block">

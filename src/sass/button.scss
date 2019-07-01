@@ -24,3 +24,16 @@ button, input[type="submit"], input[type="password"], input[type="search"], .btn
     top: 2px;
   }
 }
+
+
+.button-group {
+  margin-bottom: 32px;
+
+  .btn {
+    margin-right: 8px;
+  }
+}
+
+p + .button-group {
+  margin-top: -15px;
+}
