@@ -123,6 +123,12 @@
         <p>Our pricing for the Renjin Enterprise Subscription is based on the number of developers who are entitled
             to direct support from BeDataDriven. </p>
 
+        <h2 id="contact">Get started today</h2>
+
+        <p>Contact us today to start a Renjin Enterprise Support Subscription.</p>
+
+        <div class="btn-group"><a class="btn" href="mailto:info@renjin.org">Contact us</a></div>
+
     </div>
 </main>
 <#include "footer.ftl">
