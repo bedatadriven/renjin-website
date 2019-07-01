@@ -13,8 +13,8 @@
       <h3>Resources</h3>
       <p>Learn how to use Renjin interactively or in Java projects:</p>
       <ul>
-        <li><a href="http://docs.renjin.org/">Official documentation</a></li>
-        <li><a href="http://javadoc.renjin.org">Renjin Javadoc</a></li>
+        <li><a href="http://docs.renjin.org/">Documentation</a></li>
+        <li><a href="/resources.html#case-studies">Case studies</a></li>
       </ul>
     </div>
     <div>
@@ -42,10 +42,10 @@
     </div>
     <div>
       <h3>Support</h3>
-      <p>This project is an initiative of <a
-          href="http://www.bedatadriven.com" rel="nofollow">BeDataDriven</a>, a company
-      providing consulting in analytics and decision support systems. Read
-      about our <a href="/support.html">support options for Renjin</a>.</p>
+      <ul>
+        <li><a href="/enterprise.html">Renjin Enterprise Support</a></li>
+        <li><a href="http://stackoverflow.com/questions/tagged/renjin">StackOverflow</a></li>
+      </ul>
     </div>
   </div>
 </footer>

@@ -2,17 +2,33 @@
 
 
 // newsletter signup
-#mc_embed_signup {
+#mc-embedded-subscribe-form {
+
+  // Row containing label, input, and submit button
+  div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    div:nth-child(1) {
+      font-size: 20px;
+      width: 50%;
+    }
+
+    div:nth-child(2) {
+      flex-grow: 2;
+      margin-right: 20px;
+    }
+  }
+
+}
+#mc-embedded-subscribe-form {
   @include media-query(desk){
     margin-top: 30px;
   }
   label {
     width: 100%;
   }
-}
-
-#mc-embedded-subscribe-form {
-  display: flex;
 }
 
 #mc-embedded-subscribe {
@@ -27,4 +43,3 @@
     box-sizing: border-box;
   }
 }
-

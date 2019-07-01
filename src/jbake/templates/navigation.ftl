@@ -8,12 +8,6 @@
     <li><a href="/index.html">Home</a></li>
     </#if>
 
-<#--    <#if active == "solutions">-->
-<#--    <li class="active"><a href="/solutions.html">Solutions</a></li>-->
-<#--    <#else>-->
-<#--    <li><a href="/downloads.html">Solutions</a></li>-->
-<#--    </#if>-->
-
     <#if active == "resources">
     <li class="active"><a href="/resources.html">Resources</a></li>
     <#else>

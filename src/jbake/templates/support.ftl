@@ -28,7 +28,7 @@
 
     </div>
     <div class="medium-6 grid-item">
-      <h2>Renjin Professional</h2>
+      <h2>Renjin Enterprise Support</h2>
 
       <p>For fast, predictable support for any issues with Renjin, purchase an annual support contract
       for Renjin that includes:</p>
@@ -39,7 +39,7 @@
         <li>Early-access to bug fixes</li>
         <li>Access to Java 6 and Java 7 compatible builds</li>
       </ul>
-      <a href="/casestudy/opsfactor.html" class="btn">Details &amp; Pricing ⟶</a>
+      <a href="/enterprise.html" class="btn">Details &amp; Pricing ⟶</a>
     </div>
   </div>
 </main>

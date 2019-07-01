@@ -18,7 +18,7 @@
             <li><a href="http://docs.renjin.org/en/latest/interactive/index.html">Using Renjin from the Command Line</a></li>
         </ul>
 
-        <h2>Case Studies</h2>
+        <h2 id="case-studies">Case Studies</h2>
 
         <p>Renjin has evolved from a research project into a stable solution used by companies and researchers
             to improve their development workflows.</p>

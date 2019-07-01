@@ -2,10 +2,8 @@
 // responsive top menu: http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly
 // desktop
 nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  background: $main;
+
   > a {
     display: none;
   }
@@ -27,7 +25,7 @@ nav {
       text-decoration: none;
       @include font-size (20px);
       &:active {
-        //background-color: $light !important;
+        background-color: $light !important;
         color: $main;
       }
     }
@@ -49,7 +47,7 @@ nav {
   }
   > ul {
     height: 60px;
-    //background-color: $main;
+    background-color: $main;
     display: flex;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -65,9 +63,9 @@ nav {
         line-height: 2.9em;
         text-align: center;
       }
-      //&:not(:last-child) > a {
-      //  border-right: 1px solid $main;
-      //}
+      &:not(:last-child) > a {
+        border-right: 1px solid $main;
+      }
       &:hover > a {
         background-color: $sec;
       }
@@ -78,7 +76,7 @@ nav {
   }
   li {
     ul {
-      //background-color: $main;
+      background-color: $main;
       display: none;
       position: absolute;
       top: 100%;
@@ -129,6 +127,7 @@ nav {
       height: 3em;
       text-align: left;
       text-indent: -9999px;
+      background-color: $main;
       position: relative;
       &:before {
         position: absolute;
@@ -154,7 +153,6 @@ nav {
       height: auto;
       display: none;
       position: absolute;
-      background-color: rgba(0, 0, 0, 90%);
       left: 0;
       right: 0;
       top: 60px;
@@ -170,7 +168,7 @@ nav {
       }
       &:not(:last-child) > a {
         border-right: none;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid $sec;
       }
     }
     li ul {
@@ -179,12 +177,49 @@ nav {
       padding-top: 0;
     }
   }
+
+  .home nav {
+
+    > a {
+      background: none;
+    }
+
+    > ul {
+      background-color: $main !important;
+    }
+    > ul > li {
+      &:not(:last-child) > a {
+        border-bottom: 1px solid white;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 62.5em) {
   nav {
     width: 100%;
-    position: absolute;
+    position: static;
     margin: 0;
+  }
+}
+
+.home nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: none;
+
+  li a:active {
+    background-color: $light !important;
+    color: $main;
+  }
+  > ul {
+    background-color: transparent;
+    > li {
+      &:not(:last-child) > a {
+        border-right: 1px solid transparent;
+      }
+    }
   }
 }

@@ -95,7 +95,7 @@
         <li>Early-access to bug fixes</li>
         <li>Access to Java 6 and Java 7 compatible builds</li>
       </ul>
-      <a href="/casestudy/opsfactor.html" class="btn">Details &amp; Pricing ⟶</a>
+      <a href="/enterprise.html" class="btn">Details &amp; Pricing ⟶</a>
     </div>
   </div>
 
@@ -120,47 +120,50 @@
     </div>
   </div>
 
-<#--  -->
-<#--  -->
-<#--  <div class="row-dark news">-->
-<#--    <div class="grid">-->
-<#--      <h2 class="accent">Latest news</h2>-->
-<#--      <div class="medium-6 grid-item">-->
-<#--        <#assign count = 0>-->
-<#--        <#list published_posts>-->
-<#--          <#items as post>-->
-<#--            <#if count == 3><#break></#if>-->
-<#--            <a href="/${post.uri}" class="newsitem blocklink">-->
-<#--              <h4>${post.title}</h4>-->
-<#--              <p>${post.excerpt}</p>-->
-<#--              <div class="meta">Published on ${post.date?string('yyyy-MM-dd')}</div>-->
-<#--              <div class="readmore">Read more</div>-->
-<#--            </a>-->
-<#--            <#assign count++>-->
-<#--          </#items>-->
-<#--          </ul>-->
-<#--        </#list>-->
-<#--      </div>-->
 
-<#--      <div class="medium-6 grid-item">-->
-<#--        <a href="http://packages.renjin.org" class="block blocklink">-->
-<#--          <h3>Packages</h3>-->
-<#--          <p>CRAN packages are automatically built and tested against Renjin.-->
-<#--            Many of them can be loaded directly into Renjin without the need to-->
-<#--            install them first.</p>-->
-<#--          <div class="readmore">Go to the package repository</div>-->
-<#--        </a>-->
+<#--  <div>-->
+<#--    <div>-->
+<#--      <h1>Subscribe to our newsletter</h1>-->
+<#--      <form action="https://renjin.us7.list-manage.com/subscribe/post?u=d15c4a781ddc4b9bdcec62993&amp;id=57c04ae38b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>-->
+<#--        <!-- first row &ndash;&gt;-->
+<#--        <div>-->
+<#--          <div>Receive updates about releases, packages, and other news right in your inbox.-->
+<#--            Curious? Have a look at the newsletter archive.</div>-->
+<#--          <div class="mc-field-group">-->
+<#--            <input type="email" placeholder="Please enter your work email" required value="" name="EMAIL" class="required email" id="mce-EMAIL">-->
+<#--          </div>-->
+<#--          <div>-->
+<#--           <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">-->
+<#--          </div>-->
+<#--        </div>-->
 
-<#--        <a href="/support.html" class="block blocklink">-->
-<#--          <h3>Commercial support</h3>-->
-<#--          <p>Renjin is a project initiated by BeDataDriven, a company-->
-<#--            providing consulting in analytics and decision support systems. We-->
-<#--            also provide commercial support for Renjin.</p>-->
-<#--          <div class="readmore">Check your support options</div>-->
-<#--        </a>-->
-<#--      </div>-->
+<#--        <div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">-->
+<#--          <div class="content__gdpr">-->
+<#--            <label>Marketing Permissions</label>-->
+<#--            <p>Please click the box if you would like to hear from BeDataDriven B.V. and Renjin via email:</p>-->
+<#--            <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">-->
+<#--              <label class="checkbox subfield" for="gdpr_28397"><input type="checkbox" id="gdpr_28397" name="gdpr[28397]" value="Y" class="av-checkbox "><span>I want to receive the Renjin Newsletter</span> </label><label class="checkbox subfield" for="gdpr_28577"><input type="checkbox" id="gdpr_28577" name="gdpr[28577]" value="Y" class="av-checkbox "><span>I want to receive updates about Renjin Enterprise Support</span> </label>-->
+<#--            </fieldset>-->
+<#--            <p>By clicking on "Subscribe" below, you agree that BeDataDriven may collect and use your personal data - provided in this form - for sharing marketing material and other updates regarding Renjin that you agree to receive, in accordance with our Privacy Policy.-->
+
+<#--              You can unsubscribe at any time by clicking the link in the footer of our emails. We will treat your information with respect.-->
+
+<#--              For information about our privacy practices, please visit our website.</p>-->
+<#--          </div>-->
+<#--          <div class="content__gdprLegal">-->
+<#--            <p>We use Mailchimp as our marketing platform. By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing. <a href="https://mailchimp.com/legal/" target="_blank">Learn more about Mailchimp's privacy practices here.</a></p>-->
+<#--          </div>-->
+<#--        </div>-->
+<#--        <div id="mce-responses" class="clear">-->
+<#--          <div class="response" id="mce-error-response" style="display:none"></div>-->
+<#--          <div class="response" id="mce-success-response" style="display:none"></div>-->
+<#--        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups&ndash;&gt;-->
+<#--        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d15c4a781ddc4b9bdcec62993_57c04ae38b" tabindex="-1" value=""></div>-->
+<#--        <div class="clear"></div>-->
+<#--      </form>-->
 <#--    </div>-->
 <#--  </div>-->
+
 </main>
 <#include "footer.ftl">
 <#include "tracking.ftl">
