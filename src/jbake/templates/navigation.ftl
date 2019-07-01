@@ -15,9 +15,9 @@
     </#if>
 
     <#if active == "resources">
-    <li class="active"><a href="#">Resources</a></li>
+    <li class="active"><a href="/resources.html">Resources</a></li>
     <#else>
-    <li><a href="#">Resources</a></li>
+    <li><a href="/resources.html">Resources</a></li>
     </#if>
     <#if active == "blog">
     <li class="active"><a href="/blog">Blog</a></li>
