@@ -129,7 +129,6 @@ nav {
       height: 3em;
       text-align: left;
       text-indent: -9999px;
-      background-color: $main;
       position: relative;
       &:before {
         position: absolute;
@@ -155,6 +154,7 @@ nav {
       height: auto;
       display: none;
       position: absolute;
+      background-color: rgba(0, 0, 0, 90%);
       left: 0;
       right: 0;
       top: 60px;
@@ -170,7 +170,7 @@ nav {
       }
       &:not(:last-child) > a {
         border-right: none;
-        border-bottom: 1px solid $sec;
+        border-bottom: 1px solid white;
       }
     }
     li ul {

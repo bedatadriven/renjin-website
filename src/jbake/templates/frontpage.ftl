@@ -2,16 +2,13 @@
 <html lang="en">
 <#include "head.ftl">
 <body class="home">
-<#assign active = "home">
+<#assign active = "">
 <#include "navigation.ftl">
 
 <header class="hero">
-  <img src="/assets/img/hero2.jpg" alt="Photo of an R and a Java developer">
   <div>
-    <h1>Renjin is a JVM-based interpreter for the R language</h1>
-    <div>
-      <a href="#quickstart">Quick start</a>
-    </div>
+    <h1>Extend your Java project with<br>The Power of R</h1>
+    <h2>Renjin is a JVM-based interpreter for the R language</h2>
   </div>
 </header>
 

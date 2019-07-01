@@ -1,27 +1,54 @@
 
 
+// hero image size 3246 x 961
+// aspect ratio 3.37773153 = ~ 3.37
 
 header.hero {
-  background: none;
+  background: url("/assets/img/hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto 100%;
+  min-height: calc(100vw / 3.37);
+  height: 50vh;
+
+  > div {
+    padding-top: 80px;
+  }
+
+  h1, h2 {
+    color: white;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 16px;
+  }
 }
 
-.hero > img {
-  height: auto !important;
-  max-width: unset;
+// Grow the size of the titles for larger
+// devices
+
+@media screen and (min-width: 500px) {
+  header.hero {
+    h1 {
+      font-size: 36px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+  }
 }
 
-.hero > div {
-  position: absolute;
-  left: 0;
-  right: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  padding-left: 3rem;
-  padding-right: 3rem;
+@media screen and (min-width: 750px) {
+  header.hero {
+    h1 {
+      font-size: 48px;
+    }
+  }
 }
 
-.hero h1 {
-}
 
 
 
