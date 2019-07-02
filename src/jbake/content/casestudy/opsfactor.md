@@ -8,7 +8,7 @@ lang=en
 # Introduction
 
 In this Case Study we explore how Renjin is used by the company
-OpsFactor to develop a demand planning solution. Renjin, acting as a
+[OpsFactor](http://opsfactor.com/) to develop a demand planning solution. Renjin, acting as a
 bridge between the strongest components of the Java and the R world,
 facilitates the cooperation between specialists and generalists and
 accelerates the workflow of the company. We spoke with the founder of
