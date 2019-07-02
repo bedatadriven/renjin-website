@@ -18,6 +18,7 @@
             <p>Read more at <a href="/blog/">Renjin's blog</a> or subscribe to the blog's <a href="/feed.xml">RSS feed</a>.
         </article>
     </div>
+    <#include "cta-block.ftl">
 </main>
 <#include "footer.ftl">
 <#include "tracking.ftl">

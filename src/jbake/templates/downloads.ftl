@@ -99,6 +99,8 @@ sudo apt-get install renjin
             <a href="http://docs.renjin.org/en/latest/library/project-setup.html#scala-build-tool-sbt">SBT</a>, and other types of projects in our
             <a href="http://docs.renjin.org/en/latest/library/project-setup.html">Project Setup Guide</a>.
     </div>
+    <#include "cta-block.ftl">
+
 </main>
 <#include "footer.ftl">
 <#include "tracking.ftl">
