@@ -1,21 +1,25 @@
 runtime: python27
 api_version: 1
 threadsafe: true
-service: static
+service: default
 
 handlers:
 - url: /
   static_files: output/index.html
   upload: output/index.html
+  secure: always
 
 - url: /blog/
   static_files: output/blog/index.html
   upload: output/blog/index.html
+  secure: always
 
 - url: /blog
   static_files: output/blog/index.html
   upload: output/blog/index.html
+  secure: always
 
 - url: /(.*)
   static_files: output/\1
   upload: output/(.*)
+  secure: always
