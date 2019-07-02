@@ -8,9 +8,7 @@ lang=en
 # Introduction
 
 In this Case Study, we explore how the Business Intelligence software
-icCube and its Dutch reseller and analytics expert, Inside Vision,
-leverage the rich capabilities of the R language for statistical
-analysis and enhance the end-results offered to their clients, by
+[icCube](https://www.iccube.com/) and its Dutch reseller and analytics expert, [Inside Vision](https://www.inside-vision.com/), leverage the rich capabilities of the R language for statistical analysis and enhance the end-results offered to their clients, by
 integrating Renjin in their Java-based data analytics and visualization
 solution.
 
@@ -67,7 +65,11 @@ via engine variables and icCube data structure converters.
 The plugin therefore allows R scripts to be executed inside the
 software, empowering the data analysis process. By running R scripts,
 icCube enriches its advanced analytical capabilities and the end-results
-offered to the clients. Mrs Leroy explains: “Within an MDX query you can
+offered to the clients. 
+
+Mrs Leroy explains: 
+
+“Within an MDX query you can
 insert an algorithm or function that is produced using R or Java to
 make advanced mathematical calculations”.
 
@@ -78,7 +80,7 @@ large amounts of data between icCube and the R runtime.
 # Practical client example: Improving workflow efficiency for a Purchasing department
 
 Mr. Arthur van de Berg presented an example of how icCube is being used
-by a client and explained how Renjin helped reach the desired end-result.
+by [a client](https://www.linkedin.com/in/purfacts/) and explained how Renjin helped reach the desired end-result.
 In the example, icCube was used to assist the client to prioritize a
 list of activities according to certain conditions such as risks, costs,
 processes and more. Following that, there was a need to optimize the
@@ -87,6 +89,8 @@ formula had to be developed. The solution came from the econometrics
 field. An R script was developed to provide the asked values. The
 R optimization script was seamlessly added and executed in icCube via
 Renjin, completing the workflow.
+
+![Screenshot of editing R code in icCube](/assets/img/iccube-categories.png)
 
 Under the icCube “hood”, Renjin is used to integrate an R-algorithm
 directly into an MDX query.
