@@ -11,7 +11,7 @@
 
         <h2>Documentation</h2>
 
-        <p>You can find comprehensive <a href="docs.renjin.org">documentation</a> on Renjin, including: </p>
+        <p>You can find comprehensive <a href="http://docs.renjin.org">documentation</a> on Renjin, including: </p>
 
         <ul>
             <li><a href="http://docs.renjin.org/en/latest/library/index.html">Using Renjin as a Java Library</a></li>
