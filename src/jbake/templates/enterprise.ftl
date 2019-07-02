@@ -22,15 +22,16 @@
         <h2>Overview</h2>
 
 
-        <table class="comparison">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Community</th>
-                <th>Renjin Enterprise Support</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="comparison">
+            <table class="comparison">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Community</th>
+                    <th>Renjin Enterprise Support</th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <th colspan="3">Software</th>
                 </tr>
@@ -72,8 +73,9 @@
                     <td>Free</td>
                     <td>€4800/developer/year</td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
 
         <h2 id="nightly">Nightly builds</h2>
 
