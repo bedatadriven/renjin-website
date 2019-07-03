@@ -96,7 +96,8 @@
         <h2 id="backporting">Backporting of bug fixes for major releases</h2>
 
         <p>Renjin Certified Releases also receive bug fixes for up to three years after their initial release.
-        This ensures that long-running applications can </p>
+        This ensures that long-running applications can be maintained over the long-term without the costs of
+        upgrading to new major versions of Renjin.</p>
 
         <h2 id="java-support">Long-term Java Support</h2>
 
