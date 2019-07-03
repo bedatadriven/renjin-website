@@ -38,6 +38,10 @@
       <h1 id="quickstart">Java Quickstart</h1>
 
       <div class="quickstart">
+
+        <div class="quickstart__block">
+          <h2>// Add Renjin as a dependency to pom.xml or build.gradle</h2>
+        </div>
         <div class="quickstart__block">
           <div>RenjinScriptEngine engine = new RenjinScriptEngine();</div>
         </div>
