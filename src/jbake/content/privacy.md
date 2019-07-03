@@ -16,7 +16,7 @@ Read the following sections to learn about:
 * how we protect your data.
 
 Last revised on July 1, 2019. The latest version of this privacy policy
-can be obtained at https://www.renjin.org/about/privacy.html.
+can be obtained at https://www.renjin.org/privacy.html.
 
 ## Definitions
 
