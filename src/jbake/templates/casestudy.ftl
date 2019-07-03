@@ -2,7 +2,7 @@
 <html lang="en">
 <#include "head.ftl">
 <body>
-<#assign active = "blog">
+<#assign active = "resources">
 <#include "navigation.ftl">
 <#include "banner.ftl">
 <main role="main">
