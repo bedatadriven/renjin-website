@@ -18,13 +18,7 @@ that Renjin can be integrated with Amazon Elastic Beanstalk.
 
 # The company
 
-The OpsFactor company was created out of the emerging need for a
-customized demand planning solution for the Brazilian market.
-The pre-made formulas didn't seem to work for that market and this
-led Mr. Poletto to create OpsFactor. Using the knowledge and experience
-accumulated from his previous working positions, Mr. Poletto created a
-user-oriented tool aimed to the process owners of the operations and
-financial departments of small and medium companies.
+The OpsFactor company was created out of the emerging need for a retail demand planning solution for the LaTam market. The available planning solutions from major technology suppliers were focused on the industrial sector and complex to implement, so the need for a more specific retail-oriented solution that was quick to deploy led Mr. Poletto to create OpsFactor. Using the knowledge and experience accumulated from his previous working positions, Mr. Poletto created a user-oriented tool aimed to the process owners of the sales, operations and financial departments of medium-sized companies (USD 50M to 500M).
 
 # The product
 
