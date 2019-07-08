@@ -5,6 +5,10 @@ dispatch:
   - url: "*/package/*"
     service: packages
 
+
+  - url: "*/repo/*"
+    service: packages
+
   - url: "packages.renjin.org/*"
     service: packages
 
