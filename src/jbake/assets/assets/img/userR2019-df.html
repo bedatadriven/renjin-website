@@ -1,0 +1,479 @@
+<!--
+  ~ Renjin : JVM-based interpreter for the R language for the statistical analysis
+  ~ Copyright © 2010-${year} BeDataDriven Groep B.V. and contributors
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation; either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  This program is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with this program; if not, a copy is available at
+  ~  https://www.gnu.org/licenses/gpl-2.0.txt
+  ~
+  -->
+<html>
+<head>
+    <title>test_endpoints Function</title>
+    <style>
+
+        .source {
+            font-family: monospace;
+        }
+
+        div.source {
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        #input {
+            top: 0;
+            left: 0;
+            right: 70%;
+            bottom: 0;
+        }
+
+        #input table {
+            width: 100%;
+        }
+
+        #gimple {
+            top: 0;
+            left: 30%;
+            right: 35%;
+            bottom: 0;
+            padding-left: 5px;
+        }
+
+        #bytecode {
+            top: 0;
+            left: 65%;
+            right: 0;
+            bottom: 0;
+            padding-left: 5px;
+        }
+
+        td.lnum {
+            width: 30px;
+            text-align: end;
+            color: gray;
+        }
+
+        #input tr {
+            white-space: pre;
+            color: lightgray;
+        }
+
+        #input tr.SL {
+            color: black;
+        }
+
+        .HSL {
+            background-color: lightyellow;
+        }
+
+        .SSL {
+            background-color: yellow;
+        }
+
+        /* Gimple syntax highlighting */
+
+        .symbol {
+            font-weight: bold;
+            color: purple;
+        }
+
+        .bblabel {
+            position: relative;
+            left: -10px;
+        }
+
+        .vardecl, .bb {
+            margin-left: 10px;
+        }
+
+        .gstatement {
+            white-space: nowrap;
+        }
+
+        .GimpleStringConstant, .GimpleRealConstant, .GimpleIntegerConstant {
+            color: green;
+        }
+
+        .GimpleFunctionRef a {
+            text-decoration: none;
+            color: violet;
+        }
+
+        .GimpleFunctionRef a:visited {
+            text-decoration: none;
+            color: violet;
+        }
+
+        /* Bytecode syntax highlighting */
+
+        .bcins {
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .bclabel {
+            margin-top: 5px;
+        }
+
+        .opcode {
+            color: mediumvioletred;
+            font-weight: bold;
+        }
+
+        .bcldc {
+            color: green;
+        }
+
+        .bctype {
+            color: deepskyblue;
+        }
+
+        .bcvar {
+            color: darkkhaki;
+            font-weight: bold;
+        }
+
+        .lhs-type {
+            color: gray;
+        }
+
+        .lhs-type a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .lhs-type a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script>
+
+        var hoverLine;
+        var selectedLine;
+
+        function getSourceLine(classList) {
+            for(var i=0; i<classList.length; ++i) {
+                var className = classList.item(i);
+                if(className.match(/SL\d+/)) {
+                    return className;
+                }
+            }
+        }
+
+        function highlightSource(sourceLine, highlightClass, highlight) {
+            var lines = window.document.getElementsByClassName(sourceLine);
+            for(var i=0; i<lines.length; ++i) {
+                var el = lines.item(i);
+                el.classList.toggle(highlightClass, highlight);
+            }
+        }
+
+        window.addEventListener("mouseover", function(e) {
+            var el = e.target;
+            while(el) {
+                if(el.classList.contains("SL")) {
+                    var sourceLine = getSourceLine(el.classList);
+                    console.log("Source line = " + sourceLine);
+                    if(hoverLine !== sourceLine) {
+                        highlightSource(hoverLine, 'HSL', false);
+                        highlightSource(sourceLine, 'HSL', true);
+                        hoverLine = sourceLine;
+                    }
+                    break;
+                }
+                el = el.parentElement;
+            }
+        });
+
+        window.addEventListener("click", function(e) {
+            var el = e.target;
+            while(el) {
+                if(el.classList.contains("SL")) {
+                    var sourceLine = getSourceLine(el.classList);
+                    console.log("Source line = " + sourceLine);
+                    if(selectedLine !== sourceLine) {
+                        highlightSource(selectedLine, 'SSL', false);
+                        highlightSource(sourceLine, 'SSL', true);
+                        selectedLine = sourceLine;
+                    }
+                    break;
+                }
+                el = el.parentElement;
+            }
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+    <div id="input" class="source">
+        <div class="sourceFilename">/home/alex/dev/renjin-3.5/math/nmath/src/main/c/df.c</div><table>
+<tr><td class="lnum">38</td><td class="line">double df(double x, double m, double n, int give_log)</td></tr>
+<tr><td class="lnum">39</td><td class="line">{</td></tr>
+<tr><td class="lnum">40</td><td class="line">    double p, q, f, dens;</td></tr>
+<tr><td class="lnum">41</td><td class="line"></td></tr>
+<tr><td class="lnum">42</td><td class="line">#ifdef IEEE_754</td></tr>
+<tr class="SL SL43"><td class="lnum">43</td><td class="line">    if (ISNAN(x) || ISNAN(m) || ISNAN(n))</td></tr>
+<tr class="SL SL44"><td class="lnum">44</td><td class="line">	return x + m + n;</td></tr>
+<tr><td class="lnum">45</td><td class="line">#endif</td></tr>
+<tr class="SL SL46"><td class="lnum">46</td><td class="line">    if (m &lt;= 0 || n &lt;= 0) ML_ERR_return_NAN;</td></tr>
+<tr class="SL SL47"><td class="lnum">47</td><td class="line">    if (x &lt; 0.)  return(R_D__0);</td></tr>
+<tr class="SL SL48"><td class="lnum">48</td><td class="line">    if (x == 0.) return(m &gt; 2 ? R_D__0 : (m == 2 ? R_D__1 : ML_POSINF));</td></tr>
+<tr class="SL SL49"><td class="lnum">49</td><td class="line">    if (!R_FINITE(m) &amp;&amp; !R_FINITE(n)) { /* both +Inf */</td></tr>
+<tr class="SL SL50"><td class="lnum">50</td><td class="line">	if(x == 1.) return ML_POSINF; else return R_D__0;</td></tr>
+<tr><td class="lnum">51</td><td class="line">    }</td></tr>
+<tr class="SL SL52"><td class="lnum">52</td><td class="line">    if (!R_FINITE(n)) /* must be +Inf by now */</td></tr>
+<tr class="SL SL53"><td class="lnum">53</td><td class="line">	return(dgamma(x, m/2, 2./m, give_log));</td></tr>
+<tr class="SL SL54"><td class="lnum">54</td><td class="line">    if (m &gt; 1e14) {/* includes +Inf: code below is inaccurate there */</td></tr>
+<tr class="SL SL55"><td class="lnum">55</td><td class="line">	dens = dgamma(1./x, n/2, 2./n, give_log);</td></tr>
+<tr class="SL SL56"><td class="lnum">56</td><td class="line">	return give_log ? dens - 2*log(x): dens/(x*x);</td></tr>
+<tr><td class="lnum">57</td><td class="line">    }</td></tr>
+<tr><td class="lnum">58</td><td class="line"></td></tr>
+<tr class="SL SL59"><td class="lnum">59</td><td class="line">    f = 1./(n+x*m);</td></tr>
+<tr class="SL SL60"><td class="lnum">60</td><td class="line">    q = n*f;</td></tr>
+<tr class="SL SL61"><td class="lnum">61</td><td class="line">    p = x*m*f;</td></tr>
+<tr><td class="lnum">62</td><td class="line"></td></tr>
+<tr class="SL SL63"><td class="lnum">63</td><td class="line">    if (m &gt;= 2) {</td></tr>
+<tr class="SL SL64"><td class="lnum">64</td><td class="line">	f = m*q/2;</td></tr>
+<tr class="SL SL65"><td class="lnum">65</td><td class="line">	dens = dbinom_raw((m-2)/2, (m+n-2)/2, p, q, give_log);</td></tr>
+<tr><td class="lnum">66</td><td class="line">    }</td></tr>
+<tr><td class="lnum">67</td><td class="line">    else {</td></tr>
+<tr class="SL SL68"><td class="lnum">68</td><td class="line">	f = m*m*q / (2*p*(m+n));</td></tr>
+<tr class="SL SL69"><td class="lnum">69</td><td class="line">	dens = dbinom_raw(m/2, (m+n)/2, p, q, give_log);</td></tr>
+<tr><td class="lnum">70</td><td class="line">    }</td></tr>
+<tr class="SL SL71"><td class="lnum">71</td><td class="line">    return(give_log ? log(f)+dens : f*dens);</td></tr>
+<tr><td class="lnum">72</td><td class="line">}</td></tr>
+<tr><td class="lnum">73</td><td class="line"></td></tr>
+<tr><td class="lnum">74</td><td class="line"></td></tr>
+<tr><td class="lnum">75</td><td class="line"></td></tr>
+<tr><td class="lnum">76</td><td class="line"></td></tr>
+<tr><td class="lnum">77</td><td class="line"></td></tr>
+<tr><td class="lnum">78</td><td class="line"></td></tr>
+</table>
+    </div>
+
+    <div id="gimple" class="source">
+        <div>
+<div class="funcdecl">real64 <span title="df">df</span><span class="symbol">(</span>real64 x<span class="symbol">, </span>real64 m<span class="symbol">, </span>real64 n<span class="symbol">, </span>int32 log_p<span class="symbol">)</span></div><div class="bb">
+<div class="bblabel">2:</div>
+<div class="gstatement SL SL43"><span class="symbol">IF</span> UNORDERED_EXPR(<span class="gexpr GimpleParamRef" title="real64">x</span>, <span class="gexpr GimpleParamRef" title="real64">x</span>) GOTO BB5 ELSE BB3</div>
+</div><div class="bb">
+<div class="bblabel">3:</div>
+<div class="gstatement SL SL43"><span class="symbol">IF</span> UNORDERED_EXPR(<span class="gexpr GimpleParamRef" title="real64">m</span>, <span class="gexpr GimpleParamRef" title="real64">m</span>) GOTO BB5 ELSE BB4</div>
+</div><div class="bb">
+<div class="bblabel">4:</div>
+<div class="gstatement SL SL43"><span class="symbol">IF</span> UNORDERED_EXPR(<span class="gexpr GimpleParamRef" title="real64">n</span>, <span class="gexpr GimpleParamRef" title="real64">n</span>) GOTO BB5 ELSE BB6</div>
+</div><div class="bb">
+<div class="bblabel">5:</div>
+<div class="gstatement SL SL44"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962927</span> = <span class="gexpr GimpleParamRef" title="real64">x</span> + <span class="gexpr GimpleParamRef" title="real64">m</span></div>
+<div class="gstatement SL SL44"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962927</span> + <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">6:</div>
+<div class="gstatement SL SL46"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">m</span> &lt;= <span class="gexpr GimpleRealConstant" title="real64">0.0</span> GOTO BB8 ELSE BB7</div>
+</div><div class="bb">
+<div class="bblabel">7:</div>
+<div class="gstatement SL SL46"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">n</span> &lt;= <span class="gexpr GimpleRealConstant" title="real64">0.0</span> GOTO BB8 ELSE BB9</div>
+</div><div class="bb">
+<div class="bblabel">8:</div>
+<div class="gstatement SL SL46"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleRealConstant" title="real64">0.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">9:</div>
+<div class="gstatement SL SL47"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">x</span> &lt; <span class="gexpr GimpleRealConstant" title="real64">0.0</span> GOTO BB10 ELSE BB14</div>
+</div><div class="bb">
+<div class="bblabel">10:</div>
+<div class="gstatement SL SL47"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB11 ELSE BB12</div>
+</div><div class="bb">
+<div class="bblabel">11:</div>
+<div class="gstatement SL SL47"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.0</span> = <span class="gexpr GimpleRealConstant" title="real64">-1.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 13</div>
+</div><div class="bb">
+<div class="bblabel">12:</div>
+<div class="gstatement SL SL47"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.0</span> = <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+</div><div class="bb">
+<div class="bblabel">13:</div>
+<div class="gstatement SL SL47"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.0</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">14:</div>
+<div class="gstatement SL SL48"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">x</span> == <span class="gexpr GimpleRealConstant" title="real64">0.0</span> GOTO BB15 ELSE BB28</div>
+</div><div class="bb">
+<div class="bblabel">15:</div>
+<div class="gstatement SL SL48"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">m</span> &gt; <span class="gexpr GimpleRealConstant" title="real64">2.0</span> GOTO BB16 ELSE BB20</div>
+</div><div class="bb">
+<div class="bblabel">16:</div>
+<div class="gstatement SL SL48"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB17 ELSE BB18</div>
+</div><div class="bb">
+<div class="bblabel">17:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.2</span> = <span class="gexpr GimpleRealConstant" title="real64">-1.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 19</div>
+</div><div class="bb">
+<div class="bblabel">18:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.2</span> = <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+</div><div class="bb">
+<div class="bblabel">19:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.1</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.2</span></div>
+<div class="gstatement">GOTO 27</div>
+</div><div class="bb">
+<div class="bblabel">20:</div>
+<div class="gstatement SL SL48"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">m</span> == <span class="gexpr GimpleRealConstant" title="real64">2.0</span> GOTO BB21 ELSE BB25</div>
+</div><div class="bb">
+<div class="bblabel">21:</div>
+<div class="gstatement SL SL48"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB22 ELSE BB23</div>
+</div><div class="bb">
+<div class="bblabel">22:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.4</span> = <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 24</div>
+</div><div class="bb">
+<div class="bblabel">23:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.4</span> = <span class="gexpr GimpleRealConstant" title="real64">1.0</span></div>
+</div><div class="bb">
+<div class="bblabel">24:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.3</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.4</span></div>
+<div class="gstatement">GOTO 26</div>
+</div><div class="bb">
+<div class="bblabel">25:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.3</span> = <span class="gexpr GimpleRealConstant" title="real64">1.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+</div><div class="bb">
+<div class="bblabel">26:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.1</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.3</span></div>
+</div><div class="bb">
+<div class="bblabel">27:</div>
+<div class="gstatement SL SL48"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.1</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">28:</div>
+<div class="gstatement SL SL49"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962896</span> = ABS(<span class="gexpr GimpleParamRef" title="real64">m</span>)</div>
+<div class="gstatement SL SL49"><span class="symbol">IF</span> UNGT_EXPR(<span class="gexpr GimpleVariableRef" title="real64">T4294962896</span>, <span class="gexpr GimpleRealConstant" title="real64">1.7976931348623157E308</span>) GOTO BB29 ELSE BB36</div>
+</div><div class="bb">
+<div class="bblabel">29:</div>
+<div class="gstatement SL SL49"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962893</span> = ABS(<span class="gexpr GimpleParamRef" title="real64">n</span>)</div>
+<div class="gstatement SL SL49"><span class="symbol">IF</span> UNGT_EXPR(<span class="gexpr GimpleVariableRef" title="real64">T4294962893</span>, <span class="gexpr GimpleRealConstant" title="real64">1.7976931348623157E308</span>) GOTO BB30 ELSE BB36</div>
+</div><div class="bb">
+<div class="bblabel">30:</div>
+<div class="gstatement SL SL50"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">x</span> == <span class="gexpr GimpleRealConstant" title="real64">1.0</span> GOTO BB31 ELSE BB32</div>
+</div><div class="bb">
+<div class="bblabel">31:</div>
+<div class="gstatement SL SL50"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleRealConstant" title="real64">1.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">32:</div>
+<div class="gstatement SL SL50"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB33 ELSE BB34</div>
+</div><div class="bb">
+<div class="bblabel">33:</div>
+<div class="gstatement SL SL50"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.5</span> = <span class="gexpr GimpleRealConstant" title="real64">-1.0</span> / <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+<div class="gstatement">GOTO 35</div>
+</div><div class="bb">
+<div class="bblabel">34:</div>
+<div class="gstatement SL SL50"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.5</span> = <span class="gexpr GimpleRealConstant" title="real64">0.0</span></div>
+</div><div class="bb">
+<div class="bblabel">35:</div>
+<div class="gstatement SL SL50"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.5</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">36:</div>
+<div class="gstatement SL SL52"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962884</span> = ABS(<span class="gexpr GimpleParamRef" title="real64">n</span>)</div>
+<div class="gstatement SL SL52"><span class="symbol">IF</span> UNGT_EXPR(<span class="gexpr GimpleVariableRef" title="real64">T4294962884</span>, <span class="gexpr GimpleRealConstant" title="real64">1.7976931348623157E308</span>) GOTO BB37 ELSE BB38</div>
+</div><div class="bb">
+<div class="bblabel">37:</div>
+<div class="gstatement SL SL53"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962881</span> = <span class="gexpr GimpleRealConstant" title="real64">2.0</span> / <span class="gexpr GimpleParamRef" title="real64">m</span></div>
+<div class="gstatement SL SL53"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962880</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL53"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN"><a href="../dgamma.c/dgamma.html" title="dgamma">dgamma</a></span></span>(<span class="gexpr GimpleParamRef" title="real64">x</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962880</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962881</span>, <span class="gexpr GimpleParamRef" title="int32">log_p</span>)</div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">38:</div>
+<div class="gstatement SL SL54"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">m</span> &gt; <span class="gexpr GimpleRealConstant" title="real64">1.0E14</span> GOTO BB39 ELSE BB43</div>
+</div><div class="bb">
+<div class="bblabel">39:</div>
+<div class="gstatement SL SL55"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962877</span> = <span class="gexpr GimpleRealConstant" title="real64">2.0</span> / <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement SL SL55"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962876</span> = <span class="gexpr GimpleParamRef" title="real64">n</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL55"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962875</span> = <span class="gexpr GimpleRealConstant" title="real64">1.0</span> / <span class="gexpr GimpleParamRef" title="real64">x</span></div>
+<div class="gstatement SL SL55"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">dens</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN"><a href="../dgamma.c/dgamma.html" title="dgamma">dgamma</a></span></span>(<span class="gexpr GimpleVariableRef" title="real64">T4294962875</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962876</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962877</span>, <span class="gexpr GimpleParamRef" title="int32">log_p</span>)</div>
+<div class="gstatement SL SL56"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB40 ELSE BB41</div>
+</div><div class="bb">
+<div class="bblabel">40:</div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962871</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN">log</span></span>(<span class="gexpr GimpleParamRef" title="real64">x</span>)</div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962870</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962871</span> * <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.6</span> = <span class="gexpr GimpleVariableRef" title="real64">dens</span> - <span class="gexpr GimpleVariableRef" title="real64">T4294962870</span></div>
+<div class="gstatement">GOTO 42</div>
+</div><div class="bb">
+<div class="bblabel">41:</div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962868</span> = <span class="gexpr GimpleParamRef" title="real64">x</span> * <span class="gexpr GimpleParamRef" title="real64">x</span></div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.6</span> = <span class="gexpr GimpleVariableRef" title="real64">dens</span> / <span class="gexpr GimpleVariableRef" title="real64">T4294962868</span></div>
+</div><div class="bb">
+<div class="bblabel">42:</div>
+<div class="gstatement SL SL56"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.6</span></div>
+<div class="gstatement">GOTO 50</div>
+</div><div class="bb">
+<div class="bblabel">43:</div>
+<div class="gstatement SL SL59"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962867</span> = <span class="gexpr GimpleParamRef" title="real64">x</span> * <span class="gexpr GimpleParamRef" title="real64">m</span></div>
+<div class="gstatement SL SL59"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962866</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962867</span> + <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement SL SL59"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">f</span> = <span class="gexpr GimpleRealConstant" title="real64">1.0</span> / <span class="gexpr GimpleVariableRef" title="real64">T4294962866</span></div>
+<div class="gstatement SL SL60"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">q</span> = <span class="gexpr GimpleParamRef" title="real64">n</span> * <span class="gexpr GimpleVariableRef" title="real64">f</span></div>
+<div class="gstatement SL SL61"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962865</span> = <span class="gexpr GimpleParamRef" title="real64">x</span> * <span class="gexpr GimpleParamRef" title="real64">m</span></div>
+<div class="gstatement SL SL61"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">p</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962865</span> * <span class="gexpr GimpleVariableRef" title="real64">f</span></div>
+<div class="gstatement SL SL63"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="real64">m</span> &gt;= <span class="gexpr GimpleRealConstant" title="real64">2.0</span> GOTO BB44 ELSE BB45</div>
+</div><div class="bb">
+<div class="bblabel">44:</div>
+<div class="gstatement SL SL64"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962862</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> * <span class="gexpr GimpleVariableRef" title="real64">q</span></div>
+<div class="gstatement SL SL64"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">f</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962862</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962861</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> + <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962860</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962861</span> - <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962859</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962860</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962858</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> - <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962857</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962858</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL65"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">dens</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN"><a href="../dbinom.c/dbinom_raw.html" title="dbinom_raw">dbinom_raw</a></span></span>(<span class="gexpr GimpleVariableRef" title="real64">T4294962857</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962859</span>, <span class="gexpr GimpleVariableRef" title="real64">p</span>, <span class="gexpr GimpleVariableRef" title="real64">q</span>, <span class="gexpr GimpleParamRef" title="int32">log_p</span>)</div>
+<div class="gstatement">GOTO 46</div>
+</div><div class="bb">
+<div class="bblabel">45:</div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962855</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> * <span class="gexpr GimpleParamRef" title="real64">m</span></div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962854</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962855</span> * <span class="gexpr GimpleVariableRef" title="real64">q</span></div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962853</span> = <span class="gexpr GimpleVariableRef" title="real64">p</span> * <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962852</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> + <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962851</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962853</span> * <span class="gexpr GimpleVariableRef" title="real64">T4294962852</span></div>
+<div class="gstatement SL SL68"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">f</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962854</span> / <span class="gexpr GimpleVariableRef" title="real64">T4294962851</span></div>
+<div class="gstatement SL SL69"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962850</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> + <span class="gexpr GimpleParamRef" title="real64">n</span></div>
+<div class="gstatement SL SL69"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962849</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962850</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL69"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962848</span> = <span class="gexpr GimpleParamRef" title="real64">m</span> / <span class="gexpr GimpleRealConstant" title="real64">2.0</span></div>
+<div class="gstatement SL SL69"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">dens</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN"><a href="../dbinom.c/dbinom_raw.html" title="dbinom_raw">dbinom_raw</a></span></span>(<span class="gexpr GimpleVariableRef" title="real64">T4294962848</span>, <span class="gexpr GimpleVariableRef" title="real64">T4294962849</span>, <span class="gexpr GimpleVariableRef" title="real64">p</span>, <span class="gexpr GimpleVariableRef" title="real64">q</span>, <span class="gexpr GimpleParamRef" title="int32">log_p</span>)</div>
+</div><div class="bb">
+<div class="bblabel">46:</div>
+<div class="gstatement SL SL71"><span class="symbol">IF</span> <span class="gexpr GimpleParamRef" title="int32">log_p</span> != <span class="gexpr GimpleIntegerConstant" title="int32">0</span> GOTO BB47 ELSE BB48</div>
+</div><div class="bb">
+<div class="bblabel">47:</div>
+<div class="gstatement SL SL71"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962844</span> <span class="symbol">=</span> <span class="gexpr GimpleAddressOf" title="FUN*"><span class="symbol">&amp;</span><span class="gexpr GimpleFunctionRef" title="FUN">log</span></span>(<span class="gexpr GimpleVariableRef" title="real64">f</span>)</div>
+<div class="gstatement SL SL71"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.7</span> = <span class="gexpr GimpleVariableRef" title="real64">T4294962844</span> + <span class="gexpr GimpleVariableRef" title="real64">dens</span></div>
+<div class="gstatement">GOTO 49</div>
+</div><div class="bb">
+<div class="bblabel">48:</div>
+<div class="gstatement SL SL71"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">iftmp.7</span> = <span class="gexpr GimpleVariableRef" title="real64">f</span> * <span class="gexpr GimpleVariableRef" title="real64">dens</span></div>
+</div><div class="bb">
+<div class="bblabel">49:</div>
+<div class="gstatement SL SL71"><span class="lhs-type">real64</span> <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span> = <span class="gexpr GimpleVariableRef" title="real64">iftmp.7</span></div>
+</div><div class="bb">
+<div class="bblabel">50:</div>
+<div class="gstatement SL SL0">RETURN <span class="gexpr GimpleVariableRef" title="real64">T4294962928</span></div>
+</div></div>
+    </div>
+
+    <div id="bytecode" class="source">
+        <div class="bcmethod">D df(D, D, D, I)</div><div class="bclabel">L1:</div><div class="bclabel">L2:</div><div class="bclabel">L3:</div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">GOTO</span> <span class="bclabel">L5</span></div><div class="bclabel">L5:</div><div class="bclabel">L6:</div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">GOTO</span> <span class="bclabel">L7</span></div><div class="bclabel">L7:</div><div class="bclabel">L8:</div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL43"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Double">Double</span>.<span class"bcmember">isNaN</span>(D)Z</div><div class="bcins SL SL43"><span class="opcode">IFNE</span> <span class="bclabel">L4</span></div><div class="bcins SL SL43"><span class="opcode">GOTO</span> <span class="bclabel">L9</span></div><div class="bclabel">L4:</div><div class="bclabel">L10:</div><div class="bcins SL SL44"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL44"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL44"><span class="opcode">DADD</span></div><div class="bclabel">L11:</div><div class="bcins SL SL44"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL44"><span class="opcode">DADD</span></div><div class="bcins SL SL44"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L12:</div><div class="bcins SL SL44"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L9:</div><div class="bclabel">L14:</div><div class="bcins SL SL46"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL46"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL46"><span class="opcode">DCMPG</span></div><div class="bcins SL SL46"><span class="opcode">IFLE</span> <span class="bclabel">L15</span></div><div class="bcins SL SL46"><span class="opcode">GOTO</span> <span class="bclabel">L16</span></div><div class="bclabel">L16:</div><div class="bclabel">L17:</div><div class="bcins SL SL46"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL46"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL46"><span class="opcode">DCMPG</span></div><div class="bcins SL SL46"><span class="opcode">IFLE</span> <span class="bclabel">L15</span></div><div class="bcins SL SL46"><span class="opcode">GOTO</span> <span class="bclabel">L18</span></div><div class="bclabel">L15:</div><div class="bclabel">L19:</div><div class="bcins SL SL46"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL46"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL46"><span class="opcode">DDIV</span></div><div class="bcins SL SL46"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L20:</div><div class="bcins SL SL46"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L18:</div><div class="bclabel">L21:</div><div class="bcins SL SL47"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL47"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL47"><span class="opcode">DCMPG</span></div><div class="bcins SL SL47"><span class="opcode">IFLT</span> <span class="bclabel">L22</span></div><div class="bcins SL SL47"><span class="opcode">GOTO</span> <span class="bclabel">L23</span></div><div class="bclabel">L22:</div><div class="bclabel">L24:</div><div class="bcins SL SL47"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL47"><span class="opcode">IFNE</span> <span class="bclabel">L25</span></div><div class="bcins SL SL47"><span class="opcode">GOTO</span> <span class="bclabel">L26</span></div><div class="bclabel">L25:</div><div class="bclabel">L27:</div><div class="bcins SL SL47"><span class="opcode">LDC</span> <span class="bcldc">-1.0</span></div><div class="bcins SL SL47"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL47"><span class="opcode">DDIV</span></div><div class="bcins SL SL47"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$0</span> D</div><div class="bclabel">L28:</div><div class="bcins SL SL47"><span class="opcode">GOTO</span> <span class="bclabel">L29</span></div><div class="bclabel">L26:</div><div class="bclabel">L30:</div><div class="bcins SL SL47"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL47"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$0</span> D</div><div class="bclabel">L29:</div><div class="bclabel">L31:</div><div class="bcins SL SL47"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$0</span> D</div><div class="bcins SL SL47"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L32:</div><div class="bcins SL SL47"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L23:</div><div class="bclabel">L33:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL48"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL48"><span class="opcode">DCMPL</span></div><div class="bcins SL SL48"><span class="opcode">IFEQ</span> <span class="bclabel">L34</span></div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L35</span></div><div class="bclabel">L34:</div><div class="bclabel">L36:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL48"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL48"><span class="opcode">DCMPL</span></div><div class="bcins SL SL48"><span class="opcode">IFGT</span> <span class="bclabel">L37</span></div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L38</span></div><div class="bclabel">L37:</div><div class="bclabel">L39:</div><div class="bcins SL SL48"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL48"><span class="opcode">IFNE</span> <span class="bclabel">L40</span></div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L41</span></div><div class="bclabel">L40:</div><div class="bclabel">L42:</div><div class="bcins SL SL48"><span class="opcode">LDC</span> <span class="bcldc">-1.0</span></div><div class="bcins SL SL48"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL48"><span class="opcode">DDIV</span></div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$2</span> D</div><div class="bclabel">L43:</div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L44</span></div><div class="bclabel">L41:</div><div class="bclabel">L45:</div><div class="bcins SL SL48"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$2</span> D</div><div class="bclabel">L44:</div><div class="bclabel">L46:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$2</span> D</div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$1</span> D</div><div class="bclabel">L47:</div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L48</span></div><div class="bclabel">L38:</div><div class="bclabel">L49:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL48"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL48"><span class="opcode">DCMPL</span></div><div class="bcins SL SL48"><span class="opcode">IFEQ</span> <span class="bclabel">L50</span></div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L51</span></div><div class="bclabel">L50:</div><div class="bclabel">L52:</div><div class="bcins SL SL48"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL48"><span class="opcode">IFNE</span> <span class="bclabel">L53</span></div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L54</span></div><div class="bclabel">L53:</div><div class="bclabel">L55:</div><div class="bcins SL SL48"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$4</span> D</div><div class="bclabel">L56:</div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L57</span></div><div class="bclabel">L54:</div><div class="bclabel">L58:</div><div class="bcins SL SL48"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$4</span> D</div><div class="bclabel">L57:</div><div class="bclabel">L59:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$4</span> D</div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$3</span> D</div><div class="bclabel">L60:</div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L61</span></div><div class="bclabel">L51:</div><div class="bclabel">L62:</div><div class="bcins SL SL48"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL48"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL48"><span class="opcode">DDIV</span></div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$3</span> D</div><div class="bclabel">L61:</div><div class="bclabel">L63:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$3</span> D</div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$1</span> D</div><div class="bclabel">L48:</div><div class="bclabel">L64:</div><div class="bcins SL SL48"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$1</span> D</div><div class="bcins SL SL48"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L65:</div><div class="bcins SL SL48"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L35:</div><div class="bclabel">L66:</div><div class="bcins SL SL49"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL49"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Math">Math</span>.<span class"bcmember">abs</span>(D)D</div><div class="bclabel">L67:</div><div class="bcins SL SL49"><span class="opcode">LDC</span> <span class="bcldc">1.7976931348623157E308</span></div><div class="bcins SL SL49"><span class="opcode">DCMPG</span></div><div class="bcins SL SL49"><span class="opcode">IFGT</span> <span class="bclabel">L68</span></div><div class="bcins SL SL49"><span class="opcode">GOTO</span> <span class="bclabel">L69</span></div><div class="bclabel">L68:</div><div class="bclabel">L70:</div><div class="bcins SL SL49"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL49"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Math">Math</span>.<span class"bcmember">abs</span>(D)D</div><div class="bclabel">L71:</div><div class="bcins SL SL49"><span class="opcode">LDC</span> <span class="bcldc">1.7976931348623157E308</span></div><div class="bcins SL SL49"><span class="opcode">DCMPG</span></div><div class="bcins SL SL49"><span class="opcode">IFGT</span> <span class="bclabel">L72</span></div><div class="bcins SL SL49"><span class="opcode">GOTO</span> <span class="bclabel">L69</span></div><div class="bclabel">L72:</div><div class="bclabel">L73:</div><div class="bcins SL SL50"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL50"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL50"><span class="opcode">DCMPL</span></div><div class="bcins SL SL50"><span class="opcode">IFEQ</span> <span class="bclabel">L74</span></div><div class="bcins SL SL50"><span class="opcode">GOTO</span> <span class="bclabel">L75</span></div><div class="bclabel">L74:</div><div class="bclabel">L76:</div><div class="bcins SL SL50"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL50"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL50"><span class="opcode">DDIV</span></div><div class="bcins SL SL50"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L77:</div><div class="bcins SL SL50"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L75:</div><div class="bclabel">L78:</div><div class="bcins SL SL50"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL50"><span class="opcode">IFNE</span> <span class="bclabel">L79</span></div><div class="bcins SL SL50"><span class="opcode">GOTO</span> <span class="bclabel">L80</span></div><div class="bclabel">L79:</div><div class="bclabel">L81:</div><div class="bcins SL SL50"><span class="opcode">LDC</span> <span class="bcldc">-1.0</span></div><div class="bcins SL SL50"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL50"><span class="opcode">DDIV</span></div><div class="bcins SL SL50"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$5</span> D</div><div class="bclabel">L82:</div><div class="bcins SL SL50"><span class="opcode">GOTO</span> <span class="bclabel">L83</span></div><div class="bclabel">L80:</div><div class="bclabel">L84:</div><div class="bcins SL SL50"><span class="opcode">DCONST_0</span></div><div class="bcins SL SL50"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$5</span> D</div><div class="bclabel">L83:</div><div class="bclabel">L85:</div><div class="bcins SL SL50"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$5</span> D</div><div class="bcins SL SL50"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L86:</div><div class="bcins SL SL50"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L69:</div><div class="bclabel">L87:</div><div class="bcins SL SL52"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL52"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="java/lang/Math">Math</span>.<span class"bcmember">abs</span>(D)D</div><div class="bclabel">L88:</div><div class="bcins SL SL52"><span class="opcode">LDC</span> <span class="bcldc">1.7976931348623157E308</span></div><div class="bcins SL SL52"><span class="opcode">DCMPG</span></div><div class="bcins SL SL52"><span class="opcode">IFGT</span> <span class="bclabel">L89</span></div><div class="bcins SL SL52"><span class="opcode">GOTO</span> <span class="bclabel">L90</span></div><div class="bclabel">L89:</div><div class="bclabel">L91:</div><div class="bcins SL SL53"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL53"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL53"><span class="opcode">DDIV</span></div><div class="bcins SL SL53"><span class="opcode">DSTORE</span> <span class="bcvar">69</span></div><div class="bclabel">L92:</div><div class="bcins SL SL53"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL53"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL53"><span class="opcode">DDIV</span></div><div class="bcins SL SL53"><span class="opcode">DSTORE</span> <span class="bcvar">67</span></div><div class="bclabel">L93:</div><div class="bcins SL SL53"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL53"><span class="opcode">DLOAD</span> <span class="bcvar">67</span></div><div class="bcins SL SL53"><span class="opcode">DLOAD</span> <span class="bcvar">69</span></div><div class="bcins SL SL53"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL53"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/nmath/dgamma">dgamma</span>.<span class"bcmember">dgamma</span>(DDDI)D</div><div class="bcins SL SL53"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L94:</div><div class="bcins SL SL53"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L90:</div><div class="bclabel">L95:</div><div class="bcins SL SL54"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL54"><span class="opcode">LDC</span> <span class="bcldc">1.0E14</span></div><div class="bcins SL SL54"><span class="opcode">DCMPL</span></div><div class="bcins SL SL54"><span class="opcode">IFGT</span> <span class="bclabel">L96</span></div><div class="bcins SL SL54"><span class="opcode">GOTO</span> <span class="bclabel">L97</span></div><div class="bclabel">L96:</div><div class="bclabel">L98:</div><div class="bcins SL SL55"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL55"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL55"><span class="opcode">DDIV</span></div><div class="bcins SL SL55"><span class="opcode">DSTORE</span> <span class="bcvar">65</span></div><div class="bclabel">L99:</div><div class="bcins SL SL55"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL55"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL55"><span class="opcode">DDIV</span></div><div class="bcins SL SL55"><span class="opcode">DSTORE</span> <span class="bcvar">63</span></div><div class="bclabel">L100:</div><div class="bcins SL SL55"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL55"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL55"><span class="opcode">DDIV</span></div><div class="bclabel">L101:</div><div class="bcins SL SL55"><span class="opcode">DLOAD</span> <span class="bcvar">63</span></div><div class="bcins SL SL55"><span class="opcode">DLOAD</span> <span class="bcvar">65</span></div><div class="bcins SL SL55"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL55"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/nmath/dgamma">dgamma</span>.<span class"bcmember">dgamma</span>(DDDI)D</div><div class="bcins SL SL55"><span class="opcode">DSTORE</span> <span class="bcvar">dens</span> D</div><div class="bclabel">L102:</div><div class="bcins SL SL56"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL56"><span class="opcode">IFNE</span> <span class="bclabel">L103</span></div><div class="bcins SL SL56"><span class="opcode">GOTO</span> <span class="bclabel">L104</span></div><div class="bclabel">L103:</div><div class="bclabel">L105:</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL56"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/gcc/runtime/Mathlib">Mathlib</span>.<span class"bcmember">log</span>(D)D</div><div class="bclabel">L106:</div><div class="bcins SL SL56"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL56"><span class="opcode">DMUL</span></div><div class="bcins SL SL56"><span class="opcode">DSTORE</span> <span class="bcvar">55</span></div><div class="bclabel">L107:</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">dens</span> D</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">55</span></div><div class="bcins SL SL56"><span class="opcode">DSUB</span></div><div class="bcins SL SL56"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$6</span> D</div><div class="bclabel">L108:</div><div class="bcins SL SL56"><span class="opcode">GOTO</span> <span class="bclabel">L109</span></div><div class="bclabel">L104:</div><div class="bclabel">L110:</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL56"><span class="opcode">DUP2</span></div><div class="bcins SL SL56"><span class="opcode">DMUL</span></div><div class="bcins SL SL56"><span class="opcode">DSTORE</span> <span class="bcvar">53</span></div><div class="bclabel">L111:</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">dens</span> D</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">53</span></div><div class="bcins SL SL56"><span class="opcode">DDIV</span></div><div class="bcins SL SL56"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$6</span> D</div><div class="bclabel">L109:</div><div class="bclabel">L112:</div><div class="bcins SL SL56"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$6</span> D</div><div class="bcins SL SL56"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L113:</div><div class="bcins SL SL56"><span class="opcode">GOTO</span> <span class="bclabel">L13</span></div><div class="bclabel">L97:</div><div class="bclabel">L114:</div><div class="bcins SL SL59"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL59"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL59"><span class="opcode">DMUL</span></div><div class="bclabel">L115:</div><div class="bcins SL SL59"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL59"><span class="opcode">DADD</span></div><div class="bcins SL SL59"><span class="opcode">DSTORE</span> <span class="bcvar">49</span></div><div class="bclabel">L116:</div><div class="bcins SL SL59"><span class="opcode">DCONST_1</span></div><div class="bcins SL SL59"><span class="opcode">DLOAD</span> <span class="bcvar">49</span></div><div class="bcins SL SL59"><span class="opcode">DDIV</span></div><div class="bcins SL SL59"><span class="opcode">DSTORE</span> <span class="bcvar">f</span> D</div><div class="bclabel">L117:</div><div class="bcins SL SL60"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL60"><span class="opcode">DLOAD</span> <span class="bcvar">f</span> D</div><div class="bcins SL SL60"><span class="opcode">DMUL</span></div><div class="bcins SL SL60"><span class="opcode">DSTORE</span> <span class="bcvar">q</span> D</div><div class="bclabel">L118:</div><div class="bcins SL SL61"><span class="opcode">DLOAD</span> <span class="bcvar">x</span> D</div><div class="bcins SL SL61"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL61"><span class="opcode">DMUL</span></div><div class="bclabel">L119:</div><div class="bcins SL SL61"><span class="opcode">DLOAD</span> <span class="bcvar">f</span> D</div><div class="bcins SL SL61"><span class="opcode">DMUL</span></div><div class="bcins SL SL61"><span class="opcode">DSTORE</span> <span class="bcvar">p</span> D</div><div class="bclabel">L120:</div><div class="bcins SL SL63"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL63"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL63"><span class="opcode">DCMPL</span></div><div class="bcins SL SL63"><span class="opcode">IFGE</span> <span class="bclabel">L121</span></div><div class="bcins SL SL63"><span class="opcode">GOTO</span> <span class="bclabel">L122</span></div><div class="bclabel">L121:</div><div class="bclabel">L123:</div><div class="bcins SL SL64"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL64"><span class="opcode">DLOAD</span> <span class="bcvar">q</span> D</div><div class="bcins SL SL64"><span class="opcode">DMUL</span></div><div class="bclabel">L124:</div><div class="bcins SL SL64"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL64"><span class="opcode">DDIV</span></div><div class="bcins SL SL64"><span class="opcode">DSTORE</span> <span class="bcvar">f</span> D</div><div class="bclabel">L125:</div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL65"><span class="opcode">DADD</span></div><div class="bclabel">L126:</div><div class="bcins SL SL65"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL65"><span class="opcode">DSUB</span></div><div class="bclabel">L127:</div><div class="bcins SL SL65"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL65"><span class="opcode">DDIV</span></div><div class="bcins SL SL65"><span class="opcode">DSTORE</span> <span class="bcvar">39</span></div><div class="bclabel">L128:</div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL65"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL65"><span class="opcode">DSUB</span></div><div class="bclabel">L129:</div><div class="bcins SL SL65"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL65"><span class="opcode">DDIV</span></div><div class="bclabel">L130:</div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">39</span></div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">p</span> D</div><div class="bcins SL SL65"><span class="opcode">DLOAD</span> <span class="bcvar">q</span> D</div><div class="bcins SL SL65"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL65"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/nmath/dbinom">dbinom</span>.<span class"bcmember">dbinom_raw</span>(DDDDI)D</div><div class="bcins SL SL65"><span class="opcode">DSTORE</span> <span class="bcvar">dens</span> D</div><div class="bclabel">L131:</div><div class="bcins SL SL65"><span class="opcode">GOTO</span> <span class="bclabel">L132</span></div><div class="bclabel">L122:</div><div class="bclabel">L133:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL68"><span class="opcode">DUP2</span></div><div class="bcins SL SL68"><span class="opcode">DMUL</span></div><div class="bclabel">L134:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">q</span> D</div><div class="bcins SL SL68"><span class="opcode">DMUL</span></div><div class="bcins SL SL68"><span class="opcode">DSTORE</span> <span class="bcvar">31</span></div><div class="bclabel">L135:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">p</span> D</div><div class="bcins SL SL68"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL68"><span class="opcode">DMUL</span></div><div class="bcins SL SL68"><span class="opcode">DSTORE</span> <span class="bcvar">29</span></div><div class="bclabel">L136:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL68"><span class="opcode">DADD</span></div><div class="bcins SL SL68"><span class="opcode">DSTORE</span> <span class="bcvar">27</span></div><div class="bclabel">L137:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">29</span></div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">27</span></div><div class="bcins SL SL68"><span class="opcode">DMUL</span></div><div class="bcins SL SL68"><span class="opcode">DSTORE</span> <span class="bcvar">25</span></div><div class="bclabel">L138:</div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">31</span></div><div class="bcins SL SL68"><span class="opcode">DLOAD</span> <span class="bcvar">25</span></div><div class="bcins SL SL68"><span class="opcode">DDIV</span></div><div class="bcins SL SL68"><span class="opcode">DSTORE</span> <span class="bcvar">f</span> D</div><div class="bclabel">L139:</div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">n</span> D</div><div class="bcins SL SL69"><span class="opcode">DADD</span></div><div class="bclabel">L140:</div><div class="bcins SL SL69"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL69"><span class="opcode">DDIV</span></div><div class="bcins SL SL69"><span class="opcode">DSTORE</span> <span class="bcvar">21</span></div><div class="bclabel">L141:</div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">m</span> D</div><div class="bcins SL SL69"><span class="opcode">LDC</span> <span class="bcldc">2.0</span></div><div class="bcins SL SL69"><span class="opcode">DDIV</span></div><div class="bclabel">L142:</div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">21</span></div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">p</span> D</div><div class="bcins SL SL69"><span class="opcode">DLOAD</span> <span class="bcvar">q</span> D</div><div class="bcins SL SL69"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL69"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/nmath/dbinom">dbinom</span>.<span class"bcmember">dbinom_raw</span>(DDDDI)D</div><div class="bcins SL SL69"><span class="opcode">DSTORE</span> <span class="bcvar">dens</span> D</div><div class="bclabel">L132:</div><div class="bclabel">L143:</div><div class="bcins SL SL71"><span class="opcode">ILOAD</span> <span class="bcvar">log_p</span> I</div><div class="bcins SL SL71"><span class="opcode">IFNE</span> <span class="bclabel">L144</span></div><div class="bcins SL SL71"><span class="opcode">GOTO</span> <span class="bclabel">L145</span></div><div class="bclabel">L144:</div><div class="bclabel">L146:</div><div class="bcins SL SL71"><span class="opcode">DLOAD</span> <span class="bcvar">f</span> D</div><div class="bcins SL SL71"><span class="opcode">INVOKESTATIC</span>  <span class="bctype" title="org/renjin/gcc/runtime/Mathlib">Mathlib</span>.<span class"bcmember">log</span>(D)D</div><div class="bclabel">L147:</div><div class="bcins SL SL71"><span class="opcode">DLOAD</span> <span class="bcvar">dens</span> D</div><div class="bcins SL SL71"><span class="opcode">DADD</span></div><div class="bcins SL SL71"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$7</span> D</div><div class="bclabel">L148:</div><div class="bcins SL SL71"><span class="opcode">GOTO</span> <span class="bclabel">L149</span></div><div class="bclabel">L145:</div><div class="bclabel">L150:</div><div class="bcins SL SL71"><span class="opcode">DLOAD</span> <span class="bcvar">f</span> D</div><div class="bcins SL SL71"><span class="opcode">DLOAD</span> <span class="bcvar">dens</span> D</div><div class="bcins SL SL71"><span class="opcode">DMUL</span></div><div class="bcins SL SL71"><span class="opcode">DSTORE</span> <span class="bcvar">iftmp$7</span> D</div><div class="bclabel">L149:</div><div class="bclabel">L151:</div><div class="bcins SL SL71"><span class="opcode">DLOAD</span> <span class="bcvar">iftmp$7</span> D</div><div class="bcins SL SL71"><span class="opcode">DSTORE</span> <span class="bcvar">91</span></div><div class="bclabel">L13:</div><div class="bclabel">L152:</div><div class="bcins SL SL0"><span class="opcode">DLOAD</span> <span class="bcvar">91</span></div><div class="bcins SL SL0"><span class="opcode">DRETURN</span></div><div class="bclabel">L153:</div>
+    </div>
+
+</body>
+</html>
