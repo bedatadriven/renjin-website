@@ -23,8 +23,7 @@ Use `./gradlew bake` to build the site. The output will be copied into the `buil
 
 Use `./gradlew preview` to start a local server at `http://localhost:8820` to test the website.
 
-Use `./deploy.sh` to deploy the site to the Google Cloud bucket (note: this
-requires `gsutil` and access permission to the bucket).
+The website will be deployed automatically when you push your changes to the master branch.
 
 ## Notes on markdown
 
