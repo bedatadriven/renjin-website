@@ -117,3 +117,11 @@ task deploy(type: Exec) {
     args "$buildDir/staged"
     args "--version=1"
 }
+
+task updateDispatchRules(type: Exec) {
+
+    executable 'gcloud'
+    args '--project', 'renjinci'
+    args 'app', 'deploy'
+    args "src/app/dispatch.yaml"
+}
