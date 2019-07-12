@@ -8,7 +8,7 @@
         <div>
             <h2>Ready to get started?</h2>
 
-            <a href="http://docs.renjin.org/en/latest/library/project-setup.html" class="btn">Java quick start</a>
+            <a href="http://docs.renjin.org/en/latest/library/project-setup.html" class="btn">Quick start with Java</a>
             <a href="http://eepurl.com/gwkakL" class="btn">Sign up for our newsletter</a>
             <a href="/enterprise.html" class="btn">Upgrade to Renjin Enterprise Support</a>
         </div>

@@ -35,7 +35,7 @@
 
   <div>
     <div>
-      <h1 id="quickstart">Java Quickstart</h1>
+      <h1 id="quickstart">Quick start with Java</h1>
 
       <div class="quickstart">
 
