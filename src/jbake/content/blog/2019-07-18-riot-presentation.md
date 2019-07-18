@@ -4,9 +4,7 @@ type=post
 status=published
 author=Alexander Bertram
 lang=en
-excerpt=At RIOT 2019, Alex recapped some recent developments in the
-  Renjin project, and gave an overview of the growing role that
-  compilers have played in making an JVM-based R interpreter a reality.
+excerpt=At RIOT 2019, Alex recapped some recent developments in the Renjin project, and gave an overview of the growing role that compilers have played in making an JVM-based R interpreter a reality.
 ~~~~~~
 
 
