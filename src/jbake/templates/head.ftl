@@ -1,10 +1,15 @@
 <head>
   <meta charset="utf-8" />
-  <title>Renjin | ${content.title}</title>
+  <title>Renjin | Integrating R and Java | ${content.title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Renjin | ${content.title}" />
   <meta property="og:utl" content="${config.site_host}/${content.uri}" />
   <meta property="og:image" content="${config.site_host}/assets/img/renjin-logo-thumbnail.png" />
+  <#if content.description?? >
+  <meta name="description" property="og:description" content="${content.description}">
+  <#elseif content.excerpt?? >
+  <meta name="description" property="og:description" content="${content.excerpt}">
+  </#if>
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
