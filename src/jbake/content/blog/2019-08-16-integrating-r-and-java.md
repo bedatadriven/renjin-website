@@ -4,9 +4,10 @@ type=post
 status=published
 author=Alexander Bertram
 lang=en
-excerpt=Renjin makes it easy to integrate R and Java in two steps.
+excerpt= How to integrate R and Java in three steps using Renjin.
 ~~~~~~
 
+Do you want to use R and Java together?
 Renjin makes it very easy to integrate R and Java in three quick steps:
 
 First, add Renjin as a dependency to your Maven project:
