@@ -1,6 +1,7 @@
 title=Renjin and icCube: Enhancing data analysis in Business Intelligence software
 type=casestudy
 status=published
+description=Example of Java and R integration for data analysis in Business Intelligence software.
 author=Alexander Bertram
 lang=en
 ~~~~~~

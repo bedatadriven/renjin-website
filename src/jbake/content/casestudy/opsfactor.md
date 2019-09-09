@@ -1,6 +1,7 @@
 title=The OpsFactor Case: creating a solution for demand planning in Brazil using Renjin and Amazon Elastic Beanstalk
 type=casestudy
 status=published
+description=Example of how to to combine R and Java for demand planning. Opsfactor uses Renjin and Amazon Elastic Beanstalk in their demand planning solution to integrate R and Java.
 author=Alexander Bertram
 lang=en
 ~~~~~~

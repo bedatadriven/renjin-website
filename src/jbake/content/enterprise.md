@@ -1,6 +1,7 @@
 title=Renjin Enterprise Support
 type=enterprise
 status=published
+description=Renjin Enterprise Support (RES) is an annual subscription-based product for mission-critical applications that want to integrate Java and R.
 lang=en
 ~~~~~~
 
