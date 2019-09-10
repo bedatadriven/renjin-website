@@ -19,11 +19,12 @@ JBake:
 
 ## Building
 
-Use `./gradlew bake` to build the site. The output will be copied into the `build/output/` folder.
+Use `./gradlew bake` to build the site. The output will be copied into the `build/jbake/` folder.
 
 Use `./gradlew preview` to start a local server at `http://localhost:8820` to test the website.
 
 The website will be deployed automatically when you push your changes to the master branch.
+You can also manually deploy using `.gradlew deploy`.
 
 ## Notes on markdown
 
