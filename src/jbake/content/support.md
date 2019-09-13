@@ -1,4 +1,4 @@
-title=Support
+title=Support for Java and R integration with the use of Renjin
 type=support
 status=published
 description=Do you want to add R in your Java application? Get started with the Renjin documentation or ask for fast, predictable support for your Java based application.
