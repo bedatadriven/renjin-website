@@ -2,12 +2,7 @@
   <div>
     <div>
       <h3>Downloads</h3>
-      <p>Take a look at our <a href="/downloads.html">download page</a>, or choose one of our downloads directly. </p>
-      <ul>
-        <li><a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-debian-package&v=${config.renjin_current}&e=deb" onclick="ga('send', 'event', 'Download', 'Click', 'Download Debian package');">Renjin CLI for Debian/Ubuntu [.deb]</a></li>
-        <li><a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-studio&v=${config.renjin_current}&e=jar" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin Studio');">Renjin Studio (GUI) for all platforms [.jar]</a></li>
-        <li><a href="http://nexus.bedatadriven.com/service/local/artifact/maven/redirect?r=renjin-release&g=org.renjin&a=renjin-script-engine&c=jar-with-dependencies&v=${config.renjin_current}&e=jar" onclick="ga('send', 'event', 'Download', 'Click', 'Download Renjin script-engine');">Renjin Script Engine for Java projects [.jar]</a></li>
-      </ul>
+      <p>Take a look at our <a href="/downloads.html">download page</a>.</p>
     </div>
     <div>
       <h3>Resources</h3>
