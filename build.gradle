@@ -116,6 +116,7 @@ task deploy(type: Exec) {
     args 'app', 'deploy'
     args "$buildDir/staged"
     args "--version=1"
+    args "--no-promote"
 }
 
 task updateDispatchRules(type: Exec) {
