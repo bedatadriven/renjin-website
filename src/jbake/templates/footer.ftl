@@ -37,7 +37,7 @@
     <div>
       <h3>Support</h3>
       <ul>
-        <li><a href="/enterprise.html">Renjin Enterprise Support</a></li>
+        <li><a href="https://groups.google.com/g/renjin-dev">Mailing list</a></li>
         <li><a href="http://stackoverflow.com/questions/tagged/renjin">StackOverflow</a></li>
       </ul>
     </div>

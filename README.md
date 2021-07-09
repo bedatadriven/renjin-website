@@ -13,9 +13,9 @@ We use the [default project
 structure](https://jbake.org/docs/2.6.3/#project_structure) recommended by
 JBake:
 
-* `src/content/` holds the content to be _baked_ into HTML output.
-* `src/assets/` contains everything which needs to be copied as-is.
-* `src/templates/` holds the FreeMarker templates.
+* `src/jbake/content/` holds the content to be _baked_ into HTML output.
+* `src/jbake/assets/` contains everything which needs to be copied as-is.
+* `src/jbake/templates/` holds the FreeMarker templates.
 
 ## Building
 
