@@ -12,5 +12,8 @@ dispatch:
   - url: "packages.renjin.org/*"
     service: packages
 
+  - url: "nexus.bedatadriven.com/*"
+    service: packages
+
   - url: "*/*"
     service: default
