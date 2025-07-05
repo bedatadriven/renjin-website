@@ -27,7 +27,7 @@ Renjin in an embedded context.
 
 Here's a recording of the talk I gave (<a href="/assets/downloads/Renjin-Riot-2016.pdf">PDF</a>) :
 
-<script src="https://fast.wistia.com/embed/medias/48jrf19ssx.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_embed wistia_async_48jrf19ssx" style="height:480px;width:640px">&nbsp;</div>
+<div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/463862/144687b2-1ca4-4a67-83f4-474c5b564905?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
 
 Thanks to everyone for great presentations, great questions, and lots of
 ideas!

@@ -15,7 +15,7 @@ the workshop.
 
 My colleague Maarten-Jan made a rough recording of my talk:
 
-<script src="https://fast.wistia.com/embed/medias/apkbi0495d.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_apkbi0495d videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/apkbi0495d/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+<div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/463862/7b4f4dda-682f-4a30-9228-6a1894faf4fa?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
 
 What I wanted to communicate was how the project
 initially started as a "rewrite" of GNU R, and has now evolved into
