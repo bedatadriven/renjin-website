@@ -10,9 +10,6 @@
   <#elseif content.excerpt?? >
   <meta name="description" property="og:description" content="${content.excerpt}">
   </#if>
-  <!--[if lt IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <![endif]-->
   <link href="/css/style.css" rel="stylesheet" media="all">
   <style>
     article img {

@@ -4,10 +4,6 @@
 // aspect ratio 3.37773153 = ~ 3.37
 
 header.hero {
-  background: url("/assets/img/hero.jpg");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: auto 100%;
   min-height: calc(100vw / 3.37);
   height: 50vh;
 

@@ -53,21 +53,3 @@ the Open Web Application Security Project (OWASP). A full list of
 guidelines for a variety of topics related to security can be
 found at https://www.owasp.org/index.php/Cheat_Sheets.
 
-## Cookies
-When you visit the website you consent to us placing cookies in your
-browser. We keep the number of cookies which we store to an absolute
-minimum and we do not store third-party cookies.
-
-We use Google Analytics to track the number of visitors to the website.
-We use this information to understand how the website
-are used with the goal to improve its usability and performance.
-
-Google Analytics stores two cookies in your browser to identify
-you as a unique visitor to the website. This information is non-personal
-and we have opted to anonymize your IP address before it is stored by
-Google. The data which is obtained from your visits to our website
-are not used by Google for any other purpose other than generating
-visitor reports for us. We also do not use any of the advertising
-features of Google Analytics therefore no data is shared with any
-third party.
-
