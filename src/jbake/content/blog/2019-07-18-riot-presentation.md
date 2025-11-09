@@ -15,7 +15,7 @@ the workshop.
 
 My colleague Maarten-Jan made a rough recording of my talk:
 
-<div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/463862/7b4f4dda-682f-4a30-9228-6a1894faf4fa?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
+<div class="video"><iframe src="https://iframe.mediadelivery.net/embed/463862/7b4f4dda-682f-4a30-9228-6a1894faf4fa?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy"  allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
 
 What I wanted to communicate was how the project
 initially started as a "rewrite" of GNU R, and has now evolved into

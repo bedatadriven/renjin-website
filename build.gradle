@@ -114,6 +114,7 @@ task deploy(type: Exec) {
     executable 'gsutil'
     args 'rsync'
     args "-r"
+    args "-d"
     args "$buildDir/staged/output/"
     args "gs://renjin-website-archive/"
 }
