@@ -13,7 +13,6 @@
   </div>
   <div class="grid">
     <div class="medium-6 grid-item">
-      <h2>Resources</h2>
 
       <p>Renjin is unfortunately no longer actively maintained.</p>
 

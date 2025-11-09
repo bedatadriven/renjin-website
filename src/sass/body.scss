@@ -1,4 +1,10 @@
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 footer,
 header,
 main > div {
@@ -17,4 +23,5 @@ main > div > * {
 main {
   padding-top: 40px;
   padding-bottom: 60px;
+  flex-grow: 1;
 }
