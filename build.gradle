@@ -110,19 +110,10 @@ task stage(type: Copy) {
 
 task deploy(type: Exec) {
     dependsOn 'stage'
-    
-    executable 'gcloud'
-    args '--project', 'renjinci'
-    args 'app', 'deploy'
-    args "$buildDir/staged"
-    args "--version=1"
-    args "--no-promote"
-}
 
-task updateDispatchRules(type: Exec) {
-
-    executable 'gcloud'
-    args '--project', 'renjinci'
-    args 'app', 'deploy'
-    args "src/app/dispatch.yaml"
+    executable 'gsutil'
+    args 'rsync'
+    args "-r"
+    args "$buildDir/staged/output/"
+    args "gs://renjin-website-archive/"
 }
