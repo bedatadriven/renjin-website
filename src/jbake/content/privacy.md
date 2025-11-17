@@ -25,7 +25,7 @@ This privacy policy uses the following terms:
 * “We” (also “us” or “our”) are BeDataDriven B.V., having business at
   Binckhorstlaan 36, 2516 BE The Hague, Netherlands. We are listed in the
   Business Register of the Dutch Chamber of Commerce with number 61548278.
-* “The website” is the collection of web pages publicly accessible via https://www.renjin.org and its subdomains (e.g. http://docs.renjin.org).
+* “The website” is the collection of web pages publicly accessible via https://www.renjin.org and its subdomains (e.g. https://docs.renjin.org).
 * “You” (also “your”) are a visitor to the website.
 
 ## Which data we store and why

@@ -114,10 +114,10 @@ fact, this solution was made very easy by the high level of abstraction in the
 data types in Renjin's interpreter.
 
 The following figure is taken from the section
-[Overview of Renjin’s type system](http://docs.renjin.org/en/latest/moving-data-between-java-and-r-code.html#overview-of-renjin-s-type-system)
+[Overview of Renjin’s type system](https://docs.renjin.org/en/latest/moving-data-between-java-and-r-code.html#overview-of-renjin-s-type-system)
 in Renjin's documentation.
 
-![Renjin's type system hierarchy](http://docs.renjin.org/en/latest/_images/renjin-class-hierarchy.png)
+![Renjin's type system hierarchy](https://docs.renjin.org/en/latest/_images/renjin-class-hierarchy.png)
 
 At the top you see R's well-known *SEXP* object type, followed by the *Vector*
 and *AtomicVector* Java interfaces. The latter includes classes for the six

@@ -36,7 +36,7 @@ For this to work you will also need to add BeDataDriven’s public repository to
 
 
 If you're not using Maven, you can find comparable instructions for
-all major JVM-based build tools in our [Project Setup Guide](http://docs.renjin.org/en/latest/library/project-setup.html)
+all major JVM-based build tools in our [Project Setup Guide](https://docs.renjin.org/en/latest/library/project-setup.html)
 
 Once you have the dependency added, you can create a new RenjinScriptEngine:
 
@@ -63,5 +63,5 @@ Once you have the dependency added, you can create a new RenjinScriptEngine:
 
 That's it! You're now calling R from Java.
 
-Visit our [documentation](http://docs.renjin.org/en/latest/library/index.html) for
+Visit our [documentation](https://docs.renjin.org/en/latest/library/index.html) for
 more details and advanced use cases.

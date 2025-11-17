@@ -19,7 +19,7 @@
         <p>Add Renjin to any Java, Scala, or other JVM project and run R code
           with the standard Java Scripting API. You can find details on adding
           Renjin to your Gradle, SBT, and other types of projects in our
-          <a href="http://docs.renjin.org/en/latest/library/project-setup.html">
+          <a href="https://docs.renjin.org/en/latest/library/project-setup.html">
             Project Setup Guide
           </a>
           .

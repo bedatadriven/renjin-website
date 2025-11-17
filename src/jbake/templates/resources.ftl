@@ -15,11 +15,11 @@
 
         <h2>Documentation</h2>
 
-        <p>You can find comprehensive <a href="http://docs.renjin.org">documentation</a> on Renjin, including: </p>
+        <p>You can find comprehensive <a href="https://docs.renjin.org">documentation</a> on Renjin, including: </p>
 
         <ul>
-            <li><a href="http://docs.renjin.org/en/latest/library/index.html">Using Renjin as a Java Library</a></li>
-            <li><a href="http://docs.renjin.org/en/latest/interactive/index.html">Using Renjin from the Command Line</a></li>
+            <li><a href="https://docs.renjin.org/en/latest/library/index.html">Using Renjin as a Java Library</a></li>
+            <li><a href="https://docs.renjin.org/en/latest/interactive/index.html">Using Renjin from the Command Line</a></li>
         </ul>
 
         <h2 id="case-studies">Case Studies</h2>

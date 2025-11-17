@@ -17,7 +17,7 @@
       <p>Renjin is unfortunately no longer actively maintained.</p>
 
       <p>You can browse the relevant <a
-          href="http://docs.renjin.org">documentation</a> to see if you can find an
+          href="https://docs.renjin.org">documentation</a> to see if you can find an
       answer to your question, or review previous questions and answers on the
         <a href="http://stackoverflow.com/questions/tagged/renjin">Renjin tag on StackOverflow.com</a>.</p>
 

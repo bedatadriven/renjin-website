@@ -7,7 +7,7 @@
     <div>
       <h3>Resources</h3>
       <ul>
-        <li><a href="http://docs.renjin.org/">Documentation</a></li>
+        <li><a href="https://docs.renjin.org/">Documentation</a></li>
         <li><a href="/resources.html#case-studies">Case studies</a></li>
       </ul>
     </div>
